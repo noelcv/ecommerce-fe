@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-search-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-search-bar-input {
+  width: 50vw;
+}
+
+.header-search-bar-button {
+  background-color: #F3A847;
+}
+
+.header-nav{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+
+
+.header-options{
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+}
+
+.header-option-l2 {
+  font-weight: 800;
+}
