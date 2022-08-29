@@ -6,8 +6,11 @@ import magnify from '../assets/magnify.svg';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 const Header: FunctionComponent = () => {
+  const count = useSelector((state: RootState) => state.counter.value);
   return (
     <div className="header">
       <Link to="/">
@@ -40,7 +43,7 @@ const Header: FunctionComponent = () => {
         <Link to="/checkout">
           <div className="header-option-basket">
             <ShoppingCartIcon fontSize="large" />
-            <span className="items-counter header-option-l2">0</span>
+            <span className="items-counter header-option-l2">{count}</span>
           </div>
         </Link>
       </div>

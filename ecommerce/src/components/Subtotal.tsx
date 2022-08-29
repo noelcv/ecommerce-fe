@@ -1,11 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import './Subtotal.css';
-import CurrencyFormat from "react-currency-format";  
+import CurrencyFormat from "react-currency-format"; 
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store'; 
 
 
 const Subtotal: FunctionComponent = () => {
+ const value = useSelector((state: RootState) => state.counter.value);
  return (
   <div className="subtotal">
+    <h1>{value}</h1>
     <CurrencyFormat
     renderText={(value) => (
       <>
