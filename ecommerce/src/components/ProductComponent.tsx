@@ -3,7 +3,7 @@ import './Product.css';
 import { ProductType } from '../types/ProductType';
 
 
-const ProductComponent: FunctionComponent<ProductType> = ({name, price, rating, image, description}: ProductType) => {
+const ProductComponent: FunctionComponent<ProductType> = ({id, name, price, rating, image, description}: ProductType) => {
   return (
     <div className="product">
       <div className="product-info">
