@@ -1,25 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import './Product.css';
+import { ProductType } from '../types/ProductType';
 
-const Product: FunctionComponent = () => {
+
+const ProductComponent: FunctionComponent<ProductType> = ({name, price, rating, image, description}: ProductType) => {
   return (
     <div className="product">
       <div className="product-info">
-        <p className="product-name">Yin Yoga Course</p>
+        <p className="product-name">{name}</p>
         <div className="product-price">
           <small>$</small>
-          <strong>250</strong>
+          <strong>{price}</strong>
         </div>
         <div className="product-rating">
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
+          {Array(rating).fill(0).map((_, i) => { return ( <p>⭐</p> ) })}
         </div>
         </div>
         <img
-          src="https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1592311381614-J10RYRQF5DQ4AE4LZQ31/mettayogapodcast.jpg?format=500w"
+          src={image}
           alt=""
           className="product-image"
         />
@@ -28,4 +26,4 @@ const Product: FunctionComponent = () => {
   );
 };
 
-export default Product;
+export default ProductComponent;
