@@ -22,7 +22,9 @@ const CheckoutComponent: FunctionComponent = () => {
             return (
               <div className="product-results" key={product.id}>
                 <div className="product-info-result">
+                <div className="img-wrapper">
                 <img src={product.image} alt="" className="product-image result-img" />
+                </div> 
                   <div className="product-result-details">
                     <h3 className="product-name-result">{product.name}</h3>
                     <div className="product-rating">
@@ -31,13 +33,13 @@ const CheckoutComponent: FunctionComponent = () => {
                       .map((_, i) => {
                         return <p key={i}>⭐</p>;
                       })}
-                  </div>
+                    </div>
                   <div className="product-price">
                     <small>$</small>
                     <strong>{product.price}</strong>
                   </div>
                   
-                  
+            
                   <button
                   className="remove-from-basket-btn"
                   onClick={() => {
