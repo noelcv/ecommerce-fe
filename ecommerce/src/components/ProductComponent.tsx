@@ -3,7 +3,7 @@ import './Product.css';
 import { ProductType } from '../types/ProductType';
 import type { RootState } from '../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { increment } from '../redux/reducers/counterSlice'
+import { addToBasket } from '../redux/reducers/counterSlice'
 
 
 const ProductComponent: FunctionComponent<ProductType> = ({id, name, price, rating, image, description}: ProductType) => {
@@ -28,7 +28,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({id, name, price, rati
         />
       <button className="add-to-basket-btn" onClick={() => {
         console.log('added to basket')
-        dispatch(increment())
+        dispatch(addToBasket())
         console.log('count', count)
         }}>Add to basket</button>
     </div>

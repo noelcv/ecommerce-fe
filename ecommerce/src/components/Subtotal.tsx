@@ -9,11 +9,11 @@ const Subtotal: FunctionComponent = () => {
  const value = useSelector((state: RootState) => state.counter.value);
  return (
   <div className="subtotal">
-    <h1>{value}</h1>
+    <p>Subtotal({value} items):</p>
     <CurrencyFormat
     renderText={(value) => (
       <>
-        <p>Subtotal(0 items): <strong>0</strong></p>
+        <strong>{value}</strong>
         <small className="subtotal-gift">
           <input type="checkbox" name="hasGift" id="hasGift" />
           This order contains a gift
