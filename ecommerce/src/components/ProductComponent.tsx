@@ -5,6 +5,7 @@ import type { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToBasket } from '../redux/reducers/counterSlice';
 import { addAmountToSubtotal } from '../redux/reducers/subtotalSlice';
+import { addProductToBasket } from '../redux/reducers/basketSlice';
 
 const ProductComponent: FunctionComponent<ProductType> = ({
   id,
@@ -17,6 +18,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   const count = useSelector((state: RootState) => state.counter.value);
   const subtotal = useSelector((state: RootState) => state.subtotal.value);
   const dispatch = useDispatch();
+  const product = {id, name, price, rating, image, description};
   return (
     <div className="product">
       <div className="product-info">
@@ -42,6 +44,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
           console.log('subtotal before', subtotal);
           dispatch(addToBasket());
           dispatch(addAmountToSubtotal(price));
+          dispatch(addProductToBasket([product]))
           console.log('added to basket...current count', count);
           console.log('subtotal after', subtotal);
         }}

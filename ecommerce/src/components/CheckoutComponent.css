@@ -18,7 +18,8 @@
 }
 
 .checkout-shopping-basket {
-
+  display: flex;
+  flex-direction: column;
 }
 
 .checkout-title {
@@ -26,4 +27,24 @@
   padding: 1em;
   font-size: 2.5em;
   border-bottom: 1px solid #999;
+}
+
+.product-results {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.product-result-details {
+  padding-top: 3.5em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.product-info-result {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }

@@ -7,3 +7,10 @@ export type ProductType = {
   image?: string;
   description?: string;
 }
+
+
+export type BasketType = {
+  product?: ProductType;
+  productId?: string;
+  userId?: string;
+}
