@@ -1,3 +1,11 @@
 .home {
-  background-color: antiquewhite;
+  background-color: #242424;
 }
+
+.img-hero {
+  width: 100%;
+  z-index:-1;
+  /* margin-bottom: -9.375em; */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))
+}
+
