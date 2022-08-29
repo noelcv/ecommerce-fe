@@ -6,14 +6,16 @@ import { RootState } from '../redux/store';
 
 
 const Subtotal: FunctionComponent = () => {
- const value = useSelector((state: RootState) => state.counter.value);
+ const items = useSelector((state: RootState) => state.counter.value);
+ const subtotal = useSelector((state: RootState) => state.subtotal.value);
  return (
   <div className="subtotal">
-    <p>Subtotal({value} items):</p>
+    <p>Subtotal({items} items):</p>
+    <strong>{subtotal} EUR</strong>
     <CurrencyFormat
-    renderText={(value) => (
+    renderText={(subtotal) => (
       <>
-        <strong>{value}</strong>
+        <strong>{subtotal}</strong>
         <small className="subtotal-gift">
           <input type="checkbox" name="hasGift" id="hasGift" />
           This order contains a gift
