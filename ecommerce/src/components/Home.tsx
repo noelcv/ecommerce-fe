@@ -14,12 +14,15 @@ const Home: FunctionComponent = () => {
         
         <div className="home-row">
           <Product/>
+          <Product/>
         </div>
         <div className="home-row">
-          
+        <Product/>
+        <Product/>
+        <Product/>
         </div>
         <div className="home-row">
-          
+        <Product/>
         </div>
       
       </div>
