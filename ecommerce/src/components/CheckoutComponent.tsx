@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import './CheckoutComponent.css';
+import Subtotal from './Subtotal';
 
 
 const CheckoutComponent: FunctionComponent = () => {
@@ -15,7 +16,7 @@ const CheckoutComponent: FunctionComponent = () => {
         </div>
       </div>
       <div className="checkout-right">
-      <h2 className="checkout-subtotal-title">Subtotal goes here</h2>
+      <Subtotal />
 
       </div>
     </div>

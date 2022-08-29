@@ -1,22 +1,28 @@
-import React, {FunctionComponent} from 'react'
-import './Header.css'
-import eShop_logo from '../assets/eShop_logo.svg'
-import Mettakin from '../assets/Mettakin.svg'
-import magnify from '../assets/magnify.svg'
+import React, { FunctionComponent } from 'react';
+import './Header.css';
+import eShop_logo from '../assets/eShop_logo.svg';
+import Mettakin from '../assets/Mettakin.svg';
+import magnify from '../assets/magnify.svg';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Header: FunctionComponent = () => {
   return (
-    <div className='header'>
+    <div className="header">
       <Link to="/">
-      <img className='header-logo' src={Mettakin}/>
+        <img className="header-logo" src={Mettakin} />
       </Link>
       <div className="header-search-bar-wrapper">
-        <input className="header-search-bar-input" type="text" placeholder="Search"/>
-        
-        <button className="header-search-bar-button"><SearchIcon/></button>
+        <input
+          className="header-search-bar-input"
+          type="text"
+          placeholder="Search"
+        />
+
+        <button className="header-search-bar-button">
+          <SearchIcon />
+        </button>
       </div>
       <div className="header-nav">
         <div className="header-options">
@@ -31,17 +37,15 @@ const Header: FunctionComponent = () => {
           <span className="header-option-l1">Your</span>
           <span className="header-option-l2">Subscription</span>
         </div>
-        <div className="header-option-basket">
-          <Link to="/checkout">
-          <ShoppingCartIcon 
-            fontSize='large'
-          />
-          </Link>
-        </div>
-        
+        <Link to="/checkout">
+          <div className="header-option-basket">
+            <ShoppingCartIcon fontSize="large" />
+            <span className="items-counter header-option-l2">0</span>
+          </div>
+        </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
