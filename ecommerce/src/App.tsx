@@ -10,6 +10,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <Header/>
         <Routes>
           <Route path="/" element={<Homepage/>}/>
           <Route path="/checkout" element={<Checkout/>}/>

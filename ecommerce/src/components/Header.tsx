@@ -5,11 +5,14 @@ import Mettakin from '../assets/Mettakin.svg'
 import magnify from '../assets/magnify.svg'
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from 'react-router-dom'
 
 const Header: FunctionComponent = () => {
   return (
     <div className='header'>
+      <Link to="/">
       <img className='header-logo' src={Mettakin}/>
+      </Link>
       <div className="header-search-bar-wrapper">
         <input className="header-search-bar-input" type="text" placeholder="Search"/>
         
@@ -29,9 +32,11 @@ const Header: FunctionComponent = () => {
           <span className="header-option-l2">Subscription</span>
         </div>
         <div className="header-option-basket">
+          <Link to="/checkout">
           <ShoppingCartIcon 
             fontSize='large'
           />
+          </Link>
         </div>
         
       </div>

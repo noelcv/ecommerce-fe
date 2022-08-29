@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import Header from '../components/Header'
 import Home from '../components/Home'
+import CheckoutComponent from '../components/CheckoutComponent'
 
 const Homepage: FunctionComponent = () => {
   return (
-    <div className="app">
-      <Header />
-      <h1>Checkout bitch</h1>
-    </div>
+      <CheckoutComponent />
   ) 
 }
  

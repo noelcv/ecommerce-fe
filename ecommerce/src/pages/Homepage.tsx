@@ -4,10 +4,7 @@ import Home from '../components/Home'
 
 const Homepage: FunctionComponent = () => {
   return (
-    <div className="app">
-      <Header />
       <Home />
-    </div>
   ) 
 }
  
