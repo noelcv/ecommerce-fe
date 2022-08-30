@@ -3,7 +3,7 @@ import './Product.css';
 import { ProductType } from '../types/ProductType';
 import type { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToBasket } from '../redux/reducers/counterSlice';
+import { addToBasketCounter } from '../redux/reducers/counterSlice';
 import { addAmountToSubtotal } from '../redux/reducers/subtotalSlice';
 import { addProductToBasket } from '../redux/reducers/basketSlice';
 
@@ -42,7 +42,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
           console.log('price', price);
           console.log('current count', count);
           console.log('subtotal before', subtotal);
-          dispatch(addToBasket());
+          dispatch(addToBasketCounter());
           dispatch(addAmountToSubtotal(price));
           dispatch(addProductToBasket([product]))
           console.log('added to basket...current count', count);

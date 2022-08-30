@@ -7,7 +7,7 @@ import ProductComponent from './ProductComponent';
 import trim from '../utils/trim';
 import { ProductType } from '../types/ProductType';
 import { removeProductFromBasket } from '../redux/reducers/basketSlice';
-import { removeFromBasket } from '../redux/reducers/counterSlice';
+import { removeFromBasketCounter } from '../redux/reducers/counterSlice';
 import { removeAmountFromSubtotal } from '../redux/reducers/subtotalSlice';
 
 const CheckoutComponent: FunctionComponent = () => {
@@ -15,18 +15,16 @@ const CheckoutComponent: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   
-  //TODO: find a way to find the product
-  // create a new Slice with the filtered out product
-  //dispatch an action to update the store.
+ //TODO: create different counter for
   
   const removeHandler = (product: ProductType) => {
     console.log("this product", product);
     console.log("this product id", product.id);
     console.log("products before: ", products)
     console.log("trimm", trim(product, products))
-    dispatch(removeProductFromBasket(trim(product, products)));
-    dispatch(removeFromBasket())
     dispatch(removeAmountFromSubtotal(product.price))
+    dispatch(removeFromBasketCounter())
+    dispatch(removeProductFromBasket(trim(product, products)));
 
     console.log("products after: ", products);
     return;
