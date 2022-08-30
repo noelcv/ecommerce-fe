@@ -13,10 +13,16 @@ export const ProductsSlice = createSlice({
     ) => {
       state.value = [...state.value, ...action.payload];
     },
+    removeProductFromBasket: (
+      state: { value: ProductType[] },
+      action: { payload: ProductType[] }
+    ) => {
+      state.value = [...action.payload];
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addProductToBasket } = ProductsSlice.actions;
+export const { addProductToBasket, removeProductFromBasket } = ProductsSlice.actions;
 
 export default ProductsSlice.reducer;

@@ -1,12 +1,38 @@
 import React, { FunctionComponent } from 'react';
 import './CheckoutComponent.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Subtotal from './Subtotal';
 import { RootState } from '../redux/store';
 import ProductComponent from './ProductComponent';
+import trim from '../utils/trim';
+import { ProductType } from '../types/ProductType';
+import { removeProductFromBasket } from '../redux/reducers/basketSlice';
+import { removeFromBasket } from '../redux/reducers/counterSlice';
+import { removeAmountFromSubtotal } from '../redux/reducers/subtotalSlice';
 
 const CheckoutComponent: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.basket.value);
+  const dispatch = useDispatch();
+
+  
+  //TODO: find a way to find the product
+  // create a new Slice with the filtered out product
+  //dispatch an action to update the store.
+  
+  const removeHandler = (product: ProductType) => {
+    console.log("this product", product);
+    console.log("this product id", product.id);
+    console.log("products before: ", products)
+    console.log("trimm", trim(product, products))
+    dispatch(removeProductFromBasket(trim(product, products)));
+    dispatch(removeFromBasket())
+    dispatch(removeAmountFromSubtotal(product.price))
+
+    console.log("products after: ", products);
+    return;
+  }
+  
+  
   console.log(products, 'products');
   return (
     <div className="checkout">
@@ -18,9 +44,9 @@ const CheckoutComponent: FunctionComponent = () => {
         />
         <div className="checkout-shopping-basket">
           <h2 className="checkout-title">Your shopping Basket</h2>
-          {products.map((product) => {
+          {products.map((product, index) => {
             return (
-              <div className="product-results" key={product.id}>
+              <div className="product-results" key={index}>
                 <div className="product-info-result">
                 <div className="img-wrapper">
                 <img src={product.image} alt="" className="product-image result-img" />
@@ -42,9 +68,8 @@ const CheckoutComponent: FunctionComponent = () => {
             
                   <button
                   className="remove-from-basket-btn"
-                  onClick={() => {
-                    console.log('price');
-                  }}
+                  onClick={() => removeHandler(product)}
+              
                 >
                   Remove from basket
                 </button>
