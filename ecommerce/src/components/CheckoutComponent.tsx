@@ -3,8 +3,6 @@ import './CheckoutComponent.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Subtotal from './Subtotal';
 import { RootState } from '../redux/store';
-import ProductComponent from './ProductComponent';
-import trim from '../utils/trim';
 import { ProductType } from '../types/ProductType';
 import { removeProductFromBasket } from '../redux/reducers/basketSlice';
 import { removeFromBasketCounter } from '../redux/reducers/counterSlice';
@@ -13,23 +11,18 @@ import { removeAmountFromSubtotal } from '../redux/reducers/subtotalSlice';
 const CheckoutComponent: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.basket.value);
   const dispatch = useDispatch();
-
-  
- //TODO: create different counter for
   
   const removeHandler = (product: ProductType) => {
     console.log("this product", product);
     console.log("this product id", product.id);
     console.log("products before: ", products)
-    console.log("trimm", trim(product, products))
     dispatch(removeAmountFromSubtotal(product.price))
     dispatch(removeFromBasketCounter())
-    dispatch(removeProductFromBasket(trim(product, products)));
+    dispatch(removeProductFromBasket(product));
 
     console.log("products after: ", products);
     return;
   }
-  
   
   console.log(products, 'products');
   return (
