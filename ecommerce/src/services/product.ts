@@ -15,3 +15,13 @@ export const addNewProduct = async (product: ProductType) => {
     console.log('Error at addNewProduct Service: ', error)
   }
 }
+
+export const getAllProducts = async () => {
+  try {
+    const products = await fetch(BASE_URL);
+    return await products.json();
+  }
+  catch(error) {
+    console.log('Error at getAllProducts Service: ', error)
+  }
+}

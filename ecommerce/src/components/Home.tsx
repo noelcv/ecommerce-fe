@@ -1,8 +1,16 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getAllProducts } from '../services/product';
 import './Home.css';
 import ProductComponent from './ProductComponent';
 
 const Home: FunctionComponent = () => {
+  const products = useSelector((state) => state.products)
+  
+  useEffect(()=>{
+    getAllProducts();
+  }, [produc])
+  
   return (
     <div className="home">
       <div className="home-container">
@@ -13,9 +21,10 @@ const Home: FunctionComponent = () => {
         ></img>
 
         <div className="home-row">
-          <ProductComponent id="1313131313" name="Yin Yoga" rating={5} price={20} image="https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w" />
-          <ProductComponent id="21313131313" name="Yoga at the Farm" rating={5} price={20} image="https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/9721616f-530d-4258-8b86-9dd85c234e8a/038.jpg?format=750w"/>
-          <ProductComponent id="31312313213" name="Sound Bath" rating={5} price={15} image="https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w" />
+          {products.map((product) => (
+            <ProductComponent />
+          ))}
+        
         </div>
         <div className="home-row"></div>
         <div className="home-row"></div>
