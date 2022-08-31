@@ -2,7 +2,7 @@ import { ProductType } from "../types/ProductType";
 
 const db=[];
 
-const BASE_URL: string = "tbd"
+const BASE_URL: string = "http://localhost:3000/products";
 
 export const pushNewProduct = async (product: ProductType) => {
   try { 
