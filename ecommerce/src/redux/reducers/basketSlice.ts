@@ -15,9 +15,19 @@ export const ProductsSlice = createSlice({
     },
     removeProductFromBasket: (
       state: { value: ProductType[] },
-      action: { payload: ProductType[] }
+      action: { payload: ProductType }
     ) => {
-      state.value = [...action.payload];
+      //find Item position in the products array
+      //if we would find by ID, it would delete all products with the same ID
+      let filteredItemIndex = state.value.findIndex((item) => item.id === action.payload.id);
+        
+      if (filteredItemIndex >= 0) {
+        //remove that item from the basket
+        state.value.splice(filteredItemIndex, 1);
+      } else {
+        console.log('item not found: ', action.payload)
+      }
+      return;
     },
   },
 });
