@@ -5,9 +5,8 @@ import './Admin.css';
 const Admin: FunctionComponent = () => {
   return (
     <div className="admin">
-      <h1>Admin Panel</h1>
+      <h1 className="">Admin Panel</h1>
       <AddProductForm />
-      
       
       
     </div>
