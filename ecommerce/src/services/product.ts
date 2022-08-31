@@ -1,20 +1,6 @@
 import { ProductType } from "../types/ProductType";
 
-const db=[];
-
 const BASE_URL: string = "http://localhost:3000/products";
-
-export const pushNewProduct = async (product: ProductType) => {
-  try { 
-    const newProduct = await db.push(product);
-    return await newProduct;
-  }
-  catch(error) {
-    console.log('Error at addNewProduct Service: ', error)
-  }
-}
-
-
 
 export const addNewProduct = async (product: ProductType) => {
   try { 
