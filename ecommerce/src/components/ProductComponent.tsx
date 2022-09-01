@@ -6,6 +6,7 @@ import { addToBasketCounter } from '../redux/reducers/counterSlice';
 import { addAmountToSubtotal } from '../redux/reducers/subtotalSlice';
 import { addProductToBasket } from '../redux/reducers/basketSlice';
 
+
 const ProductComponent: FunctionComponent<ProductType> = ({
   id,
   name,
@@ -17,7 +18,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   const dispatch = useDispatch();
   const product = { id, name, price, rating, image, description };
   
-  const clickHandler = (product: ProductType) => {
+  const addProductHandler = (product: ProductType) => {
       console.log(product, 'product inside clickHandler')
       dispatch(addToBasketCounter());
       dispatch(addProductToBasket(product));
@@ -48,7 +49,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
         </div>
         <button
           className="bg-zinc-900 hover:bg-zinc-400 text-white font-bold py-2 px-4 rounded mt-4"
-          onClick={() => clickHandler(product)}
+          onClick={() => addProductHandler(product)}
         >
           Add to basket
         </button>
