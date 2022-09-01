@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-// import './Product.css';
 import { ProductType } from '../types/ProductType';
 import type { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
