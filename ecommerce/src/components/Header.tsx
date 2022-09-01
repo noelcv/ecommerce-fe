@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import './Header.css';
-import eShop_logo from '../assets/eShop_logo.svg';
 import Mettakin from '../assets/Mettakin.svg';
 import magnify from '../assets/magnify.svg';
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,36 +11,36 @@ import { RootState } from '../redux/store';
 const Header: FunctionComponent = () => {
   const count = useSelector((state: RootState) => state.counter.value);
   return (
-    <div className="header">
+    <div className="flex flex-row bg-slate-800 sticky z-50">
       <Link to="/">
-        <img className="header-logo" src={Mettakin} />
+        <img className="object-contain mt-4" src={Mettakin} />
       </Link>
-      <div className="header-search-bar-wrapper">
+      <div className="flex flex-row ">
         <input
-          className="header-search-bar-input"
+          className="w-96 h-10 mt-12 border-none text-zinc-900"
           type="text"
           placeholder="Search"
         />
 
-        <button className="header-search-bar-button">
+        <button className="bg-orange-400 w-20 h-14 mt-12">
           <SearchIcon />
         </button>
       </div>
-      <div className="header-nav">
-        <div className="header-options">
-          <span className="header-option-l1">Hello</span>
-          <span className="header-option-l2">Sign In</span>
+      <div className="flex place-content-evenly">
+        <div className="flex flex-col place-content-evenly p-10">
+          <span className="text-zinc-100 text-2xl">Hello</span>
+          <span className="text-zinc-300 text-3xl mt-0.5">Sign In</span>
         </div>
-        <div className="header-options">
-          <span className="header-option-l1">Returns</span>
-          <span className="header-option-l2">& Orders</span>
+        <div className="flex flex-col place-content-evenly p-10">
+          <span className="text-zinc-100 text-2xl">Returns</span>
+          <span className="text-zinc-300 text-3xl mt-0.5">& Orders</span>
         </div>
-        <div className="header-options">
-          <span className="header-option-l1">Your</span>
-          <span className="header-option-l2">Subscription</span>
+        <div className="flex flex-col place-content-evenly p-10">
+          <span className="text-zinc-100 text-2xl">Your</span>
+          <span className="text-zinc-300 text-3xl mt-0.5">Subscription</span>
         </div>
         <Link to="/checkout">
-          <div className="header-option-basket">
+          <div className="flex flex-row mx-10 mt-14">
             <ShoppingCartIcon fontSize="large" />
             <span className="items-counter header-option-l2">{count}</span>
           </div>
