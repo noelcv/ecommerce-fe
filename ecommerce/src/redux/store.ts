@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import allProductsSlice from './reducers/allProductsSlice'
 import basketSlice from './reducers/basketSlice'
 import counterSlice from './reducers/counterSlice'
 import subtotalSlice from './reducers/subtotalSlice'
@@ -7,7 +8,8 @@ export const store = configureStore({
   reducer: {
     counter: counterSlice,
     subtotal: subtotalSlice,
-    basket: basketSlice
+    basket: basketSlice,
+    allProducts: allProductsSlice,
   },
 })
 

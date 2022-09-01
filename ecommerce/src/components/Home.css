@@ -7,14 +7,14 @@
 }
 
 .img-hero {
-  width: 100%;
   z-index:-1;
   margin-bottom: -9.375em;
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))
 }
 
 .home-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   z-index: 1;
   margin-left: 0.313px;
   margin-right: 0.313px;

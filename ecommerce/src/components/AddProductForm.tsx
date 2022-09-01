@@ -1,11 +1,5 @@
 import React, { FunctionComponent , useState} from 'react';
 import './AddProductForm.css';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Stack from '@mui/material/Stack';
 import { addNewProduct } from '../services/product';
 
 const AddProductForm: FunctionComponent = () => {

@@ -1,15 +1,28 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { FunctionComponent, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { allProducts } from '../redux/reducers/allProductsSlice';
+import { RootState } from '../redux/store';
 import { getAllProducts } from '../services/product';
 import './Home.css';
 import ProductComponent from './ProductComponent';
 
 const Home: FunctionComponent = () => {
-  const products = useSelector((state) => state.products)
+  const products = useSelector((state: RootState) => state.allProducts.value)
+  const dispatch = useDispatch()
   
-  useEffect(()=>{
-    getAllProducts();
-  }, [produc])
+  const getProductsList = async () => {
+    try {
+      const products = await getAllProducts()
+      dispatch(allProducts(products))
+    } catch (err) {
+      console.log("Error getting Products List", err);
+    }
+    
+  }
+  
+  useEffect(() => {
+    getProductsList()
+  }, [])
   
   return (
     <div className="home">
@@ -21,8 +34,15 @@ const Home: FunctionComponent = () => {
         ></img>
 
         <div className="home-row">
-          {products.map((product) => (
-            <ProductComponent />
+          {products.map((product, id) => (
+            <ProductComponent 
+              key={id} 
+              name={product.name}
+              description={product.description}
+              image={product.image}
+              price={product.price} 
+              currency={product.currency} 
+          />
           ))}
         
         </div>

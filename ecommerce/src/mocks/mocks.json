@@ -53,6 +53,15 @@
       "currency": "USD",
       "category": "online-session",
       "id": "8o6LMPN"
+    },
+    {
+      "name": "Gym",
+      "description": "dadada",
+      "imageURL": "dadadawdawda",
+      "price": 10,
+      "currency": "USD",
+      "category": "onsite-yoga-class",
+      "id": "nITIQdU"
     }
   ]
 }

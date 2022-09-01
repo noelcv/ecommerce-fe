@@ -3,8 +3,8 @@ import { ProductType } from "../../types/ProductType";
 
 let initialState: ProductType[] = [];
 
-export const AllProductsSlice = createSlice({
-  name: "products",
+export const allProductsSlice = createSlice({
+  name: "allProducts",
   initialState: { value: initialState },
   reducers: {
     allProducts: (
@@ -13,11 +13,10 @@ export const AllProductsSlice = createSlice({
     ) => {
       state.value = action.payload;
     },
-   
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { allProducts } = AllProductsSlice.actions;
+export const { allProducts } = allProductsSlice.actions;
 
-export default AllProductsSlice.reducer;
+export default allProductsSlice.reducer;
