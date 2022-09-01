@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import './Header.css';
 import Mettakin from '../assets/Mettakin.svg';
 import magnify from '../assets/magnify.svg';
 import SearchIcon from '@mui/icons-material/Search';

@@ -39,3 +39,16 @@ export const editProduct = async (product: ProductType) => {
     console.log('Error at editProduct Service: ', error)
   }
 }
+
+export const deleteProduct = async (product: ProductType) => {
+  try {
+    const deletedProduct = await fetch(`${BASE_URL}/${product.id}`, {
+      method: "DELETE",
+      headers: {"Content-type":"application/json"},
+    })
+    return await deletedProduct;
+  }
+  catch(error) {
+    console.log('Error at deleteProduct Service: ', error)
+  } 
+}

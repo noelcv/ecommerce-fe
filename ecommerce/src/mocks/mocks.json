@@ -1,21 +1,12 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Yoga at The Farm",
-      "price": "20",
-      "currency": "EUR",
-      "rating": "5",
-      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w",
-      "description": "Every Wednesday at 7pm, a Kundalini Yoga Session at Kass Haff."
-    },
-    {
       "id": "2",
       "name": "Yin Yoga",
       "price": "20",
       "currency": "EUR",
       "rating": "5",
-      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/9721616f-530d-4258-8b86-9dd85c234e8a/038.jpg?format=750w",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w",
       "description": ""
     },
     {
@@ -42,27 +33,8 @@
       "price": "295",
       "currency": "EUR",
       "rating": "5",
-      "image": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/484ea1c1-286b-4996-9d9a-878c280bba81/Mandala+Yoga+Fitness+Flyer+%28Instagram+Story%29.jpg?format=1500w",
       "description": ""
-    },
-    {
-      "id": "8o6LMPN",
-      "name": "Yoga Class",
-      "description": "An online session",
-      "imageURL": "http://image.url",
-      "price": "22",
-      "currency": "USD",
-      "category": "online-session"
-    },
-    {
-      "id": "nITIQdU",
-      "name": "Gym",
-      "description": "dadada",
-      "imageURL": "dadadawdawda",
-      "price": "10",
-      "currency": "USD",
-      "category": "onsite-yoga-class"
-      
     }
   ]
 }

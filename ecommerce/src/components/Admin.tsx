@@ -11,7 +11,8 @@ const Admin: FunctionComponent = () => {
       <AddProductForm />
       </div>
       
-      <div className="mt-20">
+      <div className="mt-0">
+      <h2 className="ml-20 -mt-0.1 text-3xl">Products Overview</h2>
       <ProductsDashboard />  
       </div>
       

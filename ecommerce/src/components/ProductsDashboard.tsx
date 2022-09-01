@@ -2,11 +2,12 @@ import { FunctionComponent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
-import { getAllProducts } from '../services/product';
+import { deleteProduct, getAllProducts } from '../services/product';
+import { ProductType } from '../types/ProductType';
 import ProductComponent from './ProductComponent';
 
 const ProductsDashboard: FunctionComponent = () => {
-  //TODO: create delete button / service /reducer
+  //TODO: create  service /reducer
   //TODO: create edit button / service /reducer
   
   const products = useSelector((state: RootState) => state.allProducts.value)
@@ -21,22 +22,33 @@ const ProductsDashboard: FunctionComponent = () => {
     } catch (err) {
       console.log("Error getting Products List", err);
     }
-    
+  }
+  
+  const deleteHandler = async (product: ProductType) => {
+    try {
+      console.log(product, 'product to delete')
+      const deleted = await deleteProduct(product)
+      if (deleted) {
+        console.log('deleted successfully', deleted)
+      }
+    } catch (err) {
+        console.log('Error at deleteHandler: ', err)
+    }
   }
   
   useEffect(() => {
     getProductsList()
     console.log("products", products)
-  }, [])
+  }, [products])
   
   return (
-    <div className="flex justify-center mx-auto max-w-screen min-w-sm">
+    <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
         <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px">
         {products.map((product, index) => {
             return (
               <div
-                className="grid gap-1 grid-cols-2 items-center justify-center m-5 p-8 max-h-auto z-10 bg-zinc-300 min-w-min max-w-prose"
+                className="grid gap-1 grid-cols-2 items-center justify-center m-5 p-8 max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min max-w-prose"
                 key={index}
               >
                 <img
@@ -69,7 +81,7 @@ const ProductsDashboard: FunctionComponent = () => {
                     
                     <button
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                      onClick={() => console.log(product)}
+                      onClick={() => deleteHandler(product)}
                     >
                       Delete
                     </button>
