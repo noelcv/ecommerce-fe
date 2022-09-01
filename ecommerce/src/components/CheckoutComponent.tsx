@@ -17,9 +17,9 @@ const CheckoutComponent: FunctionComponent = () => {
     console.log('this product id', product.id);
     console.log('products before: ', products);
     if (product.price) {
+      dispatch(removeProductFromBasket(product));
       dispatch(removeAmountFromSubtotal(product.price));
       dispatch(removeFromBasketCounter());
-      dispatch(removeProductFromBasket(product));
     }
 
     console.log('products after: ', products);

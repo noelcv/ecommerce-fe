@@ -17,12 +17,12 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   const dispatch = useDispatch();
   const product = { id, name, price, rating, image, description };
   
-  const clickHandler = () => {
-    if (price) {
+  const clickHandler = (product: ProductType) => {
+      console.log(product, 'product inside clickHandler')
       dispatch(addToBasketCounter());
-      dispatch(addAmountToSubtotal(price));
-      dispatch(addProductToBasket([product]));
-    }
+      dispatch(addProductToBasket(product));
+      dispatch(addAmountToSubtotal(product.price));
+    
   }
   
   
@@ -48,7 +48,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
         </div>
         <button
           className="bg-zinc-900 hover:bg-zinc-400 text-white font-bold py-2 px-4 rounded mt-4"
-          onClick={clickHandler}
+          onClick={() => clickHandler(product)}
         >
           Add to basket
         </button>

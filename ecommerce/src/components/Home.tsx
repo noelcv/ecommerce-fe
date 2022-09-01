@@ -8,10 +8,12 @@ import ProductComponent from './ProductComponent';
 const Home: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.allProducts.value)
   const dispatch = useDispatch()
+  console.log(products, 'products at Homepage')
   
   const getProductsList = async () => {
     try {
       const products = await getAllProducts()
+      console.log(products, 'products at Homepage inside getAllProducts')
       dispatch(allProducts(products))
     } catch (err) {
       console.log("Error getting Products List", err);
@@ -37,6 +39,7 @@ const Home: FunctionComponent = () => {
           {products.map((product, id) => (
             <ProductComponent 
               key={id} 
+              id={product.id}
               name={product.name}
               rating={product.rating}
               description={product.description}

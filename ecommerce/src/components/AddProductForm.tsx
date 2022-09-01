@@ -6,7 +6,7 @@ const AddProductForm: FunctionComponent = () => {
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [imageURL, setImageURL] = useState<string>('');
-  const [price, setPrice] = useState<number | null >(null);
+  const [price, setPrice] = useState<number>(0);
   const [currency, setCurrency] = useState<string>('');
   const [category, setCategory] = useState<string>('');
   
@@ -15,8 +15,9 @@ const AddProductForm: FunctionComponent = () => {
     try {
       e.preventDefault();
       const newProduct = {name, description, imageURL, price, currency, category}
-
+      
         await addNewProduct(newProduct);  
+        
       
       console.log('success');
     } catch (err) {
