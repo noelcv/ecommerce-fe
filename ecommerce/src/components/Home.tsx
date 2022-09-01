@@ -36,7 +36,7 @@ const Home: FunctionComponent = () => {
         ></img>
 
         <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px">
-          {products.map((product, id) => (
+          {products ? products.map((product, id) => (
             <ProductComponent 
               key={id} 
               id={product.id}
@@ -47,7 +47,7 @@ const Home: FunctionComponent = () => {
               price={product.price} 
               currency={product.currency}
           />
-          ))}        
+          )): <h2 className="flex justify-center">No products found</h2>}        
         </div>
       </div>
     </div>
