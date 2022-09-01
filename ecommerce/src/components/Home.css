@@ -1,10 +1,4 @@
-.home {
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1500px;
-}
+
 
 .img-hero {
   z-index:-1;

@@ -19,7 +19,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   const dispatch = useDispatch();
   const product = { id, name, price, rating, image, description };
   return (
-    <div className="grid gap-1 grid-cols-2 items-center justify-center m-2.5 p-8 max-h-96 z-10 bg-zinc-300 min-w-min">
+    <div className="grid gap-1 grid-cols-2 items-center justify-center m-2.5 p-8 max-h-auto z-10 bg-zinc-300 min-w-min max-w-prose">
       <img src={image} alt="" className="flex max-h-48 min-w-min max-w-full" />
       <div className="product-info">
         <p className="mt-6 font-bold text-2xl mb-3">{name}</p>
