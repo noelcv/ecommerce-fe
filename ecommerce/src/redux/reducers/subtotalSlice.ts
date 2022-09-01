@@ -14,11 +14,11 @@ export const subtotalSlice = createSlice({
   initialState,
   reducers: {
     addAmountToSubtotal: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+      state.value += Number(action.payload)
     },
     
     removeAmountFromSubtotal: (state, action: PayloadAction<number>) => {
-      state.value -= action.payload
+      state.value -= Number(action.payload)
     },
   },
 })

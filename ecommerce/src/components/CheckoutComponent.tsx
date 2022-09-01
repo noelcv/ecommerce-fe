@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import './CheckoutComponent.css';
+// import './CheckoutComponent.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Subtotal from './Subtotal';
 import { RootState } from '../redux/store';
@@ -11,22 +11,23 @@ import { removeAmountFromSubtotal } from '../redux/reducers/subtotalSlice';
 const CheckoutComponent: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.basket.value);
   const dispatch = useDispatch();
-  
-  const removeHandler = (product: ProductType) => {
-    console.log("this product", product);
-    console.log("this product id", product.id);
-    console.log("products before: ", products)
-    dispatch(removeAmountFromSubtotal(product.price))
-    dispatch(removeFromBasketCounter())
-    dispatch(removeProductFromBasket(product));
 
-    console.log("products after: ", products);
+  const removeHandler = (product: ProductType) => {
+    console.log('this product', product);
+    console.log('this product id', product.id);
+    console.log('products before: ', products);
+    if (product.price) {
+      dispatch(removeAmountFromSubtotal(product.price));
+      dispatch(removeFromBasketCounter());
+      dispatch(removeProductFromBasket(product));
+    }
+
+    console.log('products after: ', products);
     return;
-  }
-  
-  console.log(products, 'products');
+  };
+
   return (
-    <div className="checkout">
+    <div className="grid grid-cols-2">
       <div className="checkout-left">
         <img
           className="checkout-img"
@@ -34,37 +35,41 @@ const CheckoutComponent: FunctionComponent = () => {
           alt="checkout-image"
         />
         <div className="checkout-shopping-basket">
-          <h2 className="checkout-title">Your shopping Basket</h2>
+          <h2 className="m-5">Your shopping Basket</h2>
           {products.map((product, index) => {
             return (
-              <div className="product-results" key={index}>
+              <div
+                className="grid gap-1 grid-cols-2 items-center justify-center m-5 p-8 max-h-auto z-10 bg-zinc-300 min-w-min max-w-prose"
+                key={index}
+              >
+                <img
+                  src={product.image}
+                  alt=""
+                  className="flex max-h-48 min-w-min max-w-full"
+                />
                 <div className="product-info-result">
-                <div className="img-wrapper">
-                <img src={product.image} alt="" className="product-image result-img" />
-                </div> 
+                  <div className="img-wrapper"></div>
                   <div className="product-result-details">
                     <h3 className="product-name-result">{product.name}</h3>
                     <div className="product-rating">
-                    {Array(product.rating)
-                      .fill(0)
-                      .map((_, i) => {
-                        return <p key={i}>⭐</p>;
-                      })}
+                      {Array(product.rating)
+                        .fill(0)
+                        .map((_, i) => {
+                          return <p key={i}>⭐</p>;
+                        })}
                     </div>
-                  <div className="product-price">
-                    <small>$</small>
-                    <strong>{product.price}</strong>
+                    <div className="product-price">
+                      <small>$</small>
+                      <strong>{product.price}</strong>
+                    </div>
+
+                    <button
+                      className="remove-from-basket-btn"
+                      onClick={() => removeHandler(product)}
+                    >
+                      Remove from basket
+                    </button>
                   </div>
-                  
-            
-                  <button
-                  className="remove-from-basket-btn"
-                  onClick={() => removeHandler(product)}
-              
-                >
-                  Remove from basket
-                </button>
-                </div>
                 </div>
               </div>
             );

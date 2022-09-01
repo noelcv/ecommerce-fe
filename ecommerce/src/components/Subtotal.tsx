@@ -8,6 +8,7 @@ import { RootState } from '../redux/store';
 const Subtotal: FunctionComponent = () => {
  const items = useSelector((state: RootState) => state.counter.value);
  const subtotal = useSelector((state: RootState) => state.subtotal.value);
+ console.log(subtotal, 'subtotal')
  return (
   <div className="subtotal">
     <p>Subtotal({items} items):</p>

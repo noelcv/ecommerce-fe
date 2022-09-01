@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
 import { getAllProducts } from '../services/product';
-import './Home.css';
 import ProductComponent from './ProductComponent';
 
 const Home: FunctionComponent = () => {

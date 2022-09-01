@@ -6,7 +6,7 @@ const AddProductForm: FunctionComponent = () => {
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [imageURL, setImageURL] = useState<string>('');
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState<number | null >(null);
   const [currency, setCurrency] = useState<string>('');
   const [category, setCategory] = useState<string>('');
   
@@ -15,7 +15,9 @@ const AddProductForm: FunctionComponent = () => {
     try {
       e.preventDefault();
       const newProduct = {name, description, imageURL, price, currency, category}
-      await addNewProduct(newProduct);  
+
+        await addNewProduct(newProduct);  
+      
       console.log('success');
     } catch (err) {
       console.log('Error submitting product', err);
@@ -78,7 +80,6 @@ const AddProductForm: FunctionComponent = () => {
             <input
               id="product-price"
               type="number"
-              value={price}
               placeholder="product-price"
               onChange={(e) => setPrice(Number(e.target.value))}
               className="mb-5 space-x-1.5 block text-black"
