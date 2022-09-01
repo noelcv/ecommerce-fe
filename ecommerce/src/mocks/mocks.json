@@ -7,7 +7,7 @@
       "currency": "EUR",
       "rating": "5",
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w",
-      "description": ""
+      "description": "Every Wednesday at 7pm, a Kundalini Yoga Session at Kass Haff."
     },
     {
       "id": "2",
@@ -24,8 +24,8 @@
       "price": "15",
       "currency": "EUR",
       "rating": "5",
-      "image": "",
-      "description": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w  "
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
+      "description": ""
     },
     {
       "id": "4",
