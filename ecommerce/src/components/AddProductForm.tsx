@@ -1,5 +1,4 @@
 import React, { FunctionComponent , useState} from 'react';
-import './AddProductForm.css';
 import { addNewProduct } from '../services/product';
 
 const AddProductForm: FunctionComponent = () => {

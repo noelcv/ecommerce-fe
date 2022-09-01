@@ -47,7 +47,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
               );
             })}
         </div>
-        <p className="antialiased text-base">{description}</p>
+        <p className="antialiased text-base">{description}</p>       
         <button
           className="bg-zinc-900 hover:bg-zinc-400 text-white font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
