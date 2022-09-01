@@ -1,48 +1,68 @@
-[{
-  "id" : "1",
-  "name" : "Yoga at The Farm",
-  "price" : "20",
-  "currency": "EUR",
-  "rating": "5",
-  "image" : "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w",
-  "description": ""
-}, 
 {
-  "id" : "2",
-  "name" : "Yin Yoga",
-  "price" : "20",
-  "currency": "EUR",
-  "rating": "5",
-  "image" : "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/9721616f-530d-4258-8b86-9dd85c234e8a/038.jpg?format=750w",
-  "description": ""
-}, 
-{
-  "id" : "3",
-  "name" : "Sound Bath",
-  "price" : "15",
-  "currency": "EUR",
-  "rating": "5",
-  "image" : "",
-  "description": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w  "
-},
-{
-  "id" : "4",
-  "name" : "Yoga at The Farm + Sound Bath",
-  "price" : "25",
-  "currency": "EUR",
-  "rating": "5",
-  "image" : "",
-  "description": "Most Popular"
-},
-{
-  "id" : "5",
-  "name" : "Autumn Blossom 2-Days Retreat",
-  "price" : "295",
-  "currency": "EUR",
-  "rating": "5",
-  "image" : "",
-  "description": ""
+  "products": [
+    {
+      "id": "1",
+      "name": "Yoga at The Farm",
+      "price": "20",
+      "currency": "EUR",
+      "rating": "5",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w",
+      "description": ""
+    },
+    {
+      "id": "2",
+      "name": "Yin Yoga",
+      "price": "20",
+      "currency": "EUR",
+      "rating": "5",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/9721616f-530d-4258-8b86-9dd85c234e8a/038.jpg?format=750w",
+      "description": ""
+    },
+    {
+      "id": "3",
+      "name": "Sound Bath",
+      "price": "15",
+      "currency": "EUR",
+      "rating": "5",
+      "image": "",
+      "description": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w  "
+    },
+    {
+      "id": "4",
+      "name": "Yoga at The Farm + Sound Bath",
+      "price": "25",
+      "currency": "EUR",
+      "rating": "5",
+      "image": "",
+      "description": "Most Popular"
+    },
+    {
+      "id": "5",
+      "name": "Autumn Blossom 2-Days Retreat",
+      "price": "295",
+      "currency": "EUR",
+      "rating": "5",
+      "image": "",
+      "description": ""
+    },
+    {
+      "id": "8o6LMPN",
+      "name": "Yoga Class",
+      "description": "An online session",
+      "imageURL": "http://image.url",
+      "price": "22",
+      "currency": "USD",
+      "category": "online-session"
+    },
+    {
+      "id": "nITIQdU",
+      "name": "Gym",
+      "description": "dadada",
+      "imageURL": "dadadawdawda",
+      "price": "10",
+      "currency": "USD",
+      "category": "onsite-yoga-class"
+      
+    }
+  ]
 }
-]
-
-

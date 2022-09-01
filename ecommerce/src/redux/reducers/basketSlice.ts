@@ -9,9 +9,10 @@ export const ProductsSlice = createSlice({
   reducers: {
     addProductToBasket: (
       state: { value: ProductType[] },
-      action: { payload: ProductType[] }
-    ) => {
-      state.value = [...state.value, ...action.payload];
+      action: { payload: ProductType }
+      ) => {
+      console.log(action.payload, 'action.payload inside reducer')
+      state.value = [...state.value, action.payload];
     },
     removeProductFromBasket: (
       state: { value: ProductType[] },
