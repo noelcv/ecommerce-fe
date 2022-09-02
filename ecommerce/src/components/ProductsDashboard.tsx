@@ -5,13 +5,22 @@ import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
 import { ProductType } from '../types/ProductType';
 import ProductComponent from './ProductComponent';
+import { editProduct } from '../services/product';
+
 
 const ProductsDashboard: FunctionComponent = () => {
+  const products = useSelector((state: RootState) => state.allProducts.value);
+  const dispatch = useDispatch();
   //TODO: create edit button / service /reducer
   const [isEditing, setIsEditing] = useState(false);
-  const products = useSelector((state: RootState) => state.allProducts.value);
-  const [editProduct, setEditProduct] = useState<ProductType>();
-  const dispatch = useDispatch();
+  const [editableProduct, setEditableProduct] = useState<ProductType>();
+  const [editedProductName, setEditedProductName] = useState<string>('');
+  const [editedDescription, setEditedDescription] = useState<string>('');
+  const [editedImageURL, setEditedImageURL] = useState<string>('');
+  const [editedPrice, setEditedPrice] = useState<number>(0);
+  const [editedCurrency, setEditedCurrency] = useState<string>('');
+  const [editedCategory, setEditedCategory] = useState<string>('');
+
   console.log(products, 'products at Homepage');
 
   const getProductsList = async () => {
@@ -26,19 +35,50 @@ const ProductsDashboard: FunctionComponent = () => {
 
   const editHandler = (product: ProductType) => {
     setIsEditing(!isEditing);
-    setEditProduct(product);
+    setEditableProduct(product);
     console.log(product, 'product at editHandler');
   };
+
   
-  const saveHandler = async (product: ProductType) => {
-    
+  
+  const saveHandler = async (e: void) => {
+    try {
+      const editedProduct: ProductType = {
+        id: editableProduct?.id,
+        name: editedProductName, 
+        description: editedDescription, 
+        image: editedImageURL, 
+        price: editedPrice,
+        currency: editedCurrency, 
+        category: editedCategory}
+        
+        if (editedProduct) {
+          const submittedProduct = await editProduct(editedProduct);
+          console.log(submittedProduct);
+          return submittedProduct;
+        }
+        
+      console.log('success');
+    } catch (err) {
+      console.log('Error saving edited product', err);
+    }
+    setEditedProductName('')
+    setEditedDescription('')
+    setEditedImageURL('')
+    setEditedPrice(0)
+    setEditedCurrency('')
+    setEditedCategory('')
+    setIsEditing(!isEditing);
+
   }
   
+  
+  
+
   const cancelHandler = () => {
     setIsEditing(!isEditing);
-  }
-  
-  
+  };
+
   const deleteHandler = async (product: ProductType) => {
     try {
       console.log(product, 'product to delete');
@@ -61,7 +101,7 @@ const ProductsDashboard: FunctionComponent = () => {
   return (
     <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
-        <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px">
+        <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px w-full">
           {!isEditing &&
             products.map((product, index) => {
               return (
@@ -108,47 +148,119 @@ const ProductsDashboard: FunctionComponent = () => {
                 </div>
               );
             })}
-          {isEditing && editProduct && (
-            <div className="grid gap-1 grid-cols-2 items-center justify-center m-5 p-8 max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min max-w-prose">
-              <img
-                src={editProduct.image}
-                alt=""
-                className="flex max-h-48 min-w-min max-w-full"
-              />
-              <div className="product-info-result">
-                <div className="img-wrapper"></div>
-                <div className="product-result-details">
-                  <h3 className="product-name-result">{editProduct.name}</h3>
-                  <div className="product-rating">
-                    {Array(editProduct.rating)
-                      .fill(0)
-                      .map((_, i) => {
-                        return <p key={i}>⭐</p>;
-                      })}
+          {isEditing && editableProduct && (
+            <form className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-full">
+              <div className="grid">
+                <img
+                  src={editableProduct.image}
+                  alt=""
+                  className="flex max-h-48 min-w-min max-w-full"
+                />
+              </div>
+              <div className="grid col-span-2">
+                <div className="flex flex-col mb-5 mt-2">
+                  <label htmlFor="editableProduct-name" className="text-lg">
+                    Product Name
+                  </label>
+                  <input
+                    className="bg-zinc-300 text-zinc-900 font-bold h-10"
+                    id="editableProduct-name"
+                    placeholder={editableProduct.name}
+                    onChange={(e) => setEditedProductName(e.target.value)}
+                  />
+                </div>
+                <div className="flex flex-col mb-5 mt-2">
+                  <div className="flex flex-row">
+                    <div className="flex flex-col">
+                      <label htmlFor="editableProduct-price" className="text-lg">
+                        Price
+                      </label>
+                      <input
+                        className="bg-zinc-300 text-zinc-900 font-bold h-10"
+                        id="editableProduct-price"
+                        placeholder={editableProduct.price.toString()}
+                        onChange={(e) => setEditedPrice(Number(e.target.value))}
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <label htmlFor="currency" className="text-lg">
+                        Currency
+                        <select
+                          placeholder={editableProduct.currency}
+                          className="ml-3 block bg-zinc-300 text-zinc-900 font-bold h-12"
+                          onChange={(e) => setEditedCurrency(e.target.value)}
+                        >
+                          <option value="EUR">€</option>
+                          <option value="USD">$</option>
+                          <option value="GBP">£</option>
+                        </select>
+                      </label>
+                    </div>
                   </div>
-                  <div className="product-price">
-                    <small>$</small>
-                    <strong>{editProduct.price}</strong>
-                  </div>
+                </div>
+                <div className="flex flex-col mb-5 mt-2">
+                  <label htmlFor="editableProduct-description" className="text-lg">
+                    Description
+                  </label>
+                  <input
+                    className="bg-zinc-300 text-zinc-900 font-bold h-10"
+                    id="editableProduct-description"
+                    placeholder={editableProduct.description}
+                    onChange={(e) => setEditedDescription(e.target.value)}
+                  />
+                </div>
+                <div className="flex flex-col mb-5 mt-2">
+                  <label htmlFor="editableProduct-imageUrl" className="text-lg">
+                    Image
+                  </label>
+                  <input
+                    className="bg-zinc-300 text-zinc-900 font-bold h-10"
+                    id="editableProduct-imageUrl"
+                    placeholder={editableProduct.image}
+                    onChange={(e) => setEditedImageURL(e.target.value)}
+                  />
+                </div>
+                <div className="flex flex-col mb-5 mt-2">
+                  <div className="flex flex-row">
+                    <label htmlFor="category" className="text-lg">
+                      Category</label>
+                      </div>
+                      <select
+                        placeholder={editableProduct.category}
+                        className="bg-zinc-300 text-zinc-900 font-bold h-10 mr-80"
+                        onChange={(e) => setEditedCategory(e.target.value)}
+                      >
+                        <option value="course">Course</option>
+                        <option value="therapy">Therapy</option>
+                        <option value="onsite-yoga-class">
+                          On-Site Yoga Class
+                        </option>
+                        <option value="online-yoga-class">
+                          Online Yoga Class
+                        </option>
+                        <option value="performance">Live Performance</option>
+                        <option value="online-session">Online Session</option>
+                        <option value="retreat">Retreat</option>
+                      </select>
                   
+                </div>
+                <div className="mt-2 space-x-2 flex flex-end">
                   <button
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => cancelHandler(editProduct)}
+                    onClick={() => cancelHandler()}
                   >
                     Cancel
                   </button>
 
                   <button
                     className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
-                    onClick={() => saveHandler(editProduct)}
+                    onClick={() => saveHandler()}
                   >
                     Save
                   </button>
-
-                  
                 </div>
               </div>
-            </div>
+            </form>
           )}
         </div>
       </div>
