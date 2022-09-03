@@ -4,7 +4,6 @@ import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
 import { ProductType } from '../types/ProductType';
-import ProductComponent from './ProductComponent';
 import { editProduct } from '../services/product';
 
 const ProductsDashboard: FunctionComponent = () => {
@@ -103,13 +102,21 @@ const ProductsDashboard: FunctionComponent = () => {
         selectedCategory = editedCategory;
       }
       console.log("selectedName after", selectedName);
+      console.log("editedProductName after", editedProductName);
       console.log("selectedDescription after", selectedDescription);
+      console.log("editedDescription after", editedDescription);
+      console.log("editedImageURL after", editedImageURL);
       console.log("selectedImageURL after", selectedImageURL);
       console.log("selectedPrice after", selectedPrice);
+      console.log("editedPrice after", editedPrice);
       console.log("selectedCurrency after", selectedCurrency);
+      console.log("editedcurrency after", editedCurrency);
       console.log("selectedCategory after", selectedCategory);
-    //TODO: the problem is here ll-104
-      if (
+      console.log("editedCategory after", editedCategory);
+    //TODO: the problem is here ll-117
+      
+    
+    if (
         selectedName &&
         selectedDescription &&
         selectedImageURL &&
@@ -128,24 +135,19 @@ const ProductsDashboard: FunctionComponent = () => {
         };
         
         console.log(editedProduct, 'editedProduct at saveHandler');
-     
-        if (editedProduct) {
+  
           const submittedProduct = await editProduct(editedProduct);
           console.log(submittedProduct);
+          console.log('success');
+          setIsEditing(!isEditing);
+          getProductsList();
           return submittedProduct;
-        }
-        console.log('success');
+        
       } else {
         console.log('the problem is is in this assembling block')
       }
       
-      setEditedProductName('');
-      setEditedDescription('');
-      setEditedImageURL('');
-      setEditedPrice(0);
-      setEditedCurrency('');
-      setEditedCategory('');
-      setIsEditing(!isEditing);
+      console.log('can we get here?')
       
     } catch (err) {
       console.log('Error saving edited product', err);

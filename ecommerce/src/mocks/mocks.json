@@ -2,13 +2,13 @@
   "products": [
     {
       "id": "2",
-      "name": " Yoga Yin",
-      "price": 990,
+      "name": " Vyniassa",
+      "price": 150,
       "currency": "EUR",
       "rating": "5",
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
-      "description": "A 75-minute class suitable for everybody",
-      "category": "performance"
+      "description": "uztuuz",
+      "category": "online-session"
     },
     {
       "id": "3",
