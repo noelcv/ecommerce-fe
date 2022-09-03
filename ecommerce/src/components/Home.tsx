@@ -6,26 +6,26 @@ import { getAllProducts } from '../services/product';
 import ProductComponent from './ProductComponent';
 
 const Home: FunctionComponent = () => {
-  const products = useSelector((state: RootState) => state.allProducts.value)
-  const dispatch = useDispatch()
-  console.log(products, 'products at Homepage')
+  const products = useSelector((state: RootState) => state.allProducts.value);
+  const dispatch = useDispatch();
+  console.log(products, 'products at Homepage');
   
   const getProductsList = async () => {
     try {
-      const products = await getAllProducts()
-      console.log(products, 'products at Homepage inside getAllProducts')
-      dispatch(allProducts(products))
+      const products = await getAllProducts();
+      console.log(products, 'products at Homepage inside getAllProducts');
+      dispatch(allProducts(products));
     } catch (err) {
-      console.log("Error getting Products List", err);
+      console.log('Error getting Products List', err);
     }
-    
-  }
+  };
   
+
   useEffect(() => {
-    getProductsList()
-    console.log("products", products)
-  }, [])
-  
+    getProductsList();
+    console.log('products', products);
+  }, []);
+
   return (
     <div className="flex justify-center mx-auto max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
@@ -36,18 +36,22 @@ const Home: FunctionComponent = () => {
         ></img>
 
         <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px">
-          {products.map((product, id) => (
-            <ProductComponent 
-              key={id} 
-              id={product.id}
-              name={product.name}
-              rating={product.rating}
-              description={product.description}
-              image={product.image}
-              price={product.price} 
-              currency={product.currency}
-          />
-          ))}        
+          {products ? (
+            products.map((product, id) => (
+              <ProductComponent
+                key={id}
+                id={product.id}
+                name={product.name}
+                rating={product.rating}
+                description={product.description}
+                image={product.image}
+                price={product.price}
+                currency={product.currency}
+              />
+            ))
+          ) : (
+            <h2 className="flex justify-center">No products found</h2>
+          )}
         </div>
       </div>
     </div>

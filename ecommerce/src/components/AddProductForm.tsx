@@ -1,5 +1,4 @@
 import React, { FunctionComponent , useState} from 'react';
-import './AddProductForm.css';
 import { addNewProduct } from '../services/product';
 
 const AddProductForm: FunctionComponent = () => {
@@ -46,7 +45,7 @@ const AddProductForm: FunctionComponent = () => {
               id="product-name"
               type="text"
               value={name}
-              placeholder="product-name"
+              placeholder="what is your product name?"
               onChange={(e) => setName(e.target.value)}
               className="w-60 mb-5 block text-black"
             />
@@ -57,7 +56,7 @@ const AddProductForm: FunctionComponent = () => {
               id="product-description"
               type="text"
               value={description}
-              placeholder="product-description"
+              placeholder="What is the product all about?"
               onChange={(e) => setDescription(e.target.value)}
               className="w-60 mb-5 block text-black"
             />
@@ -68,7 +67,7 @@ const AddProductForm: FunctionComponent = () => {
               id="product-image"
               type="text"
               value={imageURL}
-              placeholder="product-image"
+              placeholder="Do you have a nice picture?"
               onChange={(e) => setImageURL(e.target.value)}
               className="w-60 mb-5 block text-black"
             />
@@ -81,7 +80,7 @@ const AddProductForm: FunctionComponent = () => {
             <input
               id="product-price"
               type="number"
-              placeholder="product-price"
+              placeholder="How much is it ?"
               onChange={(e) => setPrice(Number(e.target.value))}
               className="mb-5 space-x-1.5 block text-black"
             />
