@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState, useRef } from 'react';
+import React, { FunctionComponent, useEffect, useState, useRef, ReactEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
@@ -47,7 +47,8 @@ const ProductsDashboard: FunctionComponent = () => {
 
   };
 
-  const saveHandler = async () => {
+  const saveHandler = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     try {
       console.log("we're in saveHandler");
       console.log("yeah")
@@ -335,7 +336,7 @@ const ProductsDashboard: FunctionComponent = () => {
 
                   <button
                     className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
-                    onClick={saveHandler}
+                    onClick={(e) => saveHandler(e)}
                   >
                     Save
                   </button>
