@@ -203,7 +203,7 @@ const ProductsDashboard: FunctionComponent = () => {
                           })}
                       </div>
                       <div className="product-price">
-                        <small>$</small>
+                        <small>{product.currency}</small>
                         <strong>{product.price}</strong>
                       </div>
 
