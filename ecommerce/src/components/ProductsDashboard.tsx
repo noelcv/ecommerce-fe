@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
@@ -7,26 +7,34 @@ import { ProductType } from '../types/ProductType';
 import ProductComponent from './ProductComponent';
 import { editProduct } from '../services/product';
 
-
 const ProductsDashboard: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.allProducts.value);
   const dispatch = useDispatch();
   //TODO: create edit button / service /reducer
   const [isEditing, setIsEditing] = useState(false);
   const [editableProduct, setEditableProduct] = useState<ProductType>();
-  const [editedProductName, setEditedProductName] = useState<string>('');
-  const [editedDescription, setEditedDescription] = useState<string>('');
-  const [editedImageURL, setEditedImageURL] = useState<string>('');
-  const [editedPrice, setEditedPrice] = useState<number>(0);
-  const [editedCurrency, setEditedCurrency] = useState<string>('');
-  const [editedCategory, setEditedCategory] = useState<string>('');
-
-  console.log(products, 'products at Homepage');
+  const [editedProductName, setEditedProductName] = useState<string>(
+    editableProduct?.name || ''
+  );
+  const [editedDescription, setEditedDescription] = useState<string>(
+    editableProduct?.description || ''
+  );
+  const [editedImageURL, setEditedImageURL] = useState<string>(
+    editableProduct?.image || ''
+  );
+  const [editedPrice, setEditedPrice] = useState<number>(
+    editableProduct?.price || 0
+  );
+  const [editedCurrency, setEditedCurrency] = useState<string>(
+    editableProduct?.currency || ''
+  );
+  const [editedCategory, setEditedCategory] = useState<string>(
+    editableProduct?.category || ''
+  );
 
   const getProductsList = async () => {
     try {
       const products = await getAllProducts();
-      console.log(products, 'products at Homepage inside getAllProducts');
       dispatch(allProducts(products));
     } catch (err) {
       console.log('Error getting Products List', err);
@@ -36,44 +44,113 @@ const ProductsDashboard: FunctionComponent = () => {
   const editHandler = (product: ProductType) => {
     setIsEditing(!isEditing);
     setEditableProduct(product);
-    console.log(product, 'product at editHandler');
+
   };
 
-  
-  
-  const saveHandler = async (e: void) => {
+  const saveHandler = async () => {
     try {
-      const editedProduct: ProductType = {
-        id: editableProduct?.id,
-        name: editedProductName, 
-        description: editedDescription, 
-        image: editedImageURL, 
-        price: editedPrice,
-        currency: editedCurrency, 
-        category: editedCategory}
+      console.log("we're in saveHandler");
+      console.log("yeah")
+      let selectedName;
+      let selectedDescription;
+      let selectedImageURL;
+      let selectedPrice;
+      let selectedCurrency;
+      let selectedCategory;
+      console.log("selectedName before", selectedName);
+      console.log("selectedDescription before", selectedDescription);
+      console.log("selectedImageURL before", selectedImageURL);
+      console.log("selectedPrice before", selectedPrice);
+      console.log("selectedCurrency before", selectedCurrency);
+      console.log("selectedCategory before", selectedCategory);
+      
+      console.log("yeah")
+
+      if (editedProductName && editedProductName.length === 0) {
+        selectedName = editableProduct?.name;
+      } else {
+        selectedName = editedProductName;
+      }
+
+      if (editedDescription.length === 0) {
+        selectedDescription = editableProduct?.description;
+      } else {
+        selectedDescription = editedDescription;
+      }
+      
+      if (editedImageURL.length === 0) {
+        selectedImageURL = editableProduct?.image;
+      } else {
+        selectedImageURL = editedImageURL;
+      }
+
+      if (editedPrice === 0) {
+        selectedPrice = editableProduct?.price;
+      } else {
+        selectedPrice = editedPrice;
+      }
+
+      if (editedCurrency === '') {
+        selectedCurrency = editableProduct?.currency;
+      } else {
+        selectedCurrency = editedCurrency;
+      }
+
+      if (editedCategory === '') {
+        selectedCategory = editableProduct?.category;
+      } else {
+        selectedCategory = editedCategory;
+      }
+      console.log("selectedName after", selectedName);
+      console.log("selectedDescription after", selectedDescription);
+      console.log("selectedImageURL after", selectedImageURL);
+      console.log("selectedPrice after", selectedPrice);
+      console.log("selectedCurrency after", selectedCurrency);
+      console.log("selectedCategory after", selectedCategory);
+    //TODO: the problem is here ll-104
+      if (
+        selectedName &&
+        selectedDescription &&
+        selectedImageURL &&
+        selectedPrice &&
+        selectedCurrency &&
+        selectedCategory
+      ) {
+        const editedProduct: ProductType = {
+          id: editableProduct?.id,
+          name: selectedName,
+          description: selectedDescription,
+          image: selectedImageURL,
+          price: selectedPrice,
+          currency: selectedCurrency,
+          category: selectedCategory,
+        };
         
+        console.log(editedProduct, 'editedProduct at saveHandler');
+     
         if (editedProduct) {
           const submittedProduct = await editProduct(editedProduct);
           console.log(submittedProduct);
           return submittedProduct;
         }
-        
-      console.log('success');
+        console.log('success');
+      } else {
+        console.log('the problem is is in this assembling block')
+      }
+      
+      setEditedProductName('');
+      setEditedDescription('');
+      setEditedImageURL('');
+      setEditedPrice(0);
+      setEditedCurrency('');
+      setEditedCategory('');
+      setIsEditing(!isEditing);
+      
     } catch (err) {
       console.log('Error saving edited product', err);
+      console.log(err);
     }
-    setEditedProductName('')
-    setEditedDescription('')
-    setEditedImageURL('')
-    setEditedPrice(0)
-    setEditedCurrency('')
-    setEditedCategory('')
-    setIsEditing(!isEditing);
-
-  }
-  
-  
-  
+  };
 
   const cancelHandler = () => {
     setIsEditing(!isEditing);
@@ -165,20 +242,23 @@ const ProductsDashboard: FunctionComponent = () => {
                   <input
                     className="bg-zinc-300 text-zinc-900 font-bold h-10"
                     id="editableProduct-name"
-                    placeholder={editableProduct.name}
+                    defaultValue={editableProduct.name}
                     onChange={(e) => setEditedProductName(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col mb-5 mt-2">
                   <div className="flex flex-row">
                     <div className="flex flex-col">
-                      <label htmlFor="editableProduct-price" className="text-lg">
+                      <label
+                        htmlFor="editableProduct-price"
+                        className="text-lg"
+                      >
                         Price
                       </label>
                       <input
                         className="bg-zinc-300 text-zinc-900 font-bold h-10"
                         id="editableProduct-price"
-                        placeholder={editableProduct.price.toString()}
+                        defaultValue={editableProduct.price.toString()}
                         onChange={(e) => setEditedPrice(Number(e.target.value))}
                       />
                     </div>
@@ -186,7 +266,7 @@ const ProductsDashboard: FunctionComponent = () => {
                       <label htmlFor="currency" className="text-lg">
                         Currency
                         <select
-                          placeholder={editableProduct.currency}
+                          defaultValue={editableProduct.currency}
                           className="ml-3 block bg-zinc-300 text-zinc-900 font-bold h-12"
                           onChange={(e) => setEditedCurrency(e.target.value)}
                         >
@@ -199,13 +279,16 @@ const ProductsDashboard: FunctionComponent = () => {
                   </div>
                 </div>
                 <div className="flex flex-col mb-5 mt-2">
-                  <label htmlFor="editableProduct-description" className="text-lg">
+                  <label
+                    htmlFor="editableProduct-description"
+                    className="text-lg"
+                  >
                     Description
                   </label>
                   <input
                     className="bg-zinc-300 text-zinc-900 font-bold h-10"
                     id="editableProduct-description"
-                    placeholder={editableProduct.description}
+                    defaultValue={editableProduct.description}
                     onChange={(e) => setEditedDescription(e.target.value)}
                   />
                 </div>
@@ -216,33 +299,31 @@ const ProductsDashboard: FunctionComponent = () => {
                   <input
                     className="bg-zinc-300 text-zinc-900 font-bold h-10"
                     id="editableProduct-imageUrl"
-                    placeholder={editableProduct.image}
+                    defaultValue={editableProduct.image}
                     onChange={(e) => setEditedImageURL(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col mb-5 mt-2">
                   <div className="flex flex-row">
                     <label htmlFor="category" className="text-lg">
-                      Category</label>
-                      </div>
-                      <select
-                        placeholder={editableProduct.category}
-                        className="bg-zinc-300 text-zinc-900 font-bold h-10 mr-80"
-                        onChange={(e) => setEditedCategory(e.target.value)}
-                      >
-                        <option value="course">Course</option>
-                        <option value="therapy">Therapy</option>
-                        <option value="onsite-yoga-class">
-                          On-Site Yoga Class
-                        </option>
-                        <option value="online-yoga-class">
-                          Online Yoga Class
-                        </option>
-                        <option value="performance">Live Performance</option>
-                        <option value="online-session">Online Session</option>
-                        <option value="retreat">Retreat</option>
-                      </select>
-                  
+                      Category
+                    </label>
+                  </div>
+                  <select
+                    defaultValue={editableProduct.category}
+                    className="bg-zinc-300 text-zinc-900 font-bold h-10 mr-80"
+                    onChange={(e) => setEditedCategory(e.target.value)}
+                  >
+                    <option value="course">Course</option>
+                    <option value="therapy">Therapy</option>
+                    <option value="onsite-yoga-class">
+                      On-Site Yoga Class
+                    </option>
+                    <option value="online-yoga-class">Online Yoga Class</option>
+                    <option value="performance">Live Performance</option>
+                    <option value="online-session">Online Session</option>
+                    <option value="retreat">Retreat</option>
+                  </select>
                 </div>
                 <div className="mt-2 space-x-2 flex flex-end">
                   <button
@@ -254,7 +335,7 @@ const ProductsDashboard: FunctionComponent = () => {
 
                   <button
                     className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
-                    onClick={() => saveHandler()}
+                    onClick={saveHandler}
                   >
                     Save
                   </button>

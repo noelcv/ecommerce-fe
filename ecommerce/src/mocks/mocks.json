@@ -2,13 +2,13 @@
   "products": [
     {
       "id": "2",
-      "name": "Yin Yoga Session",
-      "price": 0,
-      "currency": "",
+      "name": "Vinyassa Yoga",
+      "price": 89,
+      "currency": "EUR",
       "rating": "5",
-      "image": "",
-      "description": "",
-      "category": ""
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
+      "description": "A 75-minute class suitable for everybody",
+      "category": "online-yoga-class"
     },
     {
       "id": "3",
