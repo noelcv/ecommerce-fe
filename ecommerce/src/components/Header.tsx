@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import Mettakin from '../assets/Mettakin.svg';
-import magnify from '../assets/magnify.svg';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SettingsIcon from '@mui/icons-material/Settings';

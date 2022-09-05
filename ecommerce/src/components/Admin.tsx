@@ -44,7 +44,6 @@ const Admin: FunctionComponent = () => {
           }
           
         })()}
-       
       </div>
     </div>
   );

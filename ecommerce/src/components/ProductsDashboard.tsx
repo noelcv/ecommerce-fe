@@ -1,9 +1,6 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  allProducts,
-  removeProductFromStore,
-} from '../redux/reducers/allProductsSlice';
+import {allProducts,removeProductFromStore } from '../redux/reducers/allProductsSlice';
 import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
@@ -19,7 +16,6 @@ const ProductsDashboard: FunctionComponent = () => {
   const isEditing = useSelector((state: RootState) => state.isEditing.value);
   const isAddingNewProduct = useSelector((state:RootState) => state.isAddingNewProduct.value)
   const dispatch = useDispatch();
-  //TODO: create edit button / service /reducer
 
 
   const getProductsList = async () => {
@@ -133,7 +129,6 @@ const ProductsDashboard: FunctionComponent = () => {
                 </div>
               );
             })}
-
           {isEditing && <EditProductForm />}
         </div>
       </div>
