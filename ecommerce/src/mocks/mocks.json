@@ -1,32 +1,33 @@
 {
   "products": [
     {
-      "id": "2",
-      "name": " Vyniassa",
-      "price": 150,
-      "currency": "EUR",
-      "rating": "5",
-      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
-      "description": "uztuuz",
-      "category": "online-session"
-    },
-    {
       "id": "3",
       "name": "Sound Bath",
-      "price": "15",
-      "currency": "EUR",
+      "price": 150,
+      "currency": "USD",
       "rating": "5",
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
-      "description": ""
+      "description": "A 75-minute class suitabe for everybody",
+      "category": "performance"
     },
     {
       "id": "5",
-      "name": "Autumn Blossom 2-Days Retreat",
-      "price": "295",
-      "currency": "EUR",
+      "name": "Women's Retreat",
+      "price": 290,
+      "currency": "USD",
       "rating": "5",
-      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/484ea1c1-286b-4996-9d9a-878c280bba81/Mandala+Yoga+Fitness+Flyer+%28Instagram+Story%29.jpg?format=1500w",
-      "description": ""
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
+      "description": "A 75-minute class suitabe for everybody",
+      "category": "performance"
+    },
+    {
+      "name": "Yoga Class",
+      "description": "exercise",
+      "imageURL": "https://cdn.pixabay.com/photo/2017/08/02/20/24/woman-2573216_960_720.jpg",
+      "price": 30,
+      "currency": "USD",
+      "category": "onsite-yoga-class",
+      "id": "ymWnro4"
     }
   ]
 }
