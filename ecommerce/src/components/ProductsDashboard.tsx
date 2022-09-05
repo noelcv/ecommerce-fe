@@ -1,6 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allProducts, removeProductFromStore } from '../redux/reducers/allProductsSlice';
+import {
+  allProducts,
+  removeProductFromStore,
+} from '../redux/reducers/allProductsSlice';
 import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
@@ -9,12 +12,11 @@ import EditProductForm from './EditProductForm';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
 const ProductsDashboard: FunctionComponent = () => {
-  let products = useSelector((state: RootState) => state.allProducts.value);  
+  let products = useSelector((state: RootState) => state.allProducts.value);
   const dispatch = useDispatch();
   //TODO: create edit button / service /reducer
 
   const isEditing = useSelector((state: RootState) => state.isEditing.value);
-  
 
   const getProductsList = async () => {
     try {
@@ -26,10 +28,9 @@ const ProductsDashboard: FunctionComponent = () => {
   };
 
   const editHandler = (product: ProductType) => {
-    dispatch(updateEditingState(true))
-    dispatch(updateProduct(product))
+    dispatch(updateEditingState(true));
+    dispatch(updateProduct(product));
   };
-
 
   const deleteHandler = async (product: ProductType) => {
     try {
@@ -45,8 +46,8 @@ const ProductsDashboard: FunctionComponent = () => {
   };
 
   useEffect(() => {
-      //fetch API onMount and cache results on Redux store;
-      getProductsList();
+    //fetch API onMount and cache results on Redux store;
+    getProductsList();
   }, []);
 
   return (
@@ -69,6 +70,18 @@ const ProductsDashboard: FunctionComponent = () => {
                     <div className="img-wrapper"></div>
                     <div className="product-result-details">
                       <h3 className="product-name-result">{product.name}</h3>
+
+                      <div className="product-price">
+                        {' '}
+                        <span className="font-bold text-2xl"> {product.price}</span>
+                        <span className="antialiased text-lg mx-2">
+                          {product.currency}
+                        </span>
+                        <span className="flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 py-0.5 font-extrabold text-zinc-600">
+                          {product.category}
+                        </span>
+                      </div>
+
                       <div className="product-rating">
                         {Array(product.rating)
                           .fill(0)
@@ -76,10 +89,8 @@ const ProductsDashboard: FunctionComponent = () => {
                             return <p key={i}>⭐</p>;
                           })}
                       </div>
-                      <div className="product-price">
-                        <small>{product.currency}</small>
-                        <strong>{product.price}</strong>
-                      </div>
+                      
+                      <p className="antialiased text-base">{product.description}</p>
 
                       <button
                         className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
@@ -99,9 +110,7 @@ const ProductsDashboard: FunctionComponent = () => {
                 </div>
               );
             })}
-          {isEditing && (
-            <EditProductForm />
-          )}
+          {isEditing && <EditProductForm />}
         </div>
       </div>
     </div>
