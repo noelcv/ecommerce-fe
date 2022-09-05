@@ -28,7 +28,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   
   
   return (
-    <div className="grid gap-1 grid-cols-2 items-center justify-center m-2.5 p-8 max-h-auto z-10 bg-zinc-300 min-w-min max-w-prose">
+    <div className="grid gap-1 grid-cols-2  shadow-lg items-center justify-center m-2.5 p-8 max-h-auto z-10 bg-zinc-300 min-w-min max-w-prose">
       <img src={image} alt="" className="flex max-h-48 min-w-min max-w-full" />
       <div className="ml-5">
         <p className="mt-6 font-bold text-2xl mb-3">{name}</p>

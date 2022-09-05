@@ -16,19 +16,19 @@
       "price": 290,
       "currency": "USD",
       "rating": "5",
-      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/484ea1c1-286b-4996-9d9a-878c280bba81/Mandala+Yoga+Fitness+Flyer+%28Instagram+Story%29.jpg?format=750w",
       "description": "A 75-minute class suitabe for everybody",
-      "category": "performance"
+      "category": "retreat"
     },
     {
-      "name": "Yoga Class",
-      "description": "exercise",
+      "name": "Yoga at The Farm",
+      "description": "Every Wednesdays at 7p.m. at the Kass Haff",
       "imageURL": "https://cdn.pixabay.com/photo/2017/08/02/20/24/woman-2573216_960_720.jpg",
-      "price": 30,
-      "currency": "USD",
+      "price": 22,
+      "currency": "EUR",
       "category": "onsite-yoga-class",
       "id": "ymWnro4",
-      "image": "https://cdn.pixabay.com/photo/2016/11/22/23/29/meditate-1851165_960_720.jpg"
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/9721616f-530d-4258-8b86-9dd85c234e8a/038.jpg?format=750w"
     },
     {
       "name": "Yoga Class",
@@ -41,13 +41,40 @@
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w"
     },
     {
-      "name": "Kayak at Esch",
-      "description": "a river activity",
-      "image": "https://cdn.pixabay.com/photo/2016/08/01/20/13/girl-1561989_960_720.jpg",
-      "price": 100,
-      "currency": "USD",
+      "name": "Be Leaf",
+      "description": "A meditation live performance with Valerie Rassel and JoAnn Koenig",
+      "price": 50,
+      "currency": "EUR",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593731900577-XHX469KEDD6YNADEOD55/111.jpg?format=1500w",
+      "category": "performance",
+      "id": "cNfKL2B"
+    },
+    {
+      "name": "Nourish to Flourish",
+      "description": "Flowers Workshop for Powerful Women",
+      "price": 40,
+      "currency": "EUR",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593731337081-D8TR89AGAXSO62BJPPJW/05.jpg?format=1500w",
       "category": "course",
-      "id": "iJH_H0o"
+      "id": "SWJv7I9"
+    },
+    {
+      "name": "Yoga for Curvy Bodies",
+      "description": "Stressed about being overweight? No problem",
+      "price": 35,
+      "currency": "EUR",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593730136137-1OO8ZZ53OR0JMQ2HS82Q/image2.jpeg?format=1500w",
+      "category": "onsite-yoga-class",
+      "id": "_k45o4o"
+    },
+    {
+      "name": "Metta Cello",
+      "description": "Valérie Rassel and Aisha Bové gather again for a Cello infused yoga sound and movement performance",
+      "price": 65,
+      "currency": "EUR",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593729436505-GTYAHCODQQXIEJEURYRA/2018.03.11_Luxembourg_Vale%E2%95%A0%C3%BCrie%26Aisha-071.jpg?format=1500w",
+      "category": "performance",
+      "id": "kkk9-kp"
     }
   ]
 }

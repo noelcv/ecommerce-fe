@@ -57,7 +57,7 @@ const ProductsDashboard: FunctionComponent = () => {
             products.map((product, index) => {
               return (
                 <div
-                  className="grid gap-1 grid-cols-2 items-center justify-center m-5 p-8 max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min max-w-prose"
+                  className="grid gap-1 grid-cols-2 items-center drop-shadow-2xl justify-center m-5 p-8 max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min max-w-prose"
                   key={index}
                 >
                   <img
