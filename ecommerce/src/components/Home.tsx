@@ -44,6 +44,7 @@ const Home: FunctionComponent = () => {
                 name={product.name}
                 rating={product.rating}
                 description={product.description}
+                category={product.category}
                 image={product.image}
                 price={product.price}
                 currency={product.currency}
