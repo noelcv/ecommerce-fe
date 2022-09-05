@@ -3,6 +3,7 @@ import Mettakin from '../assets/Mettakin.svg';
 import magnify from '../assets/magnify.svg';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
@@ -42,6 +43,11 @@ const Header: FunctionComponent = () => {
           <div className="flex flex-row mx-10 mt-14">
             <ShoppingCartIcon fontSize="large" />
             <span className="items-counter header-option-l2">{count}</span>
+          </div>
+        </Link>
+        <Link to="/admin">
+          <div className="flex flex-row mx-10 mt-14">
+            <SettingsIcon fontSize="large" />
           </div>
         </Link>
       </div>
