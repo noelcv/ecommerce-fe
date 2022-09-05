@@ -59,9 +59,8 @@ const EditProductForm: FunctionComponent = () => {
 
   return (
     <form
-      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-full"
-      onSubmit={submitHandler}
-    >
+      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-5/5"
+      onSubmit={submitHandler}>        
       <div className="grid">
         <img
           src={editableProduct.image}

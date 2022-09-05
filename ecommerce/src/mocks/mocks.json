@@ -24,9 +24,9 @@
       "name": "Yoga Class",
       "description": "exercise",
       "imageURL": "https://cdn.pixabay.com/photo/2017/08/02/20/24/woman-2573216_960_720.jpg",
-      "price": 20,
+      "price": 25,
       "currency": "USD",
-      "category": "performance",
+      "category": "online-yoga-class",
       "id": "6Tno7u3",
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w"
     },

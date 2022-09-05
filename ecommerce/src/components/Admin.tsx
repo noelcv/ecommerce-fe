@@ -17,13 +17,13 @@ const Admin: FunctionComponent = () => {
             <SideBtn
                 onClick={() => setState('myProducts')}
                 text="My Products"
-                className=" justify-center antialiased text-lg items-center ml-10 my-0 w-fit transition ease-in-out delay-100"
+                className=" justify-center antialiased text-lg items-center ml-10 my-0 w-fit transition ease-in-out delay-100 drop-shadow-xl"
               />
             
               <SideBtn
                 onClick={() => setState('addNewPost')}
                 text="Add New Post"
-                className=" justify-center antialiased text-lg items-center ml-10 my-0 w-fit transition ease-in-out delay-100"
+                className=" justify-center antialiased text-lg items-center ml-10 my-0 w-fit transition ease-in-out delay-100 drop-shadow-xl"
               />
   
 

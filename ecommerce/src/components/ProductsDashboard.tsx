@@ -58,7 +58,7 @@ const ProductsDashboard: FunctionComponent = () => {
     <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
         <div className="flex flex-row items-center justify-center space-x-80">
-          <h2 className="mt-10 -mb-1 text-3xl justify-center items-center">
+          <h2 className="ml-10 mt-10 -mb-1 text-3xl justify-center items-center">
             Products Overview
           </h2>
 

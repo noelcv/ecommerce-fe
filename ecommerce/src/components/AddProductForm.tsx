@@ -43,7 +43,7 @@ const AddProductForm: FunctionComponent = () => {
 
   return (
     <form
-      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-5/5"
+      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-5/5 drop-shadow-2xl"
       onSubmit={submitHandler}
     >
       <div className="flex flex-col">
@@ -59,7 +59,7 @@ const AddProductForm: FunctionComponent = () => {
               id="product-name"
               type="text"
               name="productName"
-              placeholder="what is your product name?"
+              placeholder="What is the product's name?"
               className="bg-zinc-300 text-zinc-900 font-bold h-10 "
               required
             />
@@ -113,7 +113,7 @@ const AddProductForm: FunctionComponent = () => {
               
               <select
                 name="productCurrency"
-                className="ml-3 block bg-zinc-300 text-zinc-900 font-bold h-12"
+                className="ml-3 block bg-zinc-300 text-zinc-900 font-bold h-14"
                 required
               >
                 <option value="EUR">€</option>
@@ -132,7 +132,7 @@ const AddProductForm: FunctionComponent = () => {
             </div>
             <select
               name="productCategory"
-              className="bg-zinc-300 text-zinc-900 font-bold h-10"
+              className="bg-zinc-300 text-zinc-900 font-bold h-14"
               required
             >
               
