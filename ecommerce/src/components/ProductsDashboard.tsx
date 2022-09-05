@@ -19,7 +19,7 @@ const ProductsDashboard: FunctionComponent = () => {
   //TODO: create edit button / service /reducer
 
   const isEditing = useSelector((state: RootState) => state.isEditing.value);
-  const [isAddingNewProduct, setIsAddingNewProduct] = useState(false)
+  const [isAddingNewProduct, setIsAddingNewProduct] = useState(false);
 
   const getProductsList = async () => {
     try {
@@ -56,15 +56,20 @@ const ProductsDashboard: FunctionComponent = () => {
   return (
     <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
-        <div className='flex flex-row items-center justify-center space-x-80'>
-        <h2 className="mt-10 -mb-1 text-3xl justify-center items-center">Products Overview</h2>
-        {!isEditing && <SideBtn
-                onClick={() => setIsAddingNewProduct(true)}
-                text="Add New Product"
-                className=" justify-center antialiased text-lg items-center mt-10 ml-16 my-0 w-fit transition ease-in-out delay-100"
-                />
-          }
+        <div className="flex flex-row items-center justify-center space-x-80">
+          <h2 className="mt-10 -mb-1 text-3xl justify-center items-center">
+            Products Overview
+          </h2>
+
+          {!isEditing && (
+            <SideBtn
+              onClick={() => setIsAddingNewProduct(true)}
+              text="Add New Product"
+              className=" justify-center antialiased text-lg items-center mt-10 ml-16 my-0 w-fit transition ease-in-out delay-100"
+            />
+          )}
         </div>
+        {!isEditing && isAddingNewProduct && <AddProductForm />}
         <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px w-full">
           {!isEditing &&
             products.map((product, index) => {
@@ -85,7 +90,10 @@ const ProductsDashboard: FunctionComponent = () => {
 
                       <div className="product-price">
                         {' '}
-                        <span className="font-bold text-2xl"> {product.price}</span>
+                        <span className="font-bold text-2xl">
+                          {' '}
+                          {product.price}
+                        </span>
                         <span className="antialiased text-lg mx-2">
                           {product.currency}
                         </span>
@@ -101,8 +109,10 @@ const ProductsDashboard: FunctionComponent = () => {
                             return <p key={i}>⭐</p>;
                           })}
                       </div>
-                      
-                      <p className="antialiased text-base">{product.description}</p>
+
+                      <p className="antialiased text-base">
+                        {product.description}
+                      </p>
 
                       <button
                         className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
@@ -122,8 +132,8 @@ const ProductsDashboard: FunctionComponent = () => {
                 </div>
               );
             })}
+
           {isEditing && <EditProductForm />}
-          {isAddingNewProduct && <AddProductForm />}
         </div>
       </div>
     </div>
