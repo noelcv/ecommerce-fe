@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allProducts } from '../redux/reducers/allProductsSlice';
+import { allProducts, removeProductFromStore } from '../redux/reducers/allProductsSlice';
 import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
@@ -38,7 +38,7 @@ const ProductsDashboard: FunctionComponent = () => {
       const deleted = await deleteProduct(product);
       if (deleted) {
         console.log('deleted successfully', deleted);
-        getProductsList();
+        dispatch(removeProductFromStore(product));
       }
     } catch (err) {
       console.log('Error at deleteHandler: ', err);

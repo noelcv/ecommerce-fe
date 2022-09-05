@@ -58,24 +58,6 @@
       "currency": "USD",
       "category": "",
       "id": "iJH_H0o"
-    },
-    {
-      "name": "Acro Yoga",
-      "description": "aerials",
-      "price": 90,
-      "currency": "USD",
-      "image": "https://cdn.pixabay.com/photo/2018/05/11/20/29/yoga-3391590_960_720.jpg",
-      "category": "onsite-yoga-class",
-      "id": "BFZE6cQ"
-    },
-    {
-      "name": "Pilates Class",
-      "description": "aerials",
-      "price": 80,
-      "currency": "USD",
-      "image": "https://cdn.pixabay.com/photo/2016/09/11/14/23/woman-1661548_960_720.jpg",
-      "category": "onsite-yoga-class",
-      "id": "XsR5ARc"
     }
   ]
 }
