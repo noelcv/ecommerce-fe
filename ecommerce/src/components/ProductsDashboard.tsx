@@ -1,35 +1,20 @@
-import React, { FunctionComponent, useEffect, useState, useRef, ReactEventHandler } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allProducts } from '../redux/reducers/allProductsSlice';
+import { allProducts, removeProductFromStore } from '../redux/reducers/allProductsSlice';
+import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
 import { ProductType } from '../types/ProductType';
-import { editProduct } from '../services/product';
+import EditProductForm from './EditProductForm';
+import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
 const ProductsDashboard: FunctionComponent = () => {
-  const products = useSelector((state: RootState) => state.allProducts.value);
+  let products = useSelector((state: RootState) => state.allProducts.value);  
   const dispatch = useDispatch();
   //TODO: create edit button / service /reducer
-  const [isEditing, setIsEditing] = useState(false);
-  const [editableProduct, setEditableProduct] = useState<ProductType>();
-  const [editedProductName, setEditedProductName] = useState<string>(
-    editableProduct?.name || ''
-  );
-  const [editedDescription, setEditedDescription] = useState<string>(
-    editableProduct?.description || ''
-  );
-  const [editedImageURL, setEditedImageURL] = useState<string>(
-    editableProduct?.image || ''
-  );
-  const [editedPrice, setEditedPrice] = useState<number>(
-    editableProduct?.price || 0
-  );
-  const [editedCurrency, setEditedCurrency] = useState<string>(
-    editableProduct?.currency || ''
-  );
-  const [editedCategory, setEditedCategory] = useState<string>(
-    editableProduct?.category || ''
-  );
+
+  const isEditing = useSelector((state: RootState) => state.isEditing.value);
+  
 
   const getProductsList = async () => {
     try {
@@ -41,123 +26,10 @@ const ProductsDashboard: FunctionComponent = () => {
   };
 
   const editHandler = (product: ProductType) => {
-    setIsEditing(!isEditing);
-    setEditableProduct(product);
-
+    dispatch(updateEditingState(true))
+    dispatch(updateProduct(product))
   };
 
-  const saveHandler = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    try {
-      console.log("we're in saveHandler");
-      console.log("yeah")
-      let selectedName;
-      let selectedDescription;
-      let selectedImageURL;
-      let selectedPrice;
-      let selectedCurrency;
-      let selectedCategory;
-      console.log("selectedName before", selectedName);
-      console.log("selectedDescription before", selectedDescription);
-      console.log("selectedImageURL before", selectedImageURL);
-      console.log("selectedPrice before", selectedPrice);
-      console.log("selectedCurrency before", selectedCurrency);
-      console.log("selectedCategory before", selectedCategory);
-      
-      console.log("yeah")
-
-      if (editedProductName && editedProductName.length === 0) {
-        selectedName = editableProduct?.name;
-      } else {
-        selectedName = editedProductName;
-      }
-
-      if (editedDescription.length === 0) {
-        selectedDescription = editableProduct?.description;
-      } else {
-        selectedDescription = editedDescription;
-      }
-      
-      if (editedImageURL.length === 0) {
-        selectedImageURL = editableProduct?.image;
-      } else {
-        selectedImageURL = editedImageURL;
-      }
-
-      if (editedPrice === 0) {
-        selectedPrice = editableProduct?.price;
-      } else {
-        selectedPrice = editedPrice;
-      }
-
-      if (editedCurrency === '') {
-        selectedCurrency = editableProduct?.currency;
-      } else {
-        selectedCurrency = editedCurrency;
-      }
-
-      if (editedCategory === '') {
-        selectedCategory = editableProduct?.category;
-      } else {
-        selectedCategory = editedCategory;
-      }
-      console.log("selectedName after", selectedName);
-      console.log("editedProductName after", editedProductName);
-      console.log("selectedDescription after", selectedDescription);
-      console.log("editedDescription after", editedDescription);
-      console.log("editedImageURL after", editedImageURL);
-      console.log("selectedImageURL after", selectedImageURL);
-      console.log("selectedPrice after", selectedPrice);
-      console.log("editedPrice after", editedPrice);
-      console.log("selectedCurrency after", selectedCurrency);
-      console.log("editedcurrency after", editedCurrency);
-      console.log("selectedCategory after", selectedCategory);
-      console.log("editedCategory after", editedCategory);
-    //TODO: the problem is here ll-117
-      
-    
-    if (
-        selectedName &&
-        selectedDescription &&
-        selectedImageURL &&
-        selectedPrice &&
-        selectedCurrency &&
-        selectedCategory
-      ) {
-        const editedProduct: ProductType = {
-          id: editableProduct?.id,
-          name: selectedName,
-          description: selectedDescription,
-          image: selectedImageURL,
-          price: selectedPrice,
-          currency: selectedCurrency,
-          category: selectedCategory,
-        };
-        
-        console.log(editedProduct, 'editedProduct at saveHandler');
-  
-          const submittedProduct = await editProduct(editedProduct);
-          console.log(submittedProduct);
-          console.log('success');
-          setIsEditing(!isEditing);
-          getProductsList();
-          return submittedProduct;
-        
-      } else {
-        console.log('the problem is is in this assembling block')
-      }
-      
-      console.log('can we get here?')
-      
-    } catch (err) {
-      console.log('Error saving edited product', err);
-      console.log(err);
-    }
-  };
-
-  const cancelHandler = () => {
-    setIsEditing(!isEditing);
-  };
 
   const deleteHandler = async (product: ProductType) => {
     try {
@@ -165,6 +37,7 @@ const ProductsDashboard: FunctionComponent = () => {
       const deleted = await deleteProduct(product);
       if (deleted) {
         console.log('deleted successfully', deleted);
+        dispatch(removeProductFromStore(product));
       }
     } catch (err) {
       console.log('Error at deleteHandler: ', err);
@@ -172,10 +45,8 @@ const ProductsDashboard: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    if (products) {
+      //fetch API onMount and cache results on Redux store;
       getProductsList();
-      console.log('products', products);
-    }
   }, []);
 
   return (
@@ -228,123 +99,8 @@ const ProductsDashboard: FunctionComponent = () => {
                 </div>
               );
             })}
-          {isEditing && editableProduct && (
-            <form className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-full">
-              <div className="grid">
-                <img
-                  src={editableProduct.image}
-                  alt=""
-                  className="flex max-h-48 min-w-min max-w-full"
-                />
-              </div>
-              <div className="grid col-span-2">
-                <div className="flex flex-col mb-5 mt-2">
-                  <label htmlFor="editableProduct-name" className="text-lg">
-                    Product Name
-                  </label>
-                  <input
-                    className="bg-zinc-300 text-zinc-900 font-bold h-10"
-                    id="editableProduct-name"
-                    defaultValue={editableProduct.name}
-                    onChange={(e) => setEditedProductName(e.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col mb-5 mt-2">
-                  <div className="flex flex-row">
-                    <div className="flex flex-col">
-                      <label
-                        htmlFor="editableProduct-price"
-                        className="text-lg"
-                      >
-                        Price
-                      </label>
-                      <input
-                        className="bg-zinc-300 text-zinc-900 font-bold h-10"
-                        id="editableProduct-price"
-                        defaultValue={editableProduct.price.toString()}
-                        onChange={(e) => setEditedPrice(Number(e.target.value))}
-                      />
-                    </div>
-                    <div className="flex flex-col">
-                      <label htmlFor="currency" className="text-lg">
-                        Currency
-                        <select
-                          defaultValue={editableProduct.currency}
-                          className="ml-3 block bg-zinc-300 text-zinc-900 font-bold h-12"
-                          onChange={(e) => setEditedCurrency(e.target.value)}
-                        >
-                          <option value="EUR">€</option>
-                          <option value="USD">$</option>
-                          <option value="GBP">£</option>
-                        </select>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col mb-5 mt-2">
-                  <label
-                    htmlFor="editableProduct-description"
-                    className="text-lg"
-                  >
-                    Description
-                  </label>
-                  <input
-                    className="bg-zinc-300 text-zinc-900 font-bold h-10"
-                    id="editableProduct-description"
-                    defaultValue={editableProduct.description}
-                    onChange={(e) => setEditedDescription(e.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col mb-5 mt-2">
-                  <label htmlFor="editableProduct-imageUrl" className="text-lg">
-                    Image
-                  </label>
-                  <input
-                    className="bg-zinc-300 text-zinc-900 font-bold h-10"
-                    id="editableProduct-imageUrl"
-                    defaultValue={editableProduct.image}
-                    onChange={(e) => setEditedImageURL(e.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col mb-5 mt-2">
-                  <div className="flex flex-row">
-                    <label htmlFor="category" className="text-lg">
-                      Category
-                    </label>
-                  </div>
-                  <select
-                    defaultValue={editableProduct.category}
-                    className="bg-zinc-300 text-zinc-900 font-bold h-10 mr-80"
-                    onChange={(e) => setEditedCategory(e.target.value)}
-                  >
-                    <option value="course">Course</option>
-                    <option value="therapy">Therapy</option>
-                    <option value="onsite-yoga-class">
-                      On-Site Yoga Class
-                    </option>
-                    <option value="online-yoga-class">Online Yoga Class</option>
-                    <option value="performance">Live Performance</option>
-                    <option value="online-session">Online Session</option>
-                    <option value="retreat">Retreat</option>
-                  </select>
-                </div>
-                <div className="mt-2 space-x-2 flex flex-end">
-                  <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => cancelHandler()}
-                  >
-                    Cancel
-                  </button>
-
-                  <button
-                    className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
-                    onClick={(e) => saveHandler(e)}
-                  >
-                    Save
-                  </button>
-                </div>
-              </div>
-            </form>
+          {isEditing && (
+            <EditProductForm />
           )}
         </div>
       </div>
