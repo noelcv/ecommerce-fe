@@ -1,8 +1,12 @@
 import React, { FunctionComponent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../redux/reducers/allProductsSlice';
+import { addProductToBasket } from '../redux/reducers/basketSlice';
 import { addNewProduct } from '../services/product';
 import { ProductType } from '../types/ProductType';
 
 const AddProductForm: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
@@ -27,6 +31,7 @@ const AddProductForm: FunctionComponent = () => {
       };
 
       await addNewProduct(newProduct);
+      dispatch(addProduct(newProduct));
       
       form.reset();
 

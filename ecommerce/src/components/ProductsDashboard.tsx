@@ -50,7 +50,7 @@ const ProductsDashboard: FunctionComponent = () => {
       getProductsList();
       console.log('products', products);
     }
-  }, [products]);
+  }, []);
 
   return (
     <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">

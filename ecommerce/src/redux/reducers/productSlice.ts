@@ -33,7 +33,7 @@ export const ProductSlice = createSlice({
       console.log(action.payload, 'action.payload inside updatedProduct reducer')
       state.value = {...state.value, ...action.payload};
     }, 
-    
+  
   },
 });
 

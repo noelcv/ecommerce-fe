@@ -14,6 +14,7 @@ export const isEditingSlice = createSlice({
       state.value = action.payload;
     },
   },
+  
 });
 
 // Action creators are generated for each case reducer function

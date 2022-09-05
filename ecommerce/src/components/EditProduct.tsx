@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allProducts } from '../redux/reducers/allProductsSlice';
+import { allProducts, updateProductInStore } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
 import { ProductType } from '../types/ProductType';
 import { editProduct } from '../services/product';
-import { updateProduct } from '../redux/reducers/productSlice';
+import { updatedProduct, updateProduct } from '../redux/reducers/productSlice';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
 const EditProduct: FunctionComponent = () => {
@@ -51,6 +51,7 @@ const EditProduct: FunctionComponent = () => {
       console.log('success');
       
       dispatch(updateEditingState(false))
+      dispatch(updateProductInStore(editedProduct))
       return submittedProduct;
     
     } catch (err) {
