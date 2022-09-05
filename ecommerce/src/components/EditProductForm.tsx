@@ -1,14 +1,12 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allProducts, updateProductInStore } from '../redux/reducers/allProductsSlice';
+import { updateProductInStore } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
-import { deleteProduct, getAllProducts } from '../services/product';
 import { ProductType } from '../types/ProductType';
 import { editProduct } from '../services/product';
-import { updatedProduct, updateProduct } from '../redux/reducers/productSlice';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
-const EditProduct: FunctionComponent = () => {
+const EditProductForm: FunctionComponent = () => {
   
   const editableProduct = useSelector((state: RootState) => state.product.value);
   const dispatch = useDispatch();
@@ -57,11 +55,7 @@ const EditProduct: FunctionComponent = () => {
     } catch (err) {
     console.log('Error saving edited product', err);
     }
-  
-    
-    
   }
-  
   
   return (
     <form className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-full"
@@ -185,6 +179,6 @@ const EditProduct: FunctionComponent = () => {
   )
 }
 
-export default EditProduct;
+export default EditProductForm;
 
 

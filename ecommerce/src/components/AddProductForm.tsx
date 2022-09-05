@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/reducers/allProductsSlice';
-import { addProductToBasket } from '../redux/reducers/basketSlice';
 import { addNewProduct } from '../services/product';
 import { ProductType } from '../types/ProductType';
 

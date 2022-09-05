@@ -25,19 +25,11 @@ export const ProductSlice = createSlice({
       console.log(action.payload, 'action.payload inside updateProduct reducer')
       state.value = {...state.value, ...action.payload};
     },
-    
-    updatedProduct: (
-      state: { value: ProductType },
-      action: { payload: ProductType }
-      ) => {
-      console.log(action.payload, 'action.payload inside updatedProduct reducer')
-      state.value = {...state.value, ...action.payload};
-    }, 
   
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateProduct, updatedProduct } = ProductSlice.actions;
+export const { updateProduct } = ProductSlice.actions;
 
 export default ProductSlice.reducer;

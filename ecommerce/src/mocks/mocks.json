@@ -41,17 +41,7 @@
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w"
     },
     {
-      "name": "Gym",
-      "description": "exercise",
-      "imageURL": "https://cdn.pixabay.com/photo/2014/11/17/13/17/crossfit-534615_960_720.jpg",
-      "price": 34,
-      "currency": "GBP",
-      "category": "course",
-      "id": "X7l9jqG",
-      "image": "https://cdn.pixabay.com/photo/2014/11/17/13/17/crossfit-534615_960_720.jpg"
-    },
-    {
-      "name": "Kayak",
+      "name": "Kayak at Esch",
       "description": "a river activity",
       "image": "https://cdn.pixabay.com/photo/2016/08/01/20/13/girl-1561989_960_720.jpg",
       "price": 100,

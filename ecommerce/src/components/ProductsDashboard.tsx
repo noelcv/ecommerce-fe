@@ -5,8 +5,7 @@ import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct, getAllProducts } from '../services/product';
 import { ProductType } from '../types/ProductType';
-import { editProduct } from '../services/product';
-import EditProduct from './EditProduct';
+import EditProductForm from './EditProductForm';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
 const ProductsDashboard: FunctionComponent = () => {
@@ -46,10 +45,8 @@ const ProductsDashboard: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    if (products) {
+      //fetch API onMount and cache results on Redux store;
       getProductsList();
-      console.log('products', products);
-    }
   }, []);
 
   return (
@@ -103,7 +100,7 @@ const ProductsDashboard: FunctionComponent = () => {
               );
             })}
           {isEditing && (
-            <EditProduct />
+            <EditProductForm />
           )}
         </div>
       </div>
