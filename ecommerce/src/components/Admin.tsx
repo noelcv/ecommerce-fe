@@ -13,36 +13,38 @@ const Admin: FunctionComponent = () => {
       <div className="pr-20">
         <h2 className="ml-20 text-3xl">Admin Panel</h2>
         <div className="flex flex-col">
-          {state === 'addProduct' ? (
-            <AddProductForm />
-          ) : (
-            <div className="flex flex-col justify-center items-center ml-8 my-3 mx-auto w-11/12">
-              <button
-                className=" justify-center items-center ml-10 my-0 w-fit transition ease-in-out delay-100"
-                onClick={() => setState('addProduct')}
-              >
-                Add New Product
-              </button>
-            </div>
-          )}
-
-          {state === 'addNewPost' ? (
-            <h1>hello</h1>
-          ) : (
+        
+            <SideBtn
+                onClick={() => setState('myProducts')}
+                text="My Products"
+                className=" justify-center antialiased text-lg items-center ml-10 my-0 w-fit transition ease-in-out delay-100"
+              />
             
               <SideBtn
                 onClick={() => setState('addNewPost')}
                 text="Add New Post"
-                className=" justify-center items-center ml-10 my-0 w-fit transition ease-in-out delay-100"
+                className=" justify-center antialiased text-lg items-center ml-10 my-0 w-fit transition ease-in-out delay-100"
               />
   
-          )}
+
         </div>
       </div>
 
-      <div className="mt-0">
-        <h2 className="ml-20 -mt-0.1 text-3xl">Products Overview</h2>
-        <ProductsDashboard />
+      <div className="mt">
+        {(() => {
+          switch (state) {
+            case "myProducts":
+              return (
+                <ProductsDashboard />
+              )
+            case "myPosts":
+              return (
+                <div>My Journal</div>
+              )
+          }
+          
+        })()}
+       
       </div>
     </div>
   );
