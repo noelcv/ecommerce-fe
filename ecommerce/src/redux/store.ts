@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import allProductsSlice from './reducers/allProductsSlice'
 import basketSlice from './reducers/basketSlice'
 import counterSlice from './reducers/counterSlice'
+import isAddingNewProductSlice, { isAddingNewProduct } from './reducers/isAddingNewProductSlice'
 import isEditingSlice from './reducers/isEditingSlice'
 import productSlice from './reducers/productSlice'
 import subtotalSlice from './reducers/subtotalSlice'
@@ -13,7 +14,8 @@ export const store = configureStore({
     basket: basketSlice,
     allProducts: allProductsSlice,
     product: productSlice,
-    isEditing: isEditingSlice
+    isEditing: isEditingSlice,
+    isAddingNewProduct: isAddingNewProductSlice
   },
 })
 

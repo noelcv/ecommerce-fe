@@ -25,7 +25,6 @@ export const ProductSlice = createSlice({
       console.log(action.payload, 'action.payload inside updateProduct reducer')
       state.value = {...state.value, ...action.payload};
     },
-  
   },
 });
 
