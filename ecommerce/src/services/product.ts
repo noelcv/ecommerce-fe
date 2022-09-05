@@ -18,8 +18,9 @@ export const addNewProduct = async (product: ProductType) => {
 
 export const getAllProducts = async () => {
   try {
-    const products = await fetch(BASE_URL);
-    return await products.json();
+    const response = await fetch(BASE_URL);
+    const products = await response.json();
+    return products;
   }
   catch(error) {
     console.log('Error at getAllProducts Service: ', error)

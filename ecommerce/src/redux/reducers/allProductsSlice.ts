@@ -13,7 +13,14 @@ export const allProductsSlice = createSlice({
     ) => {
       state.value = action.payload;
     },
+    addProduct: (
+      state: { value: ProductType[] },
+      action: { payload: ProductType }
+    ) => {
+      state.value = [...state.value, action.payload];
+    },
   },
+  
 });
 
 // Action creators are generated for each case reducer function

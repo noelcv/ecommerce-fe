@@ -10,7 +10,7 @@ import EditProduct from './EditProduct';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
 const ProductsDashboard: FunctionComponent = () => {
-  const products = useSelector((state: RootState) => state.allProducts.value);
+  let products = useSelector((state: RootState) => state.allProducts.value);  
   const dispatch = useDispatch();
   //TODO: create edit button / service /reducer
 
@@ -30,7 +30,6 @@ const ProductsDashboard: FunctionComponent = () => {
     dispatch(updateEditingState(true))
     dispatch(updateProduct(product))
   };
-
 
 
   const deleteHandler = async (product: ProductType) => {

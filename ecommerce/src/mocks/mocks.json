@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "3",
-      "name": "Sound",
+      "name": "Sound Bath",
       "price": 25,
       "currency": "USD",
       "rating": "5",
@@ -58,6 +58,15 @@
       "currency": "USD",
       "category": "",
       "id": "iJH_H0o"
+    },
+    {
+      "name": "Acro",
+      "description": "aerials",
+      "price": 50,
+      "currency": "USD",
+      "image": "https://cdn.pixabay.com/photo/2018/05/11/20/29/yoga-3391590_960_720.jpg",
+      "category": "onsite-yoga-class",
+      "id": "BFZE6cQ"
     }
   ]
 }
