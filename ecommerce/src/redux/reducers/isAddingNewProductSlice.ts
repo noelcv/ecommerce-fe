@@ -4,10 +4,10 @@ import { createSlice } from "@reduxjs/toolkit";
 let initialState: boolean = false;
 
 export const isAddingNewProduct = createSlice({
-  name: "isEditing",
+  name: "isAddingNewProduct",
   initialState: { value: initialState },
   reducers: {
-    updateAddingNewProductState: (
+    updateIsAddingNewProductState: (
       state: { value: boolean },
       action: { payload: boolean}
       ) => {
@@ -18,6 +18,6 @@ export const isAddingNewProduct = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updateAddingNewProductState } = isAddingNewProduct.actions;
+export const { updateIsAddingNewProductState } = isAddingNewProduct.actions;
 
 export default isAddingNewProduct.reducer;

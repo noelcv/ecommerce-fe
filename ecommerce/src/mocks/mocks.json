@@ -1,19 +1,9 @@
 {
   "products": [
     {
-      "id": "3",
-      "name": "Sound Bath",
-      "price": 25,
-      "currency": "USD",
-      "rating": "5",
-      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
-      "description": "A 75-minute class suitabe for everybody",
-      "category": "performance"
-    },
-    {
       "id": "5",
       "name": "Women's Retreat",
-      "price": 290,
+      "price": 190,
       "currency": "USD",
       "rating": "5",
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/484ea1c1-286b-4996-9d9a-878c280bba81/Mandala+Yoga+Fitness+Flyer+%28Instagram+Story%29.jpg?format=750w",
@@ -75,6 +65,15 @@
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1593729436505-GTYAHCODQQXIEJEURYRA/2018.03.11_Luxembourg_Vale%E2%95%A0%C3%BCrie%26Aisha-071.jpg?format=1500w",
       "category": "performance",
       "id": "kkk9-kp"
+    },
+    {
+      "name": "AcroYoga",
+      "description": "aerials",
+      "price": 60,
+      "currency": "EUR",
+      "image": "https://cdn.pixabay.com/photo/2018/05/11/20/29/yoga-3391590__340.jpg",
+      "category": "onsite-yoga-class",
+      "id": "fcJd-CA"
     }
   ]
 }

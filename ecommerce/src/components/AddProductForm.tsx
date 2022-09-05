@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/reducers/allProductsSlice';
+import { updateIsAddingNewProductState } from '../redux/reducers/isAddingNewProductSlice';
 import { addNewProduct } from '../services/product';
 import { ProductType } from '../types/ProductType';
 
@@ -42,16 +43,13 @@ const AddProductForm: FunctionComponent = () => {
 
   return (
     <form
-      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-full"
+      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-5/5"
       onSubmit={submitHandler}
     >
       <div className="flex flex-col">
         <h3 className="font-bold text-#242424 text-3xl block">
           Add new Product
         </h3>
-        <div className="grid">
-          <img src="" alt="" className="flex max-h-48 min-w-min max-w-full" />
-        </div>
         <div className="grid col-span-2">
           <div className="flex flex-col mb-5 mt-2">
             <label htmlFor="productName" className="text-lg">
@@ -150,7 +148,7 @@ const AddProductForm: FunctionComponent = () => {
             <div className="mt-2 space-x-2 flex flex-end">
           <button
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => console.log("discard")}
+            onClick={() => dispatch(updateIsAddingNewProductState(false))}
           >
             Cancel
           </button>

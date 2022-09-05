@@ -12,14 +12,15 @@ import EditProductForm from './EditProductForm';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 import SideBtn from './btn/SideBtn';
 import AddProductForm from './AddProductForm';
+import { updateIsAddingNewProductState } from '../redux/reducers/isAddingNewProductSlice';
 
 const ProductsDashboard: FunctionComponent = () => {
   let products = useSelector((state: RootState) => state.allProducts.value);
+  const isEditing = useSelector((state: RootState) => state.isEditing.value);
+  const isAddingNewProduct = useSelector((state:RootState) => state.isAddingNewProduct.value)
   const dispatch = useDispatch();
   //TODO: create edit button / service /reducer
 
-  const isEditing = useSelector((state: RootState) => state.isEditing.value);
-  const [isAddingNewProduct, setIsAddingNewProduct] = useState(false);
 
   const getProductsList = async () => {
     try {
@@ -63,7 +64,7 @@ const ProductsDashboard: FunctionComponent = () => {
 
           {!isEditing && (
             <SideBtn
-              onClick={() => setIsAddingNewProduct(true)}
+              onClick={() => dispatch(updateIsAddingNewProductState(true))}
               text="Add New Product"
               className=" justify-center antialiased text-lg items-center mt-10 ml-16 my-0 w-fit transition ease-in-out delay-100"
             />
