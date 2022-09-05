@@ -49,11 +49,11 @@ const EditProduct: FunctionComponent = () => {
       const submittedProduct = await editProduct(editedProduct);
       console.log(submittedProduct, 'submittedProduct after experience')
       console.log('success');
-      
-      dispatch(updateEditingState(false))
-      dispatch(updateProductInStore(editedProduct))
-      return submittedProduct;
-    
+      if (submittedProduct){
+        dispatch(updateEditingState(false))
+        dispatch(updateProductInStore(editedProduct))
+        return submittedProduct;
+      }
     } catch (err) {
     console.log('Error saving edited product', err);
     }
