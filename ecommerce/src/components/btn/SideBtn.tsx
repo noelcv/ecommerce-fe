@@ -1,14 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import { ButtonPropsType } from '../../types/ButtonPropsType';
 
-
-
-import { MouseEvent } from "react";
-
-export type ButtonPropsType = {
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void; 
-  className?: string;
-  text?: string;
-};
 
 const SideBtn: FunctionComponent<ButtonPropsType> = ({onClick, className, text}:ButtonPropsType) => {
     
