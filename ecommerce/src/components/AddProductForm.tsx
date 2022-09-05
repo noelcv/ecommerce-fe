@@ -4,7 +4,7 @@ import { addNewProduct } from '../services/product';
 const AddProductForm: FunctionComponent = () => {
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [imageURL, setImageURL] = useState<string>('');
+  const [image, setImageURL] = useState<string>('');
   const [price, setPrice] = useState<number>(0);
   const [currency, setCurrency] = useState<string>('');
   const [category, setCategory] = useState<string>('');
@@ -13,7 +13,7 @@ const AddProductForm: FunctionComponent = () => {
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const newProduct = {name, description, imageURL, price, currency, category}
+      const newProduct = {name, description, image, price, currency, category}
       
         await addNewProduct(newProduct);  
         
@@ -66,7 +66,7 @@ const AddProductForm: FunctionComponent = () => {
             <input
               id="product-image"
               type="text"
-              value={imageURL}
+              value={image}
               placeholder="Do you have a nice picture?"
               onChange={(e) => setImageURL(e.target.value)}
               className="w-60 mb-5 block text-black"

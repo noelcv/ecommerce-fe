@@ -2,8 +2,8 @@
   "products": [
     {
       "id": "3",
-      "name": "Sound Bath",
-      "price": 150,
+      "name": "Sound",
+      "price": 25,
       "currency": "USD",
       "rating": "5",
       "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w",
@@ -27,7 +27,37 @@
       "price": 30,
       "currency": "USD",
       "category": "onsite-yoga-class",
-      "id": "ymWnro4"
+      "id": "ymWnro4",
+      "image": "https://cdn.pixabay.com/photo/2016/11/22/23/29/meditate-1851165_960_720.jpg"
+    },
+    {
+      "name": "Yoga Class",
+      "description": "exercise",
+      "imageURL": "https://cdn.pixabay.com/photo/2017/08/02/20/24/woman-2573216_960_720.jpg",
+      "price": 20,
+      "currency": "USD",
+      "category": "performance",
+      "id": "6Tno7u3",
+      "image": "https://images.squarespace-cdn.com/content/v1/5eb917658b5a4f0e02842abf/1653580542512-1UNWRUYKITSTK18SJM3X/035.jpg?format=1500w"
+    },
+    {
+      "name": "Gym",
+      "description": "exercise",
+      "imageURL": "https://cdn.pixabay.com/photo/2014/11/17/13/17/crossfit-534615_960_720.jpg",
+      "price": 34,
+      "currency": "GBP",
+      "category": "course",
+      "id": "X7l9jqG",
+      "image": "https://cdn.pixabay.com/photo/2014/11/17/13/17/crossfit-534615_960_720.jpg"
+    },
+    {
+      "name": "Kayak",
+      "description": "a river activity",
+      "image": "https://cdn.pixabay.com/photo/2016/08/01/20/13/girl-1561989_960_720.jpg",
+      "price": 200,
+      "currency": "USD",
+      "category": "",
+      "id": "iJH_H0o"
     }
   ]
 }

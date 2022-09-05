@@ -11,7 +11,6 @@ import { updateEditingState } from '../redux/reducers/isEditingSlice';
 const EditProduct: FunctionComponent = () => {
   
   const editableProduct = useSelector((state: RootState) => state.product.value);
-  const isEditing = useSelector((state: RootState) => state.isEditing.value);
   const dispatch = useDispatch();
   
   const cancelHandler = () => {
@@ -34,8 +33,6 @@ const EditProduct: FunctionComponent = () => {
       editedImageInput: HTMLInputElement;
       editedCategoryInput: HTMLInputElement;
     }
- 
-
     
     const editedProduct: ProductType = {
       id: editableProduct.id,
@@ -58,7 +55,6 @@ const EditProduct: FunctionComponent = () => {
     
     } catch (err) {
     console.log('Error saving edited product', err);
-    console.log(err);
     }
   
     
