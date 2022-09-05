@@ -43,8 +43,8 @@ const AddProductForm: FunctionComponent = () => {
   return (
     <div className="flex tw-flex-col justify-left items-center my-0 mx-auto w-11/12">
       <form
-        className="p-10 mb-10 rounded-lg bg-gray-200 
-        shadow-lg flex flex-col justify-center items-center"
+        className="p-10 mb-10 ml-2 rounded-lg bg-gray-200 
+        shadow-xl flex flex-col justify-center items-center"
         onSubmit={submitHandler}
       >
         <h3 className="font-bold text-#242424 text-3xl block">
@@ -99,7 +99,7 @@ const AddProductForm: FunctionComponent = () => {
             Currency
             <select
               name="productCurrency"
-              className=" mb-5 ml-3 block tw-text-black"
+              className=" mb-5 ml-3 block text-black"
               required
             >
               <option value="EUR">€</option>
