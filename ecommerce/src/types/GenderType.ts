@@ -2,5 +2,7 @@ export type GenderType = {
   male?: boolean
   female?: boolean
   intersex?: boolean
-  pronouns?: PronounsType
+  nonBinary?: boolean
+  custom?: string
+  pronouns?: string
 }
