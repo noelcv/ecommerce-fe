@@ -1,3 +1,4 @@
+import { cancelationPolicyType } from "./CancelationPolicyType";
 import { LocationType } from "./LocationType";
 
 
