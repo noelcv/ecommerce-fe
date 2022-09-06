@@ -19,10 +19,3 @@ export type ProductType = {
   cancelationPolicy?: cancelationPolicyType;
   isRefundable?: boolean;
 }
-
-
-export type BasketType = {
-  product?: ProductType;
-  productId?: string;
-  userId?: string;
-}
