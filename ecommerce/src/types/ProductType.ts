@@ -1,3 +1,6 @@
+import { LocationType } from "./LocationType";
+
+
 export type ProductType = {
   id?: string;
   name: string;
@@ -9,6 +12,11 @@ export type ProductType = {
   rating?: number;
   createdAt?: string;
   updatedAt?: string;
+  date?: Date;
+  location?: LocationType;
+  isCancelable?: boolean;
+  cancelationPolicy?: cancelationPolicyType;
+  isRefundable?: boolean;
 }
 
 
