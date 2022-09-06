@@ -1,4 +1,5 @@
 export type LocationType = {
+  id?: string;
   location?: string;
   locationInfo?: string;
   locationWebsite?: string;
