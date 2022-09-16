@@ -27,8 +27,8 @@ const Home: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="flex justify-center mx-auto max-w-screen min-w-sm">
-      <div className="max-w-screen min-w-sm">
+    <div className="flex">
+      <div className="max-w-screen">
         <img
           className="-z-50 -mb-36 gradient-mask-b-10"
           src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
