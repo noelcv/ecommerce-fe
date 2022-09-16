@@ -37,7 +37,7 @@ const Home: FunctionComponent = () => {
           alt="hero-image"
         ></img>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-2 3xl:grid-cols-3">
+        <div className="mt-28 md:mt-0 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-2 3xl:grid-cols-3">
           {products ? (
             products.map((product, id) => (
               <ProductComponent

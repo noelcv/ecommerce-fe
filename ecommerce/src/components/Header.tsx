@@ -28,7 +28,7 @@ const Header: FunctionComponent = () => {
           type="text"
           placeholder="Search"
         />
-        <button className=" grid col-start-3 bg-orange-400 w-16 h-14 -mt-92 md:mt-8 md:col-start-5 4xl:mt-9 4xl:w-20">
+        <button className=" grid col-start-3 bg-red-300 w-16 h-14 -mt-92 md:mt-8 md:col-start-5 4xl:mt-9 4xl:w-20">
           <SearchIcon />
         </button>
             <div className="grid col-start-4 grid-flow-row ml-2 -mt-92 md:mt-10 md:flex md:flex-row">

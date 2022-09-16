@@ -42,7 +42,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
           <img src={image} alt="" className="w-32 h-32 static object-cover" />
         </div>
       </div>
-      <div className="inline-block ml-36 -mt-72 lg:ml-72">
+      <div className="inline-block ml-36 -mt-72 md:-mt-72 lg:ml-72">
         <p className="mt-6 font-bold text-2xl mb-3">{name}</p>
         <div className="flex">
           <span className="font-bold text-2xl"> {price}</span>
@@ -72,13 +72,13 @@ const ProductComponent: FunctionComponent<ProductType> = ({
       <div className="grid grid-cols-2 space-x-2 w-fit md:ml-72">
 
         <button
-          className="bg-zinc-800 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-white font-bold py-2 px-4 rounded mt-4"
+          className="bg-red-300 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-zinc-800 font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
         >
           View Details
         </button>
         <button
-          className="bg-orange-400 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-zinc-900 antialiased font-bold py-2 px-4 rounded mt-4"
+          className="bg-zinc-800 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-zinc-900 text-red-300 antialiased font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
         >
           Add to basket
