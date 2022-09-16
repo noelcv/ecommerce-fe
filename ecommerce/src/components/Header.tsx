@@ -33,7 +33,7 @@ const Header: FunctionComponent = () => {
         </button>
             <div className="grid col-start-4 grid-flow-row ml-2 -mt-92 md:mt-10 md:flex md:flex-row">
           <Link to="/checkout">
-              <div className="flex mt-3 ml-3">
+              <div className="flex mt-3 ml-0">
               <ShoppingCartIcon fontSize="large" />
               <span className="items-counter header-option-l2">{count}</span>
               </div>
@@ -41,18 +41,18 @@ const Header: FunctionComponent = () => {
             </div>
       </div>
       
-      <div className="flex space-x-2 mt-16 md:mt-0 md:ml-3 md:place-content-even 3xl:ml-80 3xl:space-x-20 4xl:space-x-20 4xl:ml-96">
+      <div className="flex space-x-2 mt-16 ml-10 md:mt-0 md:ml-3 md:place-content-even 3xl:ml-80 3xl:space-x-20 4xl:space-x-20 4xl:ml-96">
         <div className="flex flex-col md:place-content-evenly">
-          <span className="text-zinc-100 text-xl">Hi</span>
-          <span className="text-zinc-300 text-4xl mt-0.5">Sign In</span>
+          <span className="text-zinc-100 text-xl">Hello</span>
+          <span className="text-zinc-300 text-xl mt-0.5">Sign In</span>
         </div>
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-zinc-100 text-xl">Your</span>
-          <span className="text-zinc-300 text-4xl mt-0.5">Orders</span>
+          <span className="text-zinc-300 text-xl mt-0.5">Orders</span>
         </div>
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-zinc-100 text-xl">Your</span>
-          <span className="text-zinc-300 text-4xl mt-0.5">Subscription</span>
+          <span className="text-zinc-300 text-xl mt-0.5">Subscription</span>
         </div>
       </div>
       

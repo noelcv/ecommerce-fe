@@ -36,7 +36,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   };
 
   return (
-    <div className="shadow-lg max-w-xs m-2.5 p-6 max-h-auto z-10 bg-zinc-300 hover:bg-zinc-200">
+    <div className="shadow-lg md:ml-10 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10 bg-zinc-300 hover:bg-zinc-200">
       <div className="static">
         <div className="static bottom-2 left-2">
           <img src={image} alt="" className="w-32 h-32 static object-cover" />
@@ -67,10 +67,12 @@ const ProductComponent: FunctionComponent<ProductType> = ({
       </div>
       
         <p className="static antialiased mt-2 text-base max-prose">{description}</p>
-      <div className="grid grid-cols-2 space-x-2 w-fit">
+        
+      
+      <div className="grid grid-cols-2 space-x-2 w-fit md:ml-72">
 
         <button
-          className="bg-zinc-900 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-white font-bold py-2 px-4 rounded mt-4"
+          className="bg-zinc-800 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-white font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
         >
           View Details

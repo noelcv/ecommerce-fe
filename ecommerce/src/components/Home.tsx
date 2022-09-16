@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
 import { getAllProducts } from '../services/product';
+import Schwarz from '../assets/schwarz.svg';
 import ProductComponent from './ProductComponent';
 
 const Home: FunctionComponent = () => {
@@ -28,10 +29,11 @@ const Home: FunctionComponent = () => {
 
   return (
     <div className="flex">
-      <div className="max-w-screen">
+      <div className="max-w-fit">
         <img
-          className="-z-50 -mb-36 gradient-mask-b-10"
-          src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+          className="-z-50 -mb-36 bg-red-300 gradient-mask-b-10 w-screen object-cover"
+          src={Schwarz}
+          // src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
           alt="hero-image"
         ></img>
 
