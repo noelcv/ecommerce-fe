@@ -1,3 +1,8 @@
+import { cancelationPolicyType } from "./CancelationPolicyType";
+import { Customer } from "./CustomerType";
+import { LocationType } from "./LocationType";
+
+
 export type ProductType = {
   id?: string;
   name: string;
@@ -9,11 +14,10 @@ export type ProductType = {
   rating?: number;
   createdAt?: string;
   updatedAt?: string;
-}
-
-
-export type BasketType = {
-  product?: ProductType;
-  productId?: string;
-  userId?: string;
+  date?: Date;
+  location?: LocationType;
+  isCancelable?: boolean;
+  cancelationPolicy?: cancelationPolicyType;
+  isRefundable?: boolean;
+  orderedBy?: Customer[]
 }

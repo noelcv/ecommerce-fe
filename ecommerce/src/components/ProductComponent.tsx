@@ -36,31 +36,49 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   };
 
   return (
-    <div className="grid gap-1 grid-cols-2  shadow-lg items-center justify-center m-2.5 p-8 max-h-auto z-10 bg-zinc-300 min-w-min max-w-prose hover:bg-zinc-200">
-      <img src={image} alt="" className="flex max-h-48 min-w-min max-w-full" />
-      <div className="ml-5">
+    <div className="shadow-lg md:ml-10 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10 bg-zinc-300 hover:bg-zinc-200">
+      <div className="static">
+        <div className="static bottom-2 left-2">
+          <img src={image} alt="" className="w-32 h-32 static object-cover" />
+        </div>
+      </div>
+      <div className="inline-block ml-36 -mt-72 md:-mt-72 lg:ml-72">
         <p className="mt-6 font-bold text-2xl mb-3">{name}</p>
-        <div>
+        <div className="flex">
           <span className="font-bold text-2xl"> {price}</span>
           <span className="antialiased text-lg mx-2">{currency}</span>
-          <span className="flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 py-0.5 font-extrabold text-zinc-600">
-            {category}
-          </span>
-        </div>
-        <div className="flex-row">
-          {Array(rating)
-            .fill(0)
-            .map((_, i) => {
-              return (
-                <p key={i} className="px-1 font-bold text-zinc-800">
-                  {rating} ⭐
-                </p>
-              );
-            })}
-        </div>
-        <p className="antialiased text-base">{description}</p>
+            </div>
+          <div className='flex flex-col'>
+            <span className="flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 font-extrabold text-zinc-600">
+              {category}
+            </span>
+          </div>
+          <div className="flex-row mt-0.5">
+            {Array(rating)
+              .fill(0)
+              .map((_, i) => {
+                return (
+                  <p key={i} className="px-1 ml-3 mt-0 font-bold text-zinc-800">
+                    {rating} ⭐
+                  </p>
+                );
+              })}
+          </div>
+      </div>
+      
+        <p className="static antialiased mt-2 text-base max-prose">{description}</p>
+        
+      
+      <div className="grid grid-cols-2 space-x-2 w-fit md:ml-72">
+
         <button
-          className="bg-zinc-900 hover:bg-zinc-400 text-white font-bold py-2 px-4 rounded mt-4"
+          className="bg-red-300 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-zinc-800 font-bold py-2 px-4 rounded mt-4"
+          onClick={() => addProductHandler(product)}
+        >
+          View Details
+        </button>
+        <button
+          className="bg-zinc-800 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-zinc-900 text-red-300 antialiased font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
         >
           Add to basket
