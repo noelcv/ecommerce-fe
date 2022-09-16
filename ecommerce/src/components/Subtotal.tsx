@@ -8,7 +8,7 @@ const Subtotal: FunctionComponent = () => {
   const subtotal = useSelector((state: RootState) => state.subtotal.value);
   console.log(subtotal, 'subtotal');
   return (
-    <div className="flex flex-col space-x-2 max-w-xs bg-slate-100 border-gray-200 shadow-lg border-solid p-2 rounded-sm">
+    <div className="flex flex-col space-x-2 max-w-md bg-slate-100 border-gray-200 shadow-lg border-solid p-2 rounded-sm">
       <p>Subtotal({items} items):</p>
       <strong>{subtotal} EUR</strong>
       <CurrencyFormat

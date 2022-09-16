@@ -27,7 +27,7 @@ const CheckoutComponent: FunctionComponent = () => {
   };
 
   return (
-    <div className="md:ml-10 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10">
+    <div className="md:ml-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10">
        <div className="static max-w-xs">
         <Subtotal />
       </div>
