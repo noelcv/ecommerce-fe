@@ -10,7 +10,7 @@ import { RootState } from '../redux/store';
 const Header: FunctionComponent = () => {
   const count = useSelector((state: RootState) => state.counter.value);
   return (
-    <div className="grid grid-cols-12 md:flex md:flex-row bg-slate-800 sticky z-2 w-screen">
+    <div className="grid grid-cols-12 md:flex md:flex-row pb-2 bg-zinc-800 sticky z-2 w-screen">
       <div className="grid col-start-1">
         <Link to="/">
           <img className="w-34 -ml-7 mr-2" src={Mettakin} />
@@ -18,7 +18,7 @@ const Header: FunctionComponent = () => {
       </div>
       
       <div className="grid ml-16 col-start-1 col-end-2 grid-flow-col md:col-end-10 md:flex md:flex-row md:mr-16">
-         <Link to="/admin">
+        <Link to="/admin">
             <div className="flex flex-row justify-center -ml-16 mt-3 md:mr-20 md:mt-12 4xl:ml-96">
               <SettingsIcon fontSize="large" />
             </div>
@@ -43,16 +43,16 @@ const Header: FunctionComponent = () => {
       
       <div className="flex space-x-2 mt-16 ml-10 md:mt-0 md:ml-3 md:place-content-even 3xl:ml-80 3xl:space-x-20 4xl:space-x-20 4xl:ml-96">
         <div className="flex flex-col md:place-content-evenly">
-          <span className="text-zinc-100 text-xl">Hello</span>
-          <span className="text-zinc-300 text-xl mt-0.5">Sign In</span>
+          <span className="text-slate-200 text-xl">Hello</span>
+          <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">SignIn</span>
         </div>
         <div className="flex flex-col md:place-content-evenly">
-          <span className="text-zinc-100 text-xl">Your</span>
-          <span className="text-zinc-300 text-xl mt-0.5">Orders</span>
+          <span className="text-slate-200 text-xl">Your</span>
+          <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">Orders</span>
         </div>
         <div className="flex flex-col md:place-content-evenly">
-          <span className="text-zinc-100 text-xl">Your</span>
-          <span className="text-zinc-300 text-xl mt-0.5">Subscription</span>
+          <span className="text-slate-200 text-xl">Your</span>
+          <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">Subscription</span>
         </div>
       </div>
       
