@@ -13,16 +13,11 @@ const CheckoutComponent: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   const removeHandler = (product: ProductType) => {
-    console.log('this product', product);
-    console.log('this product id', product.id);
-    console.log('products before: ', products);
     if (product.price) {
       dispatch(removeProductFromBasket(product));
       dispatch(removeAmountFromSubtotal(product.price));
       dispatch(removeFromBasketCounter());
     }
-
-    console.log('products after: ', products);
     return;
   };
 
