@@ -55,10 +55,10 @@ const ProductsDashboard: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
-      <div className="max-w-screen min-w-sm">
-        <div className="flex flex-row items-center justify-center space-x-2">
-          <h2 className="ml-2 text-md md:ml-1 mt-10 -mb-1 md:text-3xl">
+    <div className="mx-auto -mt-5">
+      <div className="">
+        <div className="grid grid-cols-2 items-center justify-center space-x-2 md:space-x-20">
+          <h2 className="ml-2 grid col-start-1 text-md md:ml-1 mt-10 -mb-1 md:text-3xl">
             Products Overview
           </h2>
 
@@ -66,34 +66,34 @@ const ProductsDashboard: FunctionComponent = () => {
             <SideBtn
               onClick={() => dispatch(updateIsAddingNewProductState(true))}
               text="Add New Product"
-              className=" justify-center antialiased z-20 text-xs md:text-lg items-center mt-10 -ml-12 mr-12 md:ml-16 md:-mr-80 my-0 w-fit transition ease-in-out delay-100"
+              className="grid col-start-2 antialiased z-20 text-xs md:text-lg items-center mt-10 -ml-12 mr-12 md:ml-16 md:-mr-80 my-0 w-fit transition ease-in-out delay-100"
             />
           )}
         </div>
         {!isEditing && isAddingNewProduct && <AddProductForm />}
-        <div className="bg-red-500 -ml-3 md:grid md:grid-cols-1 z-50 max-w-xs md:max-w-4xl md:min-w-sm mx-px w-full">
-          <div className="md:grid md:grid-cols-2">
+        <div className="md:w-96 -ml-3 md:ml-2 md:grid md:grid-cols-2">
+          <div className="md:grid md:grid-cols-1 md:w-96">
             {!isEditing &&
               products.map((product, index) => {
                 return (
                   <div
-                    className="ml-1 mb-3 px-3 py-3 grid gap-1 grid-cols-1 md:grid md:grid-cols-2 items-center drop-shadow-2xl justify-center md:m-5 md:p-8 md:max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min md:max-w-xl"
+                    className="md:w-full md:my-2 md:py-2 md:px-2 grid grid-cols-2 m-2.5 p-6 max-h-auto z-10 md:grid-cols-2 static shadow-lg md:-ml-2 md:max-w-xl  bg-zinc-300 hover:bg-zinc-200"
                     key={index}
                   >
-                    <div className="static bottom-2 left-2 ">
+                    <div className="bottom-2 left-2 col-start-1 col-end-1">
                       <img
                         src={product.image}
                         alt=""
-                        className="w-32 h-32 md:w-32 md:h-32 md:-mt-80 static object-cover"
+                        className="w-32 h-32 static object-cover"
                       />
                     </div>
-                    <div className="static">
-                      <div className="inline-block ml-36 -mt-48 pt-7 md:-mt-16 md:ml-2">
-                        <p className="mt-6 font-bold text-lg mb-3">
+                
+                      <div className="inline-block ml-2 mt-0.5 md:-ml-5 col-start-2 col-end-2">
+                        <p className="inline-block -mt-2 font-bold text-xl md:text-2xl mb-3">
                           {product.name}
                         </p>
 
-                        <div className="product-price">
+                        <div className="product-font-bold text-xl md:text-2xl">
                           {' '}
                           <span className="font-bold text-2xl">
                             {' '}
@@ -102,32 +102,32 @@ const ProductsDashboard: FunctionComponent = () => {
                           <span className="antialiased text-lg mx-2">
                             {product.currency}
                           </span>
-                          <div className="product-rating">
+                          <div className="flex-row mt-0.5">
                             {Array(product.rating)
                               .fill(0)
                               .map((_, i) => {
                                 return <p key={i}>⭐</p>;
                               })}
                           </div>
-                        </div>
+          
                         <div className="-ml-36">
-                          <span className="mt-2 md:mt-8 md:ml-36 flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 py-0.5 font-extrabold text-sm text-zinc-600">
+                          <span className="mt-2 md:mt-8 md:ml-0 flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 py-0.5 font-extrabold text-sm text-zinc-600">
                             {product.category}
                           </span>
-                          <p className="antialiased text-base md:mt-12 md:-ml-9">
+                          <p className="grid col-start-1 col-end-2 md:col-end-3 static antialiased mt-2 text-base max-w-xs">
                             {product.description}
                           </p>
 
-                          <div className="ml-20 md:ml-32">
+                          <div className="grid col-start-1 col-end-2 space-x-2 w-fit md:ml-12">
                             <button
-                              className="mx-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                              className="bg-red-500 hover:bg-red-700 grid col-start-1 ml-16 min-w-12 max-h-16 md:max-h-14 w-21 text-zinc-200 font-bold py-2 px-4 rounded mt-4"
                               onClick={() => deleteHandler(product)}
                             >
                               Delete
                             </button>
 
                             <button
-                              className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
+                              className="bg-zinc-800 grid col-start-2 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-zinc-100 antialiased font-bold py-2 px-4 rounded mt-4"
                               onClick={() => editHandler(product)}
                             >
                               Edit
