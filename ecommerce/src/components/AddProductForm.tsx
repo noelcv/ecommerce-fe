@@ -43,14 +43,14 @@ const AddProductForm: FunctionComponent = () => {
 
   return (
     <form
-      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-5/5 drop-shadow-2xl"
+      className="grid gap-1 grid-cols-3 items-center justify-center m-5 p-8  max-h-auto z-10 bg-zinc-200  w-56 md:w-72 lg:w-80 xl:w-96 drop-shadow-2xl"
       onSubmit={submitHandler}
     >
-      <div className="flex flex-col">
-        <h3 className="font-bold text-#242424 text-3xl block">
+      <div className="flex flex-col w-56 md:w-72 lg:w-80 xl:w-96">
+        <h3 className="font-bold text-#242424 text-lg md:text-3xl block">
           Add new Product
         </h3>
-        <div className="grid col-span-2">
+        <div className="grid col-span">
           <div className="flex flex-col mb-5 mt-2">
             <label htmlFor="productName" className="text-lg">
               Product name
@@ -60,7 +60,7 @@ const AddProductForm: FunctionComponent = () => {
               type="text"
               name="productName"
               placeholder="What is the product's name?"
-              className="bg-zinc-300 text-zinc-900 font-bold h-10 "
+              className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
               required
             />
           </div>
@@ -73,7 +73,7 @@ const AddProductForm: FunctionComponent = () => {
               type="text"
               name="productDescription"
               placeholder="What is the product all about?"
-              className="bg-zinc-300 text-zinc-900 font-bold h-10"
+              className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
             />
           </div>
           <div className="flex flex-col mb-5 mt-2">
@@ -85,12 +85,12 @@ const AddProductForm: FunctionComponent = () => {
               type="text"
               name="productImage"
               placeholder="Do you have a nice picture?"
-              className="bg-zinc-300 text-zinc-900 font-bold h-10"
+              className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
             />
           </div>
         </div>
         <div className="flex flex-col mb-5 mt-2">
-          <div className="flex flex-row">
+          <div className="flex flex-col md:flex-row">
             <div className="flex flex-col">
               <label htmlFor="product-price" className="text-lg">
                 Price
@@ -100,7 +100,7 @@ const AddProductForm: FunctionComponent = () => {
                 type="number"
                 name="productPrice"
                 placeholder="How much is it ?"
-                className="bg-zinc-300 text-zinc-900 font-bold h-10"
+                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
                 required
               />
             </div>
@@ -113,7 +113,7 @@ const AddProductForm: FunctionComponent = () => {
               
               <select
                 name="productCurrency"
-                className="ml-3 block bg-zinc-300 text-zinc-900 font-bold h-14"
+                className="ml-0 md:ml-3 block bg-zinc-300 text-zinc-900 font-bold h-14 text-sm pl-1"
                 required
               >
                 <option value="EUR">€</option>
@@ -132,7 +132,7 @@ const AddProductForm: FunctionComponent = () => {
             </div>
             <select
               name="productCategory"
-              className="bg-zinc-300 text-zinc-900 font-bold h-14"
+              className="bg-zinc-300 text-zinc-900 font-bold h-14 text-sm pl-1"
               required
             >
               

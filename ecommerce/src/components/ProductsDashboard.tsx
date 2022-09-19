@@ -58,7 +58,7 @@ const ProductsDashboard: FunctionComponent = () => {
     <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
         <div className="flex flex-row items-center justify-center space-x-2">
-          <h2 className="-ml-24 text-2xl md:ml-1 mt-10 -mb-1 md:text-3xl">
+          <h2 className="ml-2 text-md md:ml-1 mt-10 -mb-1 md:text-3xl">
             Products Overview
           </h2>
 
@@ -66,12 +66,12 @@ const ProductsDashboard: FunctionComponent = () => {
             <SideBtn
               onClick={() => dispatch(updateIsAddingNewProductState(true))}
               text="Add New Product"
-              className=" justify-center antialiased text-lg items-center mt-10 ml-16 my-0 w-fit transition ease-in-out delay-100"
+              className=" justify-center antialiased z-20 text-xs md:text-lg items-center mt-10 -ml-12 mr-12 md:ml-16 md:-mr-80 my-0 w-fit transition ease-in-out delay-100"
             />
           )}
         </div>
         {!isEditing && isAddingNewProduct && <AddProductForm />}
-        <div className="bg-red-500 -ml-3 md:grid md:grid-cols-1 max-w-xs md:max-w-4xl md:min-w-sm mx-px w-full">
+        <div className="bg-red-500 -ml-3 md:grid md:grid-cols-1 z-50 max-w-xs md:max-w-4xl md:min-w-sm mx-px w-full">
           <div className="md:grid md:grid-cols-2">
             {!isEditing &&
               products.map((product, index) => {
