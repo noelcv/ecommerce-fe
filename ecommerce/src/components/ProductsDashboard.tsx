@@ -53,8 +53,8 @@ const ProductsDashboard: FunctionComponent = () => {
   return (
     <div className="flex justify-center mx-auto -mt-5 max-w-screen min-w-sm">
       <div className="max-w-screen min-w-sm">
-        <div className="flex flex-row items-center justify-center space-x-80">
-          <h2 className="ml-10 mt-10 -mb-1 text-3xl justify-center items-center">
+        <div className="flex flex-row items-center justify-center space-x-2">
+          <h2 className="ml-1 mt-10 -mb-1 text-3xl">
             Products Overview
           </h2>
 
@@ -67,23 +67,24 @@ const ProductsDashboard: FunctionComponent = () => {
           )}
         </div>
         {!isEditing && isAddingNewProduct && <AddProductForm />}
-        <div className="grid grid-cols-2 max-w-screen min-w-sm mx-px w-full">
+        <div className="bg-red-500 -ml-3 md:grid md:grid-cols-2 max-w-xs md:max-w-4xl md:min-w-sm mx-px w-full">
           {!isEditing &&
             products.map((product, index) => {
               return (
                 <div
-                  className="grid gap-1 grid-cols-2 items-center drop-shadow-2xl justify-center m-5 p-8 max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min max-w-prose"
+                  className="ml-1 mb-3 px-3 py-3 grid gap-1 grid-cols-1 md:grid md:grid-cols-2 items-center drop-shadow-2xl justify-center md:m-5 md:p-8 md:max-h-auto z-10 bg-zinc-200 hover:bg-zinc-300  min-w-min md:max-w-xl"
                   key={index}
                 >
+                  <div className="static bottom-2 left-2 ">
                   <img
                     src={product.image}
                     alt=""
-                    className="flex max-h-48 min-w-min max-w-full"
+                    className="w-32 h-32 md:w-32 md:h-32 md:-mt-80 static object-cover"
                   />
-                  <div className="product-info-result">
-                    <div className="img-wrapper"></div>
-                    <div className="product-result-details">
-                      <h3 className="product-name-result">{product.name}</h3>
+                  </div>
+                  <div className="static">
+                    <div className="inline-block ml-36 -mt-48 pt-7 md:-mt-16 md:ml-2">
+                      <p className="mt-6 font-bold text-lg mb-3">{product.name}</p>
 
                       <div className="product-price">
                         {' '}
@@ -94,23 +95,32 @@ const ProductsDashboard: FunctionComponent = () => {
                         <span className="antialiased text-lg mx-2">
                           {product.currency}
                         </span>
-                        <span className="flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 py-0.5 font-extrabold text-zinc-600">
-                          {product.category}
-                        </span>
-                      </div>
-
-                      <div className="product-rating">
+                        <div className="product-rating">
                         {Array(product.rating)
                           .fill(0)
                           .map((_, i) => {
                             return <p key={i}>⭐</p>;
                           })}
                       </div>
-
-                      <p className="antialiased text-base">
+                        
+                      </div>
+                      <div className="-ml-36">
+                      <span className="mt-2 md:mt-12 md:ml-36 flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 py-0.5 font-extrabold text-zinc-600">
+                          {product.category}
+                        </span>
+                      <p className="antialiased text-base md:pt-24">
                         {product.description}
                       </p>
-
+                      
+                      <div className="ml-20">
+                        
+                      <button
+                        className="mx-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => deleteHandler(product)}
+                      >
+                        Delete
+                      </button>
+                  
                       <button
                         className="bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded mr-2"
                         onClick={() => editHandler(product)}
@@ -118,12 +128,9 @@ const ProductsDashboard: FunctionComponent = () => {
                         Edit
                       </button>
 
-                      <button
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                        onClick={() => deleteHandler(product)}
-                      >
-                        Delete
-                      </button>
+                      
+                      </div>
+                      </div>
                     </div>
                   </div>
                 </div>
