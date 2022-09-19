@@ -1,7 +1,6 @@
 import { dividerClasses } from '@mui/material';
 import { FunctionComponent, useState } from 'react';
 import AddProductForm from './AddProductForm';
-import './Admin.css';
 import SideBtn from './btn/SideBtn';
 import ProductsDashboard from './ProductsDashboard';
 
@@ -9,10 +8,10 @@ const Admin: FunctionComponent = () => {
   const [state, setState] = useState<string>('');
 
   return (
-    <div className="flex grid-cols-3">
+    <div className="grid-cols-3 md:flex">
       <div className="pr-20">
         <h2 className="ml-20 text-3xl">Admin Panel</h2>
-        <div className="flex flex-col">
+        <div className="flex flex-row md:flex-col">
         
             <SideBtn
                 onClick={() => setState('myProducts')}
