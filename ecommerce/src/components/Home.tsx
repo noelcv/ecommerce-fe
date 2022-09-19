@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
 import { getAllProducts } from '../services/product';
-import Schwarz from '../assets/schwarz.svg';
+// import Schwarz from '../assets/schwarz.svg';
 import ProductComponent from './ProductComponent';
 
 const Home: FunctionComponent = () => {
@@ -32,8 +32,8 @@ const Home: FunctionComponent = () => {
       <div className="max-w-xs md:max-w-fit">
         <img
           className="-z-50 -mb-28  md:-mb-36 bg-red-300 gradient-mask-b-10 w-screen object-cover"
-          src={Schwarz} //TODO: Replace with CDN link
-          // src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+          // src={Schwarz} //TODO: Replace with CDN link
+          src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
           alt="hero-image"
         ></img>
 
