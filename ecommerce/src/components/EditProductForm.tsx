@@ -60,22 +60,22 @@ const EditProductForm: FunctionComponent = () => {
   return (
     <div className="-ml-2">
     <form
-      className="grid gap-1 pl-48 md:grid-cols-1 items-center justify-center  md:m-5 md:p-8  max-h-auto z-10 bg-zinc-200 max-w-screen"
+      className="grid gap-1 pl-48 md:grid-cols-1 items-center justify-center  md:m-5 md:p-8  max-h-auto md:w-96 z-10 bg-zinc-200"
       onSubmit={submitHandler}>        
       <div className="grid ml-4 mt-2">
         <img
           src={editableProduct.image}
-          alt=""
-          className="flex max-h-48 min-w-min max-w-full ml-2"
+          alt="product image"
+          className="flex max-h-48 min-w-min max-w-full ml-6 md:ml-2"
         />
       </div>
       <div className="grid col-span-2 ml-2">
         <div className="flex flex-col mb-5 mt-2">
-          <label htmlFor="editedNameInput" className="text-lg ml-4">
+          <label htmlFor="editedNameInput" className="text-lg ml-8 md:ml-4">
             Product Name
           </label>
           <input
-            className="bg-zinc-300 max-w-xs text-zinc-900 font-bold h-10 ml-4"
+            className="bg-zinc-300 max-w-xs text-zinc-900 font-bold h-10 ml-8 md:ml-4"
             id="editableProduct-name"
             defaultValue={editableProduct.name}
             name="editedNameInput"
@@ -84,11 +84,11 @@ const EditProductForm: FunctionComponent = () => {
         <div className="flex flex-col mb-5 mt-2 ml-2">
           <div className="flex flex-row">
             <div className="flex flex-col">
-              <label htmlFor="editedPriceInput" className="text-lg ml-2">
+              <label htmlFor="editedPriceInput" className="text-lg ml-6 md:ml-2">
                 Price
               </label>
               <input
-                className="bg-zinc-300 text-zinc-900 font-bold h-10 ml-2"
+                className="bg-zinc-300 text-zinc-900 font-bold h-10 ml-6 md:ml-2"
                 id="editableProduct-price"
                 defaultValue={editableProduct.price.toString()}
                 name="editedPriceInput"
@@ -111,22 +111,22 @@ const EditProductForm: FunctionComponent = () => {
           </div>
         </div>
         <div className="flex flex-col mb-5 mt-2 ml-2">
-          <label htmlFor="editedDescriptionInput" className="text-lg ml-2">
+          <label htmlFor="editedDescriptionInput" className="text-lg ml-6 md:ml-2">
             Description
           </label>
           <input
-            className="bg-zinc-300 max-w-xs text-zinc-900 font-bold h-10 ml-2"
+            className="bg-zinc-300 max-w-xs text-zinc-900 font-bold h-10 ml-6 md:ml-2"
             id="editableProduct-description"
             defaultValue={editableProduct.description}
             name="editedDescriptionInput"
           />
         </div>
         <div className="flex flex-col mb-5 mt-2 ml-2">
-          <label htmlFor="editedImageInput" className="text-lg ml-2">
+          <label htmlFor="editedImageInput" className="text-lg ml-6 md:ml-2">
             Image
           </label>
           <input
-            className="bg-zinc-300 max-w-xs text-zinc-900 font-bold h-10 ml-2"
+            className="bg-zinc-300 max-w-xs text-zinc-900 font-bold h-10 ml-6 md:ml-2"
             id="editableProduct-imageUrl"
             defaultValue={editableProduct.image}
             name="editedImageInput"
@@ -134,13 +134,13 @@ const EditProductForm: FunctionComponent = () => {
         </div>
         <div className="flex flex-col mb-5 mt-2 ml-2">
           <div className="flex flex-row">
-            <label htmlFor="editedCategoryInput" className="text-lg ml-2">
+            <label htmlFor="editedCategoryInput" className="text-lg ml-6 md:ml-2">
               Category
             </label>
           </div>
           <select
             defaultValue={editableProduct.category}
-            className="bg-zinc-300 text-zinc-900 font-bold h-10 mr-80 ml-2"
+            className="bg-zinc-300 text-zinc-900 font-bold h-10 mr-80 ml-6 md:ml-2"
             name="editedCategoryInput"
           >
             <option value="course">Course</option>
@@ -152,7 +152,7 @@ const EditProductForm: FunctionComponent = () => {
             <option value="retreat">Retreat</option>
           </select>
         </div>
-        <div className="mt-2 space-x-2 flex flex-end ml-12 md:ml-96">
+        <div className="mt-2 space-x-2 flex flex-end ml-16 md:ml-48">
           <button
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => cancelHandler()}
