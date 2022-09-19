@@ -1,5 +1,4 @@
-import React, { FunctionComponent } from 'react'
-import Header from '../components/Header'
+import { FunctionComponent } from 'react'
 import Home from '../components/Home'
 
 const Homepage: FunctionComponent = () => {

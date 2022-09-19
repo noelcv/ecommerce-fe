@@ -36,19 +36,17 @@ const ProductComponent: FunctionComponent<ProductType> = ({
   };
 
   return (
-    <div className="shadow-lg md:ml-10 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10 bg-zinc-300 hover:bg-zinc-200">
-      <div className="static">
-        <div className="static bottom-2 left-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 static shadow-lg md:ml-10 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10 bg-zinc-300 hover:bg-zinc-200">
+        <div className="bottom-2 left-2 col-start-1 col-end-1">
           <img src={image} alt="" className="w-32 h-32 static object-cover" />
         </div>
-      </div>
-      <div className="inline-block ml-36 -mt-72 md:-mt-72 lg:ml-72">
-        <p className="mt-6 font-bold text-2xl mb-3">{name}</p>
+      <div className="inline-block ml-2 mt-0.5 md:-ml-5 col-start-2 col-end-2">
+        <p className="inline-block -mt-2 font-bold text-xl md:text-2xl mb-3">{name}</p>
         <div className="flex">
-          <span className="font-bold text-2xl"> {price}</span>
+          <span className="font-bold text-xl md:text-2xl"> {price}</span>
           <span className="antialiased text-lg mx-2">{currency}</span>
             </div>
-          <div className='flex flex-col'>
+          <div className='static flex flex-col'>
             <span className="flex antialiased border-2 rounded-sm border-solid border-gray-900  w-fit px-2 font-extrabold text-zinc-600">
               {category}
             </span>
@@ -65,20 +63,20 @@ const ProductComponent: FunctionComponent<ProductType> = ({
               })}
           </div>
       </div>
+      <div className="grid col-start-1 col-span-2 md:col-span-3">
+        <p className="grid col-start-1 col-end-2 md:col-end-3 static antialiased mt-2 text-base max-w-xs">{description}</p>
+      </div>
       
-        <p className="static antialiased mt-2 text-base max-prose">{description}</p>
-        
-      
-      <div className="grid grid-cols-2 space-x-2 w-fit md:ml-72">
+      <div className="grid col-start-1 col-end-2 space-x-2 w-fit md:ml-72">
 
         <button
-          className="bg-red-300 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-zinc-800 font-bold py-2 px-4 rounded mt-4"
+          className="bg-red-300 grid col-start-1 ml-16 md:ml-12 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-zinc-800 font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
         >
           View Details
         </button>
         <button
-          className="bg-zinc-800 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-zinc-900 text-red-300 antialiased font-bold py-2 px-4 rounded mt-4"
+          className="bg-zinc-800 grid col-start-2 hover:bg-zinc-400 min-w-12 max-h-16 w-21 text-red-300 antialiased font-bold py-2 px-4 rounded mt-4"
           onClick={() => addProductHandler(product)}
         >
           Add to basket
