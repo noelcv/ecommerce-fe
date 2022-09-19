@@ -10,10 +10,10 @@ import { RootState } from '../redux/store';
 const Header: FunctionComponent = () => {
   const count = useSelector((state: RootState) => state.counter.value);
   return (
-    <div className="grid grid-cols-12 md:flex md:flex-row pb-2 bg-zinc-800 sticky z-2 w-screen">
+    <div className="grid grid-cols-12 md:flex md:flex-row pb-2 bg-zinc-800 sticky z-2 w-screen md:pr-32">
       <div className="grid col-start-1">
         <Link to="/">
-          <img className="w-34 -ml-16 md:-ml-14 mr-2" src={Mettakin} />
+          <img className="max-w-xs -ml-1 md:-ml-10 md:mt-2 mr-2" src={Mettakin} />
         </Link>
       </div>
       
@@ -36,8 +36,10 @@ const Header: FunctionComponent = () => {
             <div className="grid col-start-4 grid-flow-row ml-1 md:ml-2 -mt-92 md:mt-10 md:flex md:flex-row">
           <Link to="/checkout">
               <div className="flex flex-row items-center mt-3 ml-0">
+                <div className="-ml-1 md:ml-0">
               <ShoppingCartIcon fontSize="large" />
-              <span className="items-counter header-option-l2">{count}</span>
+                </div>
+              <span className="items-counter header-option-l2 -ml-1 md:ml-0">{count}</span>
               </div>
           </Link>
             </div>

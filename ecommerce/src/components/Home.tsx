@@ -28,10 +28,10 @@ const Home: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="flex max-w-xs">
+    <div className="flex">
       <div className="max-w-xs md:max-w-fit">
         <img
-          className="-z-50 -mb-36 bg-red-300 gradient-mask-b-10 w-screen object-cover"
+          className="-z-50 -mb-28  md:-mb-36 bg-red-300 gradient-mask-b-10 w-screen object-cover"
           src={Schwarz} //TODO: Replace with CDN link
           // src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
           alt="hero-image"

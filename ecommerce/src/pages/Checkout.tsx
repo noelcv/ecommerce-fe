@@ -1,6 +1,4 @@
-import React, { FunctionComponent } from 'react'
-import Header from '../components/Header'
-import Home from '../components/Home'
+import { FunctionComponent } from 'react'
 import CheckoutComponent from '../components/CheckoutComponent'
 
 const Homepage: FunctionComponent = () => {
