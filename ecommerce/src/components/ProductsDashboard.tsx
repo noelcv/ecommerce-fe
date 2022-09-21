@@ -6,13 +6,14 @@ import {
 } from '../redux/reducers/allProductsSlice';
 import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
-import { deleteProduct, getAllProducts } from '../services/product';
+import { deleteProduct } from '../services/product/product';
 import { ProductType } from '../types/ProductType';
 import EditProductForm from './EditProductForm';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 import SideBtn from './btn/SideBtn';
 import AddProductForm from './AddProductForm';
 import { updateIsAddingNewProductState } from '../redux/reducers/isAddingNewProductSlice';
+import { getAllProducts } from '../services/product/getAllProducts.service';
 
 const ProductsDashboard: FunctionComponent = () => {
   let products = useSelector((state: RootState) => state.allProducts.value);
@@ -102,7 +103,7 @@ const ProductsDashboard: FunctionComponent = () => {
                           <span className="antialiased text-lg mx-2">
                             {product.currency}
                           </span>
-                          <div className="flex-row mt-0.5">
+                          <div className="flex flex-row mt-0.5">
                             {Array(product.rating)
                               .fill(0)
                               .map((_, i) => {

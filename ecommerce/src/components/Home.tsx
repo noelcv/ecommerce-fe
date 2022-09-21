@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useQuery } from '@apollo/client';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
-import { getAllProducts } from '../services/product';
+import { getAllProducts } from '../services/product/getAllProducts.service';
 // import Schwarz from '../assets/schwarz.svg';
 import ProductComponent from './ProductComponent';
 import GET_ALL_PRODUCTS from '../graphQL/queries/GET_ALL_PRODUCTS';

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateProductInStore } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
 import { ProductType } from '../types/ProductType';
-import { editProduct } from '../services/product';
+import { editProduct } from '../services/product/product';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
 
 const EditProductForm: FunctionComponent = () => {
