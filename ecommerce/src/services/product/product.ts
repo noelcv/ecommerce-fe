@@ -1,6 +1,8 @@
-import { ProductType } from "../types/ProductType";
+import GET_ALL_PRODUCTS from "../../graphQL/queries/GET_ALL_PRODUCTS";
+import { ProductType } from "../../types/ProductType";
 
 const BASE_URL: string = "http://localhost:3000/products";
+const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
 
 export const addNewProduct = async (product: ProductType) => {
   try { 
@@ -13,17 +15,6 @@ export const addNewProduct = async (product: ProductType) => {
   }
   catch(error) {
     console.log('Error at addNewProduct Service: ', error)
-  }
-}
-
-export const getAllProducts = async () => {
-  try {
-    const response = await fetch(BASE_URL);
-    const products = await response.json();
-    return products;
-  }
-  catch(error) {
-    console.log('Error at getAllProducts Service: ', error)
   }
 }
 

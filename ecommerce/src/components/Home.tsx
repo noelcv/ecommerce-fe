@@ -1,15 +1,30 @@
 import { FunctionComponent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { useQuery } from '@apollo/client';
 import { allProducts } from '../redux/reducers/allProductsSlice';
 import { RootState } from '../redux/store';
-import { getAllProducts } from '../services/product';
+import { getAllProducts } from '../services/product/getAllProducts.service';
 // import Schwarz from '../assets/schwarz.svg';
 import ProductComponent from './ProductComponent';
+import GET_ALL_PRODUCTS from '../graphQL/queries/GET_ALL_PRODUCTS';
 
 const Home: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.allProducts.value);
+  // const { loading, error, data } = useQuery(GET_ALL_PRODUCTS)
+  
   const dispatch = useDispatch();
   console.log(products, 'products at Homepage');
+  
+  // const getProductsList = async () => {
+  //   try {
+  //     const products = await getAllProducts();
+  //     console.log(products, 'products at Homepage inside getAllProducts');
+  //     dispatch(allProducts(products));
+  //   } catch (err) {
+  //     console.log('Error getting Products List', err);
+  //   }
+  // };
+  
   
   const getProductsList = async () => {
     try {
@@ -20,7 +35,6 @@ const Home: FunctionComponent = () => {
       console.log('Error getting Products List', err);
     }
   };
-  
 
   useEffect(() => {
     getProductsList();
