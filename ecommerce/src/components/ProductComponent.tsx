@@ -51,17 +51,17 @@ const ProductComponent: FunctionComponent<ProductType> = ({
               {category}
             </span>
           </div>
-          <div className="flex-row mt-0.5">
+          {rating !== null && <div className="flex flex-row mt-0.5">
             {Array(rating)
               .fill(0)
               .map((_, i) => {
                 return (
-                  <p key={i} className="px-1 ml-3 mt-0 font-bold text-zinc-800">
-                    {rating} ⭐
+                  <p key={i} className="px-1 ml-0 mt-0 font-bold text-zinc-800">
+                    ⭐
                   </p>
                 );
-              })}
-          </div>
+              })} <span className="font-bold">{rating}/5</span>
+          </div>}
       </div>
       <div className="grid col-start-1 col-span-2 md:col-span-3">
         <p className="grid col-start-1 col-end-2 md:col-end-3 static antialiased mt-2 text-base max-w-xs">{description}</p>

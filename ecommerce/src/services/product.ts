@@ -1,6 +1,8 @@
+import GET_ALL_PRODUCTS from "../graphQL/queries/GET_ALL_PRODUCTS";
 import { ProductType } from "../types/ProductType";
 
 const BASE_URL: string = "http://localhost:3000/products";
+const GRAPHQL_URL: string = "http://localhost:3000/graphql";
 
 export const addNewProduct = async (product: ProductType) => {
   try { 
@@ -18,8 +20,29 @@ export const addNewProduct = async (product: ProductType) => {
 
 export const getAllProducts = async () => {
   try {
-    const response = await fetch(BASE_URL);
-    const products = await response.json();
+    const response = await fetch("http://localhost:3000/graphql", {
+      method: "POST",
+      headers: {"Content-type":"application/json"},
+      body: JSON.stringify({
+        query: `query GetAllProducts {
+          getAllProducts {
+            id
+            name
+            price
+            currency
+            rating
+            image
+            category
+            description
+          }
+        }`
+      })
+      
+      
+    });
+    const parsedResponse = await response.json();
+    console.log('parsedResponse', parsedResponse)
+    const products = parsedResponse.data.getAllProducts;
     return products;
   }
   catch(error) {
