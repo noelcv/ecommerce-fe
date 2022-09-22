@@ -1,43 +1,45 @@
-import ProductComponent from "../../components/ProductComponent";
 import { ProductType } from "../../types/ProductType";
 const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
 
-export const addNewProduct = async (product: ProductType) => {
-  try { 
+export const editProduct = async (product: ProductType) => {
+  try {
     return await fetch(GRAPHQL_API_URL, {
       method: "POST",
       headers: {"Content-type":"application/json"},
       body: JSON.stringify({
         variables: {input: product},
-        query: `mutation AddNewProduct($input: ProductInput!) {
-          addNewProduct(input: $input) {
+        query: `
+        mutation UpdateProduct($input: EditProductInput!) {
+          updateProduct(input: $input) {
             code
             success
             message
             product {
               id
               name
-              description
               price
               currency
+              description
               image
               category
-              location
+              rating
               date
+              location
+              createdAt
+              updatedAt
               isCancelable
               cancelationPolicy
               isRefundable
               refundPolicy
-              quantityInStock
               venueCapacity
+              quantityInStock
             }
           }
         }`
       })
     })
- 
   }
   catch(error) {
-    console.log('Error at addNewProduct Service: ', error)
+    console.log('Error at editProduct Service: ', error)
   }
 }
