@@ -6,7 +6,7 @@ import {
 } from '../redux/reducers/allProductsSlice';
 import { updateProduct } from '../redux/reducers/productSlice';
 import { RootState } from '../redux/store';
-import { deleteProduct } from '../services/product/product';
+import { deleteProduct } from '../services/product/deleteProduct.service';
 import { ProductType } from '../types/ProductType';
 import EditProductForm from './EditProductForm';
 import { updateEditingState } from '../redux/reducers/isEditingSlice';
@@ -39,7 +39,7 @@ const ProductsDashboard: FunctionComponent = () => {
 
   const deleteHandler = async (product: ProductType) => {
     try {
-      console.log(product, 'product to delete');
+      
       const deleted = await deleteProduct(product);
       if (deleted) {
         console.log('deleted successfully', deleted);
