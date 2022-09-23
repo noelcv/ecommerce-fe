@@ -28,7 +28,6 @@
     "@types/react-currency-format": "^1.0.0",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
-    "apollo": "^2.34.0",
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
     "tailwind-gradient-mask-image": "^1.0.0",
