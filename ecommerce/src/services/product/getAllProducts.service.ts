@@ -1,8 +1,6 @@
-const GRAPHQL_API: string = import.meta.env.GRAPHQL_API || 'http://localhost:3000/graphql';
-
 export const getAllProducts = async () => {
   try {
-    const response = await fetch(GRAPHQL_API, {
+    const response = await fetch(import.meta.env.VITE_GRAPHQL_API, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
