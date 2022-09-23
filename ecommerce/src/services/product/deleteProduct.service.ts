@@ -1,4 +1,5 @@
 const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
+
 import { ProductType } from "../../types/ProductType";
 
 export const deleteProduct = async (product: ProductType) => {

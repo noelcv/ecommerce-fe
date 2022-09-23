@@ -1,6 +1,5 @@
-
-
 const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
+
 
 export const getAllProducts = async () => {
   try {

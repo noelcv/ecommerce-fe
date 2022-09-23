@@ -1,4 +1,3 @@
-import ProductComponent from "../../components/ProductComponent";
 import { ProductType } from "../../types/ProductType";
 const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
 

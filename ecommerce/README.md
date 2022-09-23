@@ -1,4 +1,4 @@
-# E-Commerce React + Redux + Tailwind
+# E-Commerce React + Redux + GraphQL + Tailwind
 
 To test the Mocks API run the following commands:
 `cd src/mocks`
@@ -8,8 +8,6 @@ To test the Mocks API run the following commands:
 ## Roadmap
 
 - Product Component - 
-
-
 
 - Authentication
 - Hello - User
