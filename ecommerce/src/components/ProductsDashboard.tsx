@@ -62,7 +62,6 @@ const ProductsDashboard: FunctionComponent = () => {
           <h2 className="ml-2 grid col-start-1 text-md md:ml-1 mt-10 -mb-1 md:text-3xl">
             Products Overview
           </h2>
-
           {!isEditing && (
             <SideBtn
               onClick={() => dispatch(updateIsAddingNewProductState(true))}
@@ -74,7 +73,7 @@ const ProductsDashboard: FunctionComponent = () => {
         {!isEditing && isAddingNewProduct && <AddProductForm />}
         <div className="md:w-96 -ml-3 md:ml-2 md:grid md:grid-cols-2">
           <div className="md:grid md:grid-cols-1 md:w-96">
-            {!isEditing &&
+            {!isEditing && products ? (
               products.map((product, index) => {
                 return (
                   <div
@@ -139,7 +138,7 @@ const ProductsDashboard: FunctionComponent = () => {
                     </div>
                   </div>
                 );
-              })}
+              })): !isEditing && !products ? <p className='ml-5 font-bold'>You don't have any products yet</p> : null }
           </div>
           <div className="-ml-2">{isEditing && <EditProductForm />}</div>
         </div>

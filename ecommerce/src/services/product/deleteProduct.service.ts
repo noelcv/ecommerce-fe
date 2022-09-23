@@ -1,13 +1,14 @@
-const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
-import { ProductType } from "../../types/ProductType";
+const GRAPHQL_API: string = import.meta.env.GRAPHQL_API || 'http://localhost:3000/graphql';
+
+import { ProductType } from '../../types/ProductType';
 
 export const deleteProduct = async (product: ProductType) => {
   try {
-    return await fetch(GRAPHQL_API_URL, {
-      method: "POST",
-      headers: {"Content-type":"application/json"},
+    return await fetch(GRAPHQL_API, {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
-        variables: {deleteProductId: product.id},
+        variables: { deleteProductId: product.id },
         query: `
         mutation DeleteProduct($deleteProductId: String!) {
           deleteProduct(id: $deleteProductId) {
@@ -24,11 +25,10 @@ export const deleteProduct = async (product: ProductType) => {
               updatedAt
             }
           }
-        }`
-      })
-    })
+        }`,
+      }),
+    });
+  } catch (error) {
+    console.log('Error at deleteProduct Service: ', error);
   }
-  catch(error) {
-    console.log('Error at deleteProduct Service: ', error)
-  } 
-}
+};
