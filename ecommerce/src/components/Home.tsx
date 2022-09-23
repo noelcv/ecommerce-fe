@@ -16,18 +16,19 @@ const Home: FunctionComponent = () => {
 
   const getProductsList = async () => {
     try {
+      setLoading(true);
       const products = await getAllProducts();
-      console.log(products, 'products at Homepage inside getAllProducts');
-      dispatch(allProducts(products));
+      if (products) {
+        dispatch(allProducts(products));
+        setLoading(false)
+      }
     } catch (err) {
       console.log('Error getting Products List', err);
     }
   };
 
   useEffect(() => {
-    setLoading(true);
-    console.log('loading...');
-    getProductsList().then(() => setLoading(false));
+    getProductsList();
   }, []);
 
   return (
