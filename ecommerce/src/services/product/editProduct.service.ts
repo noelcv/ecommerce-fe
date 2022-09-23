@@ -1,13 +1,13 @@
-import { ProductType } from "../../types/ProductType";
-const GRAPHQL_API_URL: string = "http://localhost:3000/graphql";
+import { ProductType } from '../../types/ProductType';
+const GRAPHQL_API: string = process.env.GRAPHQL_API || 'http://localhost:3000/graphql';
 
 export const editProduct = async (product: ProductType) => {
   try {
-    return await fetch(GRAPHQL_API_URL, {
-      method: "POST",
-      headers: {"Content-type":"application/json"},
+    return await fetch(GRAPHQL_API, {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
-        variables: {input: product},
+        variables: { input: product },
         query: `
         mutation UpdateProduct($input: EditProductInput!) {
           updateProduct(input: $input) {
@@ -35,11 +35,10 @@ export const editProduct = async (product: ProductType) => {
               quantityInStock
             }
           }
-        }`
-      })
-    })
+        }`,
+      }),
+    });
+  } catch (error) {
+    console.log('Error at editProduct Service: ', error);
   }
-  catch(error) {
-    console.log('Error at editProduct Service: ', error)
-  }
-}
+};
