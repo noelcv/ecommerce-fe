@@ -1,5 +1,5 @@
 import { ProductType } from '../../types/ProductType';
-const GRAPHQL_API: string = process.env.GRAPHQL_API || 'http://localhost:3000/graphql';
+const GRAPHQL_API: string = import.meta.env.GRAPHQL_API ||'http://localhost:3000/graphql';
 
 export const editProduct = async (product: ProductType) => {
   try {

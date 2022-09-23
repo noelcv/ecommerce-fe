@@ -1,4 +1,4 @@
-const GRAPHQL_API: string = process.env.GRAPHQL_API || 'http://localhost:3000/graphql';
+const GRAPHQL_API: string = import.meta.env.GRAPHQL_API || 'http://localhost:3000/graphql';
 
 export const getAllProducts = async () => {
   try {
