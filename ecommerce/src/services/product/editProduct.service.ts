@@ -1,9 +1,8 @@
 import { ProductType } from '../../types/ProductType';
-const GRAPHQL_API: string = import.meta.env.GRAPHQL_API ||'http://localhost:3000/graphql';
 
 export const editProduct = async (product: ProductType) => {
   try {
-    return await fetch(GRAPHQL_API, {
+    return await fetch(import.meta.env.VITE_GRAPHQL_API, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
