@@ -1,0 +1,25 @@
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+} from 'firebase/auth';
+
+import app from './firebase';
+
+const auth = getAuth(app);
+
+const googleProvider = new GoogleAuthProvider();
+
+
+export const signInWithGoogle = async () => {
+  try {
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
+    return user;
+  } catch (error: unknown) {
+    console.error('Error signing in user with Google: ', error);
+  }
+}
