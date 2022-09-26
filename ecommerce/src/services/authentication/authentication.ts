@@ -10,7 +10,7 @@ import {
 
 import app from './firebase';
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -36,7 +36,7 @@ export const logInWithEmailAndPasswordService = async (email: string, password: 
   }
 }
 
-export const registerWithEmailAndPasswordService = async (email: string, password: string) => {
+export const registerWithEmailAndPassword = async (email: string, password: string) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
