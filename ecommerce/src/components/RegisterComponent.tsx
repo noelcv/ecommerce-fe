@@ -44,11 +44,11 @@ const RegisterComponent: FunctionComponent = () => {
       <div>{error && error.message}</div>
       <form onSubmit={registerNewUserHandler}>
         <div className="ml-flex flex-col justify-center w-56 ml-2 sm:ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12 3xl:ml-20 md:w-72 lg:w-80 xl:w-96">
-          <h3 className="font-bold text-#242424 text-lg md:text-3xl block">
+          <h3 className="font-bold text-#242424 -mt-0.5 -mb-0.5 md:mb-0 md:mt-0 text-lg md:text-3xl block">
             New to Mindfulness.vc? Register here
           </h3>
           <div className="grid col-span">
-            <div className="flex flex-col mb-5 mt-2">
+            <div className="flex flex-col mb-5 md:mt-2">
               <label htmlFor="registerName" className="text-lg">
                 Name
               </label>
@@ -61,7 +61,7 @@ const RegisterComponent: FunctionComponent = () => {
                 required
               />
             </div>
-            <div className="flex flex-col mb-5 mt-2">
+            <div className="flex flex-col mb-5 md:mt-2">
               <label htmlFor="registerEmail" className="text-lg">
                 Email
               </label>
@@ -75,7 +75,7 @@ const RegisterComponent: FunctionComponent = () => {
               />
             </div>
 
-            <div className="flex flex-col mb-5 mt-2">
+            <div className="flex flex-col mb-5 md:mt-2">
               <label htmlFor="registerPassword" className="text-lg">
                 Password
               </label>
@@ -89,7 +89,7 @@ const RegisterComponent: FunctionComponent = () => {
               />
             </div>
 
-            <div className="ml-6 md:ml-24 xl:ml-32 mt-2 space-x-2 flex flex-end">
+            <div className="ml-6 md:ml-24 xl:ml-32 md:mt-2 space-x-2 flex flex-end">
               <button
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                 onClick={() =>
@@ -104,21 +104,26 @@ const RegisterComponent: FunctionComponent = () => {
               >
                 Register
               </button>
-              
             </div>
-            <span className="mt-1.5 ml-28 md:ml-36 font-extrabold text-xl">- or -</span>
-            
-            <button className="flex mt-2 ml-8 md:ml-12 w-fit">
+            <div className="flex flex-col justify-center">
+              <span className="mt-1.5 ml-28 md:ml-36 font-extrabold text-xl">
+                - or -
+              </span>
+
+              <button className="flex mt-2 ml-8 md:ml-12 w-fit bg-blue-900">
+                <GoogleIcon fontSize="large" />
+                <span className="mt-1.5 ml-2">Register With Google</span>
+              </button>
               
-             <GoogleIcon fontSize="large" />
-             <span className="mt-1.5 ml-2">Register With Google</span>
-        </button>
+              <h3 className="ml-8 md:ml-16">Already have an account?</h3>
+              <button className="flex mt-2 ml-24 md:ml-12 w-fit bg-red-300 text-zinc-900 font-bold">
+              Login
+              </button>
+            </div>
           </div>
         </div>
       </form>
-      <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end">
-        
-      </div>
+      <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>
     </div>
   );
 };
