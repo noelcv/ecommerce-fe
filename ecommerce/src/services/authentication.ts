@@ -23,3 +23,14 @@ export const signInWithGoogle = async () => {
     console.error('Error signing in user with Google: ', error);
   }
 }
+
+
+export const logInWithEmailAndPasswordService = async (email: string, password: string) => {
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    return user;
+  } catch (error: unknown) {
+    console.error('Error signing in user with email and password: ', error);
+  }
+}
