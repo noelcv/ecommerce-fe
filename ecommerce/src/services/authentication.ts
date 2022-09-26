@@ -45,3 +45,19 @@ export const registerWithEmailAndPasswordService = async (email: string, passwor
     console.error('Error signing in user with email and password: ', error);
   }
 }
+
+export const sendPasswordResetEmailService = async (email: string) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+  } catch (error: unknown) {
+    console.error('Error sending password reset email: ', error);
+  }
+}
+
+export const logOutService = async () => {
+  try {
+    await signOut(auth);
+  } catch (error: unknown) {
+    console.error('Error signing out user: ', error);
+  }
+}
