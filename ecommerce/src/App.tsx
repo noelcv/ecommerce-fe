@@ -3,8 +3,11 @@ import Header from './components/Header';
 import AdminPage from './pages/Admin';
 import Checkout from './pages/Checkout';
 import Homepage from './pages/Homepage';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
+  // const [user, loading] = useAuthState();
+  
   return (
     <Router>
       <div className="max-w-xs m-0 top-0">
