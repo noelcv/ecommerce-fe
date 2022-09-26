@@ -2,6 +2,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
@@ -28,6 +29,16 @@ export const signInWithGoogle = async () => {
 export const logInWithEmailAndPasswordService = async (email: string, password: string) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    return user;
+  } catch (error: unknown) {
+    console.error('Error signing in user with email and password: ', error);
+  }
+}
+
+export const registerWithEmailAndPasswordService = async (email: string, password: string) => {
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     return user;
   } catch (error: unknown) {
