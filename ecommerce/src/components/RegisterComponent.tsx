@@ -49,14 +49,40 @@ const RegisterComponent: FunctionComponent = () => {
           </h3>
           <div className="grid col-span">
             <div className="flex flex-col mb-5 md:mt-2">
-              <label htmlFor="registerName" className="text-lg">
-                Name
+              <label htmlFor="registerFirstName" className="text-lg">
+               First Name
               </label>
               <input
-                id="register-name"
+                id="register-first-name"
                 type="text"
-                name="registerName"
-                placeholder="What is your name?"
+                name="registerFirstName"
+                placeholder="What is your first name?"
+                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                required
+              />
+            </div>
+            <div className="flex flex-col mb-5 md:mt-2">
+              <label htmlFor="registerLastName" className="text-lg">
+                Last Name
+              </label>
+              <input
+                id="register-last-name"
+                type="text"
+                name="registerLastName"
+                placeholder="What is your surname?"
+                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                required
+              />
+            </div>
+            <div className="flex flex-col mb-5 md:mt-2">
+              <label htmlFor="registerUsername" className="text-lg">
+                Username
+              </label>
+              <input
+                id="register-username"
+                type="text"
+                name="registerUsername"
+                placeholder="How would like to be called?"
                 className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
                 required
               />
@@ -105,12 +131,16 @@ const RegisterComponent: FunctionComponent = () => {
                 Register
               </button>
             </div>
-            <div className="flex flex-col justify-center">
+            
+          </div>
+        </div>
+      </form>
+      <div className="flex flex-col ml-1 md:ml-12">
               <span className="mt-1.5 ml-28 md:ml-36 font-extrabold text-xl">
                 - or -
               </span>
 
-              <button className="flex mt-2 ml-8 md:ml-12 w-fit bg-blue-900">
+              <button className="flex mt-2 ml-8 md:ml-12 w-fit bg-blue-900" onClick={signInWithGoogle}>
                 <GoogleIcon fontSize="large" />
                 <span className="mt-1.5 ml-2">Register With Google</span>
               </button>
@@ -120,9 +150,6 @@ const RegisterComponent: FunctionComponent = () => {
               Login
               </button>
             </div>
-          </div>
-        </div>
-      </form>
       <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>
     </div>
   );
