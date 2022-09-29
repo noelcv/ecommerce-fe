@@ -12,9 +12,11 @@ import GoogleIcon from '@mui/icons-material/Google';
 const AccountTypeComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
   const [selectedOption, setSelectedOption] = useState<string>('BASIC')
+  const navigate = useNavigate();
+  
+  //Evaluate if option matches selected option
+  const isOptionSelected = (value: string) => selectedOption  === value;
 
-  const isOptionSelected = (value: string) => selectedOption  === value
-  console.log(selectedOption, 'selected NOW')
   const changeSelectedOption = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSelectedOption(e.currentTarget.value)
   }
@@ -71,11 +73,9 @@ const AccountTypeComponent: FunctionComponent = () => {
         </fieldset>
         <div className="ml-2 md:ml-24 xl:ml-32 md:mt-2 space-x-2 flex flex-end">
           <button
-            type="reset"
+            type="button"
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() =>
-              console.log('back to homepage replace with navigate')
-            }
+            onClick={() => navigate('/')}
           >
             Cancel
           </button>
