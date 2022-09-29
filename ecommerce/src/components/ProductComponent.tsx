@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { ProductType } from '../types/ProductType';
 import type { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToBasketCounter } from '../redux/reducers/counterSlice';
-import { addAmountToSubtotal } from '../redux/reducers/subtotalSlice';
-import { addProductToBasket } from '../redux/reducers/basketSlice';
+import { addToBasketCounter } from '../redux/reducers/product/counterSlice';
+import { addAmountToSubtotal } from '../redux/reducers/product/subtotalSlice';
+import { addProductToBasket } from '../redux/reducers/product/basketSlice';
 
 const ProductComponent: FunctionComponent<ProductType> = ({
   id,
@@ -60,7 +60,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
                     ⭐
                   </p>
                 );
-              })} <span className="font-bold">{rating}/5</span>
+              })} <span className="font-bold hidden md:inline-block">{rating}/5</span>
           </div>}
       </div>
       <div className="grid col-start-1 col-span-2 md:col-span-3">

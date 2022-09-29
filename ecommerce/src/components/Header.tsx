@@ -48,7 +48,9 @@ const Header: FunctionComponent = () => {
       <div className="flex space-x-2 mt-12 -ml-2 md:mt-0 md:ml-3 md:place-content-even 3xl:ml-80 3xl:space-x-20 4xl:space-x-20 4xl:ml-96">
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-slate-200 text-xl">Hello</span>
+          <Link to='/register'>
           <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">SignIn</span>
+          </Link>
         </div>
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-slate-200 text-xl">Your</span>

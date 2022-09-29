@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import allProductsSlice from './reducers/allProductsSlice'
-import basketSlice from './reducers/basketSlice'
-import counterSlice from './reducers/counterSlice'
-import isAddingNewProductSlice, { isAddingNewProduct } from './reducers/isAddingNewProductSlice'
-import isEditingSlice from './reducers/isEditingSlice'
-import productSlice from './reducers/productSlice'
-import subtotalSlice from './reducers/subtotalSlice'
+import allProductsSlice from './reducers/product/allProductsSlice'
+import basketSlice from './reducers/product/basketSlice'
+import counterSlice from './reducers/product/counterSlice'
+import isAddingNewProductSlice, { isAddingNewProduct } from './reducers/product/isAddingNewProductSlice'
+import isEditingSlice from './reducers/product/isEditingSlice'
+import productSlice from './reducers/product/productSlice'
+import subtotalSlice from './reducers/product/subtotalSlice'
 
 export const store = configureStore({
   reducer: {

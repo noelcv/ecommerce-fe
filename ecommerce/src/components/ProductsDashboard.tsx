@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   allProducts,
   removeProductFromStore,
-} from '../redux/reducers/allProductsSlice';
-import { updateProduct } from '../redux/reducers/productSlice';
+} from '../redux/reducers/product/allProductsSlice';
+import { updateProduct } from '../redux/reducers/product/productSlice';
 import { RootState } from '../redux/store';
 import { deleteProduct } from '../services/product/deleteProduct.service';
 import { ProductType } from '../types/ProductType';
 import EditProductForm from './EditProductForm';
-import { updateEditingState } from '../redux/reducers/isEditingSlice';
+import { updateEditingState } from '../redux/reducers/product/isEditingSlice';
 import SideBtn from './btn/SideBtn';
 import AddProductForm from './AddProductForm';
-import { updateIsAddingNewProductState } from '../redux/reducers/isAddingNewProductSlice';
+import { updateIsAddingNewProductState } from '../redux/reducers/product/isAddingNewProductSlice';
 import { getAllProducts } from '../services/product/getAllProducts.service';
 
 const ProductsDashboard: FunctionComponent = () => {

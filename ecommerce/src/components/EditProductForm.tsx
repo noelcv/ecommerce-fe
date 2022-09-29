@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProductInStore } from '../redux/reducers/allProductsSlice';
+import { updateProductInStore } from '../redux/reducers/product/allProductsSlice';
 import { RootState } from '../redux/store';
 import { ProductType } from '../types/ProductType';
 import { editProduct } from '../services/product/editProduct.service';
-import { updateEditingState } from '../redux/reducers/isEditingSlice';
+import { updateEditingState } from '../redux/reducers/product/isEditingSlice';
 
 const EditProductForm: FunctionComponent = () => {
   const editableProduct = useSelector(

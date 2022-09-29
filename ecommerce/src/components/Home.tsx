@@ -1,7 +1,7 @@
 import { FunctionComponent, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useQuery } from '@apollo/client';
-import { allProducts } from '../redux/reducers/allProductsSlice';
+import { allProducts } from '../redux/reducers/product/allProductsSlice';
 import { RootState } from '../redux/store';
 import { getAllProducts } from '../services/product/getAllProducts.service';
 // import Schwarz from '../assets/schwarz.svg';
