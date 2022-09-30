@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -20,13 +20,14 @@ const RegisterComponent: FunctionComponent = () => {
   const selectedRole = useSelector((state: RootState) => state.createUser.value.role);
   const ourUser = useSelector((state: RootState) => state.createUser.value);
   
+  
   console.log("our user now", ourUser)
-  // const navigate = useNavigate();
-  // // useEffect (() => {
-  // //   if (user !== null) {
-  // //     navigate('/')
-  // //   }
-  // // }, [user])
+  const navigate = useNavigate();
+  useEffect (() => {
+    if (ourUser.id && ourUser.id.length > 0) {
+      navigate('/')
+    }
+  }, [ourUser])
 
   const signInWithGoogleHandler = async (): Promise<void> => {
     try {
@@ -46,8 +47,6 @@ const RegisterComponent: FunctionComponent = () => {
         role: selectedRole as RoleEnum
       }
       
-      
-  
       //communicate with backend to create user in database
       const responseUser: UserType = await createUser(newUser)
       
