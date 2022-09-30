@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Subtotal from './Subtotal';
 import { RootState } from '../redux/store';
 import { ProductType } from '../types/ProductType';
-import { removeProductFromBasket } from '../redux/reducers/basketSlice';
-import { removeFromBasketCounter } from '../redux/reducers/counterSlice';
-import { removeAmountFromSubtotal } from '../redux/reducers/subtotalSlice';
+import { removeProductFromBasket } from '../redux/reducers/product/basketSlice';
+import { removeFromBasketCounter } from '../redux/reducers/product/counterSlice';
+import { removeAmountFromSubtotal } from '../redux/reducers/product/subtotalSlice';
 
 const CheckoutComponent: FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.basket.value);

@@ -1,5 +1,5 @@
 import { cancelationPolicyType } from "./CancelationPolicyType";
-import { Customer } from "./CustomerType";
+import { UserType } from "./UserType";
 import { LocationType } from "./LocationType";
 
 
@@ -19,5 +19,5 @@ export type ProductType = {
   isCancelable?: boolean;
   cancelationPolicy?: cancelationPolicyType;
   isRefundable?: boolean;
-  orderedBy?: Customer[]
+  purchasedBy?: UserType[];
 }

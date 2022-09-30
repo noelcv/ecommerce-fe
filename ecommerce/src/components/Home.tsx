@@ -1,7 +1,7 @@
 import { FunctionComponent, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useQuery } from '@apollo/client';
-import { allProducts } from '../redux/reducers/allProductsSlice';
+import { allProducts } from '../redux/reducers/product/allProductsSlice';
 import { RootState } from '../redux/store';
 import { getAllProducts } from '../services/product/getAllProducts.service';
 // import Schwarz from '../assets/schwarz.svg';
@@ -40,9 +40,9 @@ const Home: FunctionComponent = () => {
           src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
           alt="hero-image"
         ></img>
-        {isLoading && (
-          <div className="flex justify-center items-center -mt-12">
-            <div className="ml-96 z-50 w-12 h-12 bg-red">
+        {(isLoading &&
+          <div className="flex justify-center items-center -mt-40">
+            <div className="-ml-96 z-50 w-12 h-12 bg-red">
               <div className="animate-pulse border-8 mb-12">Loading</div>
               <div className="animate-pulse font-extrabold ml-3">
                 `-,-`
