@@ -22,9 +22,9 @@ const SignInPage: FunctionComponent = () => {
         // query gqlAPI with user.uid
         console.log('user signed in at component', user);
 
-        const token = await user
-          .getIdTokenResult()
-          .then((idTokenResult) => idTokenResult.token);
+        // const token = await user
+        //   .getIdTokenResult()
+        //   .then((idTokenResult) => idTokenResult.token);
         //TODO: send token to backend after updating schema
 
         //communicate with backend to create user in database
