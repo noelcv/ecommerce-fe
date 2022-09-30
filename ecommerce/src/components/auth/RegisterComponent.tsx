@@ -36,9 +36,10 @@ const RegisterComponent: FunctionComponent = () => {
         uid: user.uid,
         email: user.email as string,
         username: user.displayName as string,
-        profile: {
-          picture: user.photoURL as string
-        },
+        //TODO: update schema to include profile
+        // profile: {
+        //   picture: user.photoURL as string
+        // },
         role: role as RoleEnum
       }
       

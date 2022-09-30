@@ -1,37 +1,36 @@
-export async function createUser(isAuthUser: {
-  uid: string;
-  email: string;
-  displayName?: string;
-  userName?: string;
-}): Promise<any> {
+import { UserType } from "../../types/UserType";
+
+export async function createUser(newUser: UserType): Promise<any> {
   try {
-    const newUserData = {
-      uid: isAuthUser.uid,
-      email: isAuthUser.email,
-      userName: isAuthUser.displayName ? isAuthUser.displayName : 'new user',
-    };
-    console.log("newUserData at createUser service", newUserData)
+    console.log("newUserData at createUser service", newUser)
+    
+    
     //TODO: add user to database, but first adjust the schema in the GRAPHQL API
-    // const newProfile = await fetch(import.meta.env.VITE_GRAPHQL_API, {
-    //   method: 'POST',
-    //   headers: { 'Content-type': 'application/json' },
-    //   body: JSON.stringify({
-    //     query: `mutation CreateProfile($newUserData: ProfileInput!) {
-    //       createProfile(newUserData: $newUserData) {
-    //         id
-    //         uid
-    //         email
-    //         userName
-    //       } 
-    //     }`,
-    //     variables: {
-    //       newUserData,
-    //     },
-    //   }),
-    // });
-    // if (newProfile.ok) {
-    //   return await newProfile.json();
-    // }
+    const newProfile = await fetch(import.meta.env.VITE_GRAPHQL_API, {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        variables: { input: newUser },
+        query: `mutation CreateNewUser($input: UserInput!) {
+          createNewUser(input: $input) {
+            code
+            success
+            user {
+              id
+              uid
+              email
+              username
+              role
+            }
+          }
+        }`,
+      }),
+    });
+    if (newProfile.ok) {
+      const parsedProfile = await newProfile.json();
+      console.log('parsedProfile', parsedProfile);
+      return parsedProfile;
+    }
   } catch (err) {
     console.log('Error at createUser Service: ', err);
   }
