@@ -87,12 +87,7 @@ const AccountTypeComponent: FunctionComponent = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-col ml-1 md:ml-12">
-        <h3 className="ml-8 md:ml-16">Already have an account?</h3>
-        <button className="flex -mt-2 ml-24 md:ml-12 w-fit bg-red-300 text-zinc-900 font-bold">
-          Login
-        </button>
-      </div>
+      
       <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>
     </div>
   );
