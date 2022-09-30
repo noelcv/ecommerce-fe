@@ -19,13 +19,13 @@ const RegisterComponent: FunctionComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selectedRole = useSelector((state: RootState) => state.createUser.value.role);
-  const ourUser = useSelector((state: RootState) => state.createUser.value);
+  const isAuthUser = useSelector((state: RootState) => state.createUser.value.id);
   
   useEffect (() => {
-    if (ourUser.id && ourUser.id.length > 0) {
+    if (isAuthUser) {
       navigate('/')
     }
-  }, [ourUser])
+  }, [isAuthUser])
 
   const signInWithGoogleHandler = async (): Promise<void> => {
     try {

@@ -4,7 +4,7 @@ import { RoleEnum } from "../../../types/RoleEnum";
 import { UserType } from "../../../types/UserType";
 
 let initialState: UserType = {
-  id: "",
+  id: undefined,
   uid: "",
   email: "", 
   firstName: "",
