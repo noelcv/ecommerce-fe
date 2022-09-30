@@ -1,24 +1,27 @@
-import { Icon } from '@mui/material';
-import { useEffect, useState, FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   auth,
-  registerWithEmailAndPassword,
-  signInWithGoogle,
 } from '../../services/authentication/authentication';
-import GoogleIcon from '@mui/icons-material/Google';
+import { useDispatch, useSelector } from 'react-redux';
+import { defineRole } from '../../redux/reducers/user/createUserSlice';
+import { RoleEnum } from '../../types/RoleEnum';
+import { RootState } from '../../redux/store';
 
 const AccountTypeComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [selectedOption, setSelectedOption] = useState<string>('BASIC')
+  const role = useSelector((state: RootState) => state.createUser.value.role)
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  console.log('role now: ', role);
   
   //Evaluate if option matches selected option
-  const isOptionSelected = (value: string) => selectedOption  === value;
+  const isOptionSelected = (value: string) => role  === value;
 
   const changeSelectedOption = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSelectedOption(e.currentTarget.value)
+    dispatch(defineRole(e.currentTarget.value as RoleEnum))
   }
 
   return (

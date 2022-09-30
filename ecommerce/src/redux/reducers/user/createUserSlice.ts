@@ -23,7 +23,7 @@ export const createUserSlice = createSlice({
       state: { value: UserType },
       action: { payload: UserType }
     ) => {
-      state.value = state.value, action.payload;
+      state.value = action.payload;
     },
     defineRole: (
       state: { value: UserType},
