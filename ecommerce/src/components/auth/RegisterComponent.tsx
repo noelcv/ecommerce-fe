@@ -17,7 +17,10 @@ import { setUser } from '../../redux/reducers/user/createUserSlice';
 const RegisterComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
   const dispatch = useDispatch();
-  const role = useSelector((state: RootState) => state.createUser.value.role);
+  const selectedRole = useSelector((state: RootState) => state.createUser.value.role);
+  const ourUser = useSelector((state: RootState) => state.createUser.value);
+  
+  console.log("our user now", ourUser)
   // const navigate = useNavigate();
   // // useEffect (() => {
   // //   if (user !== null) {
@@ -40,15 +43,18 @@ const RegisterComponent: FunctionComponent = () => {
         // profile: {
         //   picture: user.photoURL as string
         // },
-        role: role as RoleEnum
+        role: selectedRole as RoleEnum
       }
       
-      dispatch(setUser(newUser))
-      //TODO: update graphql mutation into createUser service
-      await createUser(newUser)
-    
       
-      console.log(newUser, 'newUser looking good')
+  
+      //communicate with backend to create user in database
+      const responseUser: UserType = await createUser(newUser)
+      
+      //this action sets authenticated User in redux store
+      dispatch(setUser(responseUser))
+      
+  
       // const accountInfo = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token).then((res) => res.json())
       // if (accountInfo) {
       //   console.log(accountInfo, 'accountInfo')

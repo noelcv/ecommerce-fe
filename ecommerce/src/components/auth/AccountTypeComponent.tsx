@@ -11,14 +11,14 @@ import { RootState } from '../../redux/store';
 
 const AccountTypeComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
-  const role = useSelector((state: RootState) => state.createUser.value.role)
+  const selectedRole = useSelector((state: RootState) => state.createUser.value.role)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  console.log('role now: ', role);
+  console.log('selectedRole', selectedRole);
   
   //Evaluate if option matches selected option
-  const isOptionSelected = (value: string) => role  === value;
+  const isOptionSelected = (value: string) => selectedRole  === value;
 
   const changeSelectedOption = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(defineRole(e.currentTarget.value as RoleEnum))

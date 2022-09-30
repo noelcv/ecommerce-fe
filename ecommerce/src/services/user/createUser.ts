@@ -29,7 +29,8 @@ export async function createUser(newUser: UserType): Promise<any> {
     if (newProfile.ok) {
       const parsedProfile = await newProfile.json();
       console.log('parsedProfile', parsedProfile);
-      return parsedProfile;
+      console.log('parsed fillet mignon', parsedProfile.data.createNewUser.user);
+      return parsedProfile.data.createNewUser.user;
     }
   } catch (err) {
     console.log('Error at createUser Service: ', err);
