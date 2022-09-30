@@ -1,5 +1,4 @@
-import { Icon } from '@mui/material';
-import { useEffect, useState, FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -9,12 +8,15 @@ import {
 } from '../../services/authentication/authentication';
 import GoogleIcon from '@mui/icons-material/Google';
 import { UserType } from '../../types/UserType';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { RoleEnum } from '../../types/RoleEnum';
+import { createUser } from '../../services/user/createUser';
+import { setUser } from '../../redux/reducers/user/createUserSlice';
 
 const RegisterComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
+  const dispatch = useDispatch();
   const role = useSelector((state: RootState) => state.createUser.value.role);
   // const navigate = useNavigate();
   // // useEffect (() => {
@@ -39,8 +41,11 @@ const RegisterComponent: FunctionComponent = () => {
         },
         role: role as RoleEnum
       }
-      //TODO: grab account role from selector
-      //TODO: dispatch action to create user in db
+      
+      dispatch(setUser(newUser))
+      //TODO: update graphql mutation into createUser service
+      await createUser(newUser)
+    
       
       console.log(newUser, 'newUser looking good')
       // const accountInfo = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token).then((res) => res.json())
