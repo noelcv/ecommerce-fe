@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
-import AccountTypeComponent from '../../components/AccountTypeComponent'
-import RegisterComponent from '../../components/RegisterComponent'
+import AccountTypeComponent from '../../components/auth/AccountTypeComponent'
+import RegisterComponent from '../../components/auth/RegisterComponent'
 
 
 const SelectAccountType: FunctionComponent = () => {

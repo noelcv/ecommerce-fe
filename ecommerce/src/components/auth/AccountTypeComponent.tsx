@@ -6,7 +6,7 @@ import {
   auth,
   registerWithEmailAndPassword,
   signInWithGoogle,
-} from '../services/authentication/authentication';
+} from '../../services/authentication/authentication';
 import GoogleIcon from '@mui/icons-material/Google';
 
 const AccountTypeComponent: FunctionComponent = () => {
@@ -72,19 +72,23 @@ const AccountTypeComponent: FunctionComponent = () => {
           </div>
         </fieldset>
         <div className="ml-2 md:ml-24 xl:ml-32 md:mt-2 space-x-2 flex flex-end">
+          <Link to="/">
           <button
             type="button"
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => navigate('/')}
           >
             Cancel
           </button>
+          </Link>
+  
           <button
             type="button"
             className="rounded px-12 py-2.5 text-white text-lg hover:opacity-90 border-none"
+            onClick={() => navigate('/register/details')}
           >
             Continue
           </button>
+     
         </div>
       </div>
       

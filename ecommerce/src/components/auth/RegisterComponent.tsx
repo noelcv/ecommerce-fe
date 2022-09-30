@@ -6,7 +6,7 @@ import {
   auth,
   registerWithEmailAndPassword,
   signInWithGoogle,
-} from '../services/authentication/authentication';
+} from '../../services/authentication/authentication';
 import GoogleIcon from '@mui/icons-material/Google';
 
 const RegisterComponent: FunctionComponent = () => {
