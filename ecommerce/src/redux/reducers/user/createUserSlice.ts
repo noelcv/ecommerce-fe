@@ -25,10 +25,16 @@ export const createUserSlice = createSlice({
     ) => {
       state.value = state.value, action.payload;
     },
+    defineRole: (
+      state: { value: UserType},
+      action: { payload: RoleEnum }
+    ) => {
+      state.value.role = action.payload;
+    }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { createUser } = createUserSlice.actions;
+export const { createUser, defineRole } = createUserSlice.actions;
 
 export default createUserSlice.reducer;
