@@ -26,7 +26,12 @@ const SignInPage: FunctionComponent = () => {
       const responseUser: UserType = await findUser(user as unknown as UserType)
       console.log('responseUser', responseUser)
       //this action sets authenticated User in redux store
-      // dispatch(setUser(responseUser))
+      if (responseUser) {
+        dispatch(setUser(responseUser))
+      } else {
+        console.log('User does not exist. Please, click on the Create New Account button to sign up')
+      }
+      
       
   
       
