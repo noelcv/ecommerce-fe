@@ -20,6 +20,7 @@ export const signInWithGoogle = async () => {
     console.log('auth', auth)
     console.log('googleProvider', googleProvider)
     const res = await signInWithPopup(auth, googleProvider);
+    console.log('raw res in service', res)
     const user = res.user;
     return user;
   } catch (error: unknown) {

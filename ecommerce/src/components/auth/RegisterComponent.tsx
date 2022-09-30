@@ -1,17 +1,56 @@
 import { Icon } from '@mui/material';
 import { useEffect, useState, FunctionComponent } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   auth,
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from '../../services/authentication/authentication';
 import GoogleIcon from '@mui/icons-material/Google';
+import { UserType } from '../../types/UserType';
 
 const RegisterComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
+  // const navigate = useNavigate();
+  // // useEffect (() => {
+  // //   if (user !== null) {
+  // //     navigate('/')
+  // //   }
+  // // }, [user])
 
+  const signInWithGoogleHandler = async (): Promise<void> => {
+    try {
+     const user = await signInWithGoogle();
+     if (user) {
+      console.log('user signed in at component', user)
+      const token = await user.getIdTokenResult().then((idTokenResult) => idTokenResult.token)
+      //TODO: send token to backend after updating schema
+      const newUser: UserType = {
+        uid: user.uid,
+        email: user.email as string,
+        username: user.displayName as string,
+        profile: {
+          picture: user.photoURL as string
+        },
+        role: 'BASIC'
+      }
+      //TODO: grab account role from selector
+      //TODO: dispatch action to create user in db
+      
+      console.log(newUser, 'newUser looking good')
+      // const accountInfo = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token).then((res) => res.json())
+      // if (accountInfo) {
+      //   console.log(accountInfo, 'accountInfo')
+      // }
+      
+    }
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+  
   const registerNewUserHandler = async (
     e: React.FormEvent<HTMLFormElement>
   ) => {
@@ -43,9 +82,9 @@ const RegisterComponent: FunctionComponent = () => {
     <div className="pb-5">
       <div>{error && error.message}</div>
       <form onSubmit={registerNewUserHandler}>
-        <div className="ml-flex flex-col justify-center w-56 ml-2 sm:ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12 3xl:ml-20 md:w-72 lg:w-80 xl:w-96">
+        <div className="ml-flex flex-col justify-center w-56 ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12 3xl:ml-20 md:w-72 lg:w-80 xl:w-96">
           <h3 className="font-bold text-#242424 -mt-0.5 -mb-0.5 md:mb-0 md:mt-0 text-lg md:text-3xl block">
-            New to Mindfulness.vc? Register here
+            Enter details
           </h3>
           <div className="grid col-span">
             <div className="flex flex-col mb-5 md:mt-2">
@@ -57,7 +96,7 @@ const RegisterComponent: FunctionComponent = () => {
                 type="text"
                 name="registerFirstName"
                 placeholder="What is your first name?"
-                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                className="bg-zinc-300 text-zinc-900 font-bold h-8 text-sm pl-1 -mb-3 md:mb-0"
                 required
               />
             </div>
@@ -70,7 +109,7 @@ const RegisterComponent: FunctionComponent = () => {
                 type="text"
                 name="registerLastName"
                 placeholder="What is your surname?"
-                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                className="bg-zinc-300 text-zinc-900 font-bold h-8 text-sm pl-1 -mb-3 md:mb-0"
                 required
               />
             </div>
@@ -83,7 +122,7 @@ const RegisterComponent: FunctionComponent = () => {
                 type="text"
                 name="registerUsername"
                 placeholder="How would like to be called?"
-                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                className="bg-zinc-300 text-zinc-900 font-bold h-8 text-sm pl-1 -mb-3 md:mb-0"
                 required
               />
             </div>
@@ -96,7 +135,7 @@ const RegisterComponent: FunctionComponent = () => {
                 type="text"
                 name="registerEmail"
                 placeholder="What is your email?"
-                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                className="bg-zinc-300 text-zinc-900 font-bold h-8 text-sm pl-1 -mb-3 md:mb-0"
                 required
               />
             </div>
@@ -110,7 +149,7 @@ const RegisterComponent: FunctionComponent = () => {
                 type="text"
                 name="registerPassword"
                 placeholder="Write a safe password"
-                className="bg-zinc-300 text-zinc-900 font-bold h-10 text-sm pl-1"
+                className="bg-zinc-300 text-zinc-900 font-bold h-8 text-sm pl-1 -mb-3 md:mb-0"
                 required
               />
             </div>
@@ -136,19 +175,16 @@ const RegisterComponent: FunctionComponent = () => {
         </div>
       </form>
       <div className="flex flex-col ml-1 md:ml-12">
-              <span className="mt-1.5 ml-28 md:ml-36 font-extrabold text-xl">
+              <span className="mt-1.5 ml-32 md:ml-36 font-extrabold text-xl">
                 - or -
               </span>
 
-              <button className="flex mt-2 ml-8 md:ml-12 w-fit bg-blue-900" onClick={signInWithGoogle}>
+              <button className="flex mt-2 ml-10 md:ml-12 w-fit bg-blue-900" onClick={signInWithGoogleHandler}>
                 <GoogleIcon fontSize="large" />
                 <span className="mt-1.5 ml-2">Register With Google</span>
               </button>
               
-              <h3 className="ml-8 md:ml-16">Already have an account?</h3>
-              <button className="flex mt-2 ml-24 md:ml-12 w-fit bg-red-300 text-zinc-900 font-bold">
-              Login
-              </button>
+        
             </div>
       <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>
     </div>
