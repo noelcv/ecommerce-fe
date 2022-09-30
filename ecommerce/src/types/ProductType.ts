@@ -1,5 +1,5 @@
 import { cancelationPolicyType } from "./CancelationPolicyType";
-import { Customer } from "./CustomerType";
+import { Customer } from "./UserType";
 import { LocationType } from "./LocationType";
 
 
