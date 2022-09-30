@@ -9,9 +9,13 @@ import {
 } from '../../services/authentication/authentication';
 import GoogleIcon from '@mui/icons-material/Google';
 import { UserType } from '../../types/UserType';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { RoleEnum } from '../../types/RoleEnum';
 
 const RegisterComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
+  const role = useSelector((state: RootState) => state.createUser.value.role);
   // const navigate = useNavigate();
   // // useEffect (() => {
   // //   if (user !== null) {
@@ -33,7 +37,7 @@ const RegisterComponent: FunctionComponent = () => {
         profile: {
           picture: user.photoURL as string
         },
-        role: 'BASIC'
+        role: role as RoleEnum
       }
       //TODO: grab account role from selector
       //TODO: dispatch action to create user in db
