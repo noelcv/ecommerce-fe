@@ -42,10 +42,10 @@ const RegisterComponent: FunctionComponent = () => {
       if (user) {
         const userFoundInDb = await findUser(user as unknown as UserType);
         if (!userFoundInDb) {
-          const token = await user
-            .getIdTokenResult()
-            .then((idTokenResult) => idTokenResult.token);
           //TODO: send token to backend after updating schema
+          // const token = await user
+          //   .getIdTokenResult()
+          //   .then((idTokenResult: any) => idTokenResult.token);
           const newUser: UserType = {
             uid: user.uid,
             email: user.email as string,
