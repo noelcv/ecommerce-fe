@@ -13,6 +13,8 @@ import { RootState } from '../../redux/store';
 import { RoleEnum } from '../../types/RoleEnum';
 import { createUser } from '../../services/user/createUser';
 import { setUser } from '../../redux/reducers/user/createUserSlice';
+import { findUser } from '../../services/user/findUser';
+import { userExists } from '../../redux/reducers/user/userExistsUiSlice';
 
 const RegisterComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -20,7 +22,9 @@ const RegisterComponent: FunctionComponent = () => {
   const navigate = useNavigate();
   const selectedRole = useSelector((state: RootState) => state.createUser.value.role);
   const isAuthUser = useSelector((state: RootState) => state.createUser.value.id);
+  const isNewUser = useSelector((state: RootState) => state.userExists.value);
   
+  console.log('isNewUser at Register', isNewUser)
   useEffect (() => {
     if (isAuthUser) {
       navigate('/')
@@ -32,10 +36,9 @@ const RegisterComponent: FunctionComponent = () => {
      const user = await signInWithGoogle();
      if (user) {
       
-      //TODO: add validation logic to check if user already exists
-      // query gqlAPI with user.uid
-      console.log('user signed in at component', user)
-      const token = await user.getIdTokenResult().then((idTokenResult) => idTokenResult.token)
+      const userFoundInDb = await findUser(user as unknown as UserType);
+      if (!userFoundInDb){
+        const token = await user.getIdTokenResult().then((idTokenResult) => idTokenResult.token)
       //TODO: send token to backend after updating schema
       const newUser: UserType = {
         uid: user.uid,
@@ -53,6 +56,13 @@ const RegisterComponent: FunctionComponent = () => {
       
       //this action sets authenticated User in redux store
       dispatch(setUser(responseUser))
+      } else {
+        dispatch(userExists(false))
+        
+      }
+      
+      
+      
       
   
       // const accountInfo = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token).then((res) => res.json())
@@ -98,7 +108,7 @@ const RegisterComponent: FunctionComponent = () => {
     <div className="pb-5">
       <div>{loading && <h1 className='animate-pulse'>Creating you a fabulous account</h1>}</div>
       <div>{error && error.message}</div>
-      {!loading && !error &&
+      {isNewUser ?
       <form onSubmit={registerNewUserHandler}>
         <div className="ml-flex flex-col justify-center w-56 ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12 3xl:ml-20 md:w-72 lg:w-80 xl:w-96">
           <h3 className="font-bold text-#242424 -mt-0.5 -mb-0.5 md:mb-0 md:mt-0 text-lg md:text-3xl block">
@@ -192,7 +202,22 @@ const RegisterComponent: FunctionComponent = () => {
           </div>
         </div>
       </form>
-      }
+      : 
+      <div className="mb-60 mt-56 ml-2">
+      <span className="flex animate-pulse justify-center text-center ml-5 text-red-500 text-lg italic">
+        ⚠️ User already exist ⚠️ 
+      </span>
+      <span className="flex justify-center text-center ml-5 mt-1 text-red-500 text-md italic">
+      Please, try to Login instead or a Create New Account
+    </span>
+    <button className="flex mt-12 ml-10 md:ml-12 w-fit bg-blue-900" onClick={signInWithGoogleHandler}>
+                <GoogleIcon fontSize="large" />
+                <span className="mt-1.5 ml-2">Register With Google</span>
+    </button>
+    </div>
+    }
+     {
+      isNewUser &&
       <div className="flex flex-col ml-1 md:ml-12">
               <span className="mt-1.5 ml-32 md:ml-36 font-extrabold text-xl">
                 - or -
@@ -202,9 +227,9 @@ const RegisterComponent: FunctionComponent = () => {
                 <GoogleIcon fontSize="large" />
                 <span className="mt-1.5 ml-2">Register With Google</span>
               </button>
-              
-        
+            
             </div>
+            }
       <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>
     
       </div>

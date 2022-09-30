@@ -77,7 +77,7 @@ const SignInPage: FunctionComponent = () => {
         </div>
       ) : (
         <div className="mb-96">
-          <span className="flex justify-center text-center ml-5 mt-12 text-red-500 text-lg italic">
+          <span className="flex animate-pulse justify-center text-center ml-5 mt-12 text-red-500 text-lg italic">
             ⚠️ User does not exist ⚠️ 
           </span>
           <span className="flex justify-center text-center ml-5 mt-1  text-red-500 text-md italic">
