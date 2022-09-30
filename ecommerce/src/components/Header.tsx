@@ -9,6 +9,8 @@ import { RootState } from '../redux/store';
 
 const Header: FunctionComponent = () => {
   const count = useSelector((state: RootState) => state.counter.value);
+  const username = useSelector((state: RootState) => state.createUser.value.username);
+  
   return (
     <div className="grid grid-cols-12 md:flex md:flex-row pb-1 bg-zinc-800 sticky z-2 w-screen md:pr-32">
       <div className="grid col-start-1">
@@ -48,9 +50,12 @@ const Header: FunctionComponent = () => {
       <div className="flex space-x-2 mt-12 -ml-2 md:mt-0 md:ml-3 md:place-content-even 3xl:ml-80 3xl:space-x-20 4xl:space-x-20 4xl:ml-96">
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-slate-200 text-xl">Hello</span>
-          <Link to='/signin'>
+          { username && username.length > 0 ? <span className='text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl'>{username}</span> :
+            
+            <Link to='/signin'>
           <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">SignIn</span>
           </Link>
+          }
         </div>
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-slate-200 text-xl">Your</span>

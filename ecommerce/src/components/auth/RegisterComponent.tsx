@@ -17,12 +17,10 @@ import { setUser } from '../../redux/reducers/user/createUserSlice';
 const RegisterComponent: FunctionComponent = () => {
   const [user, loading, error] = useAuthState(auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const selectedRole = useSelector((state: RootState) => state.createUser.value.role);
   const ourUser = useSelector((state: RootState) => state.createUser.value);
   
-  
-  console.log("our user now", ourUser)
-  const navigate = useNavigate();
   useEffect (() => {
     if (ourUser.id && ourUser.id.length > 0) {
       navigate('/')
@@ -95,7 +93,9 @@ const RegisterComponent: FunctionComponent = () => {
 
   return (
     <div className="pb-5">
+      <div>{loading && <h1 className='animate-pulse'>Creating you a fabulous account</h1>}</div>
       <div>{error && error.message}</div>
+      {!loading && !error &&
       <form onSubmit={registerNewUserHandler}>
         <div className="ml-flex flex-col justify-center w-56 ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12 3xl:ml-20 md:w-72 lg:w-80 xl:w-96">
           <h3 className="font-bold text-#242424 -mt-0.5 -mb-0.5 md:mb-0 md:mt-0 text-lg md:text-3xl block">
@@ -189,6 +189,7 @@ const RegisterComponent: FunctionComponent = () => {
           </div>
         </div>
       </form>
+      }
       <div className="flex flex-col ml-1 md:ml-12">
               <span className="mt-1.5 ml-32 md:ml-36 font-extrabold text-xl">
                 - or -
@@ -202,7 +203,8 @@ const RegisterComponent: FunctionComponent = () => {
         
             </div>
       <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>
-    </div>
+    
+      </div>
   );
 };
 
