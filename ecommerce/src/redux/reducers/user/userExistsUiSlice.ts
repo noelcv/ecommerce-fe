@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initialState: boolean = false;
+let initialState: boolean = true;
 
 export const userExistsUiSlice = createSlice({
   name: "userExists",
