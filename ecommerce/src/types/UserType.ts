@@ -3,7 +3,7 @@ import { ProfileType } from "./ProfileType";
 
 export type UserType = {
   id?: string;
-  uid: string;
+  uid: string | undefined;
   email: string;
   firstName?: string;
   lastName?: string;

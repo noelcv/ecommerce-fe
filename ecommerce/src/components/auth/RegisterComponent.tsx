@@ -31,6 +31,9 @@ const RegisterComponent: FunctionComponent = () => {
     try {
      const user = await signInWithGoogle();
      if (user) {
+      
+      //TODO: add validation logic to check if user already exists
+      // query gqlAPI with user.uid
       console.log('user signed in at component', user)
       const token = await user.getIdTokenResult().then((idTokenResult) => idTokenResult.token)
       //TODO: send token to backend after updating schema

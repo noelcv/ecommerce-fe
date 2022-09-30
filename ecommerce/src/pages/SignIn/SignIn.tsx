@@ -1,7 +1,42 @@
 import { FunctionComponent } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setUser } from '../../redux/reducers/user/createUserSlice';
+import { signInWithGoogle } from '../../services/authentication/authentication';
+import { findUser } from '../../services/user/findUser';
+import { UserType } from '../../types/UserType';
+
 
 const SignInPage: FunctionComponent = () => {
+  const dispatch = useDispatch();
+  
+  const signInHandler = async (): Promise<void> => {
+    try {
+    const user = await signInWithGoogle();
+    if (user) {
+      
+      //TODO: add validation logic to check if user already exists
+      // query gqlAPI with user.uid
+      console.log('user signed in at component', user)
+      
+      const token = await user.getIdTokenResult().then((idTokenResult) => idTokenResult.token)
+      //TODO: send token to backend after updating schema
+      
+      //communicate with backend to create user in database
+      const responseUser: UserType = await findUser(user as unknown as UserType)
+      console.log('responseUser', responseUser)
+      //this action sets authenticated User in redux store
+      // dispatch(setUser(responseUser))
+      
+  
+      
+    }
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+  
   return (
     <div>
       <h3 className="flex justify-center ml-5 mt-12 ">New to Mindfulness.vc?</h3>
@@ -18,7 +53,9 @@ const SignInPage: FunctionComponent = () => {
       <h3 className="flex justify-center mt-12 ml-5 md:ml-5">
         Already have an account?
       </h3>
-      <button className="flex justify-center -mt-2 ml-32 mb-96 md:ml-32 w-fit bg-red-300 text-zinc-900 font-bold">
+      <button 
+      onClick={signInHandler}
+      className="flex justify-center -mt-2 ml-32 mb-96 md:ml-32 w-fit bg-red-300 text-zinc-900 font-bold">
         Login
       </button>
       <div className="ml-20 mt-2 md:ml-12 w-fit xl:ml-32 space-x-2 flex flex-end"></div>

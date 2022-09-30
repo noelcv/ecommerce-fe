@@ -5,7 +5,7 @@ import { UserType } from "../../../types/UserType";
 
 let initialState: UserType = {
   id: undefined,
-  uid: "",
+  uid: undefined,
   email: "", 
   firstName: "",
   lastName: "",
