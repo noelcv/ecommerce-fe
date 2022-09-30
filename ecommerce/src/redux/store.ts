@@ -7,7 +7,8 @@ import isEditingSlice from './reducers/product/isEditingSlice'
 import productSlice from './reducers/product/productSlice'
 import subtotalSlice from './reducers/product/subtotalSlice'
 import createUserSlice from './reducers/user/createUserSlice'
-import userExistsUiSlice from './reducers/user/userExistsUiSlice'
+import userExistsLoginUiSlice from './reducers/user/userExistsLoginUiSlice'
+import userExistsRegisterUiSlice from './reducers/user/userExistsRegisterUiSlice'
 
 export const store = configureStore({
   reducer: {
@@ -19,7 +20,8 @@ export const store = configureStore({
     isEditing: isEditingSlice,
     isAddingNewProduct: isAddingNewProductSlice,
     createUser: createUserSlice,
-    userExists: userExistsUiSlice,
+    userExists: userExistsLoginUiSlice,
+    isNewUser: userExistsRegisterUiSlice
   },
 })
 

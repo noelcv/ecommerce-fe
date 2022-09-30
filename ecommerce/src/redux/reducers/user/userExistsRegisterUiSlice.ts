@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 let initialState: boolean = true;
 
-export const userExistsUiSlice = createSlice({
-  name: "userExists",
+export const userExistsRegisterUiSlice = createSlice({
+  name: "userExistsRegisterUi",
   initialState: { value: initialState },
   reducers: {
-    userExists: (
+    isNewUser: (
       state: { value: boolean },
       action: { payload: boolean }
     ) => {
@@ -16,6 +16,6 @@ export const userExistsUiSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { userExists } = userExistsUiSlice.actions;
+export const { isNewUser } = userExistsRegisterUiSlice.actions;
 
-export default userExistsUiSlice.reducer;
+export default userExistsRegisterUiSlice.reducer;

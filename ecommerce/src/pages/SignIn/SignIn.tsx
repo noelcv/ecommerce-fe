@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setUser } from '../../redux/reducers/user/createUserSlice';
-import { userExists } from '../../redux/reducers/user/userExistsUiSlice';
+import { userExists } from '../../redux/reducers/user/userExistsLoginUiSlice';
 import { RootState } from '../../redux/store';
 import { signInWithGoogle } from '../../services/authentication/authentication';
 import { findUser } from '../../services/user/findUser';
