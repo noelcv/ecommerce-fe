@@ -20,6 +20,10 @@ export const subtotalSlice = createSlice({
     removeAmountFromSubtotal: (state, action: PayloadAction<number>) => {
       state.value -= Number(action.payload)
     },
+    
+    resetSubtotal: (state) => {
+      state.value = 0
+    }
   },
 })
 
