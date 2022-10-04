@@ -8,13 +8,27 @@ import { RootState } from '../redux/store';
 const Subtotal: FunctionComponent = () => {
   const items = useSelector((state: RootState) => state.counter.value);
   const subtotal = useSelector((state: RootState) => state.subtotal.value);
+  const products = useSelector((state: RootState) => state.basket.value);
+
   const dispatch = useDispatch()
   
   //TODO: make it async and add payment middleware
   const completeOrder = () => {
-    dispatch(resetBasket())
-    dispatch(resetBasketCounter())
-    dispatch(resetSubtotal())
+    try {
+      
+      //TODO: dispatch products to DB
+      // const order = await setOrder(products, subtotal)
+      // console.log("Products to order: ", products);
+      // if (order) {
+        
+      //   dispatch(resetBasket())
+      //   dispatch(resetBasketCounter())
+      //   dispatch(resetSubtotal())
+      //   //TODO: dispatch Success Order UI
+      // }
+    } catch (err) {
+      console.log('❌ Error completing order', err)
+    }
   }
   
   return (
