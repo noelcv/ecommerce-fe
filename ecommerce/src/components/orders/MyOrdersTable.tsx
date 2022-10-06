@@ -25,7 +25,7 @@ const MyOrdersTable: FunctionComponent = () => {
 
   useEffect(() => {
     fetchOrders();
-  }, [myOrders]);
+  }, []);
 
   return (
     <div className="md:ml-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-50">
