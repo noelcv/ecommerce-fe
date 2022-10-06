@@ -1,13 +1,16 @@
 import { FunctionComponent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMyOrders } from '../../redux/reducers/order/myOrdersSlice';
 import { RootState } from '../../redux/store';
 import { getMyOrders } from '../../services/product/product.service';
 
 const MyOrdersTable: FunctionComponent = () => {
-  const isAuthUser = useSelector(
-    (state: RootState) => state.createUser.value.id
-  );
+  const dispatch = useDispatch();
+  const isAuthUser = useSelector((state: RootState) => state.createUser.value.id);
   const uid = useSelector((state: RootState) => state.createUser.value.uid);
+  const myOrders = useSelector((state: RootState) => state.myOrders.value);
+  
+  console.log("myOrders inside myOrdersTable from redux store", myOrders)
 
   const fetchOrders = async () => {
     try {
@@ -15,6 +18,7 @@ const MyOrdersTable: FunctionComponent = () => {
         const orders = await getMyOrders(uid);
         if (orders) {
           console.log("orders inside fetchOrders", orders);
+          dispatch(setMyOrders(orders));
           //TODO: dispatch orders to redux store
         }
       }

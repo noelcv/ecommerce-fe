@@ -7,7 +7,7 @@ export const myOrdersSlice = createSlice({
   name: 'myOrders',
   initialState: { value: initialState },
   reducers: {
-    myOrders: (
+    setMyOrders: (
       state: { value: PurchaseOrderType[] },
       action: { payload: PurchaseOrderType[] }
     ) => {
@@ -53,7 +53,7 @@ export const myOrdersSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { myOrders, updateOrderInStore, removeOrderFromStore } =
+export const { setMyOrders, updateOrderInStore, removeOrderFromStore } =
   myOrdersSlice.actions;
 
 export default myOrdersSlice.reducer;
