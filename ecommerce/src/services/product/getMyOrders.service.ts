@@ -1,4 +1,5 @@
-import { parse } from "path";
+import { PurchaseOrderType } from "../../types/PurchaseOrderType";
+import * as dayjs from "dayjs"
 
 //TODO: strengthen the headers
 export const getMyOrders = async (uid: string) => {
@@ -31,10 +32,16 @@ export const getMyOrders = async (uid: string) => {
         `,
       }),
     });
+
     const parsedResponse = await response.json();
-    console.log('parsed Orders', parsedResponse.data.findOrdersByUserId);
     if (parsedResponse.data.findOrdersByUserId.code === 200) {
+      
       const orders = parsedResponse.data.findOrdersByUserId.orders;
+      orders.forEach((order: PurchaseOrderType) => {
+        let temp = Number(order.createdAt)
+        order.createdAt = dayjs(temp).format('DD/MM/YYYY HH:mm')
+      })
+    
       return orders;
     } else {
       return `Error: ${parsedResponse.data.findOrdersByUserId.message}`

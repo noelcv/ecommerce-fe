@@ -4,7 +4,6 @@ import MyOrdersTable from '../components/orders/MyOrdersTable';
 const MyOrdersPage: FunctionComponent = () => {
   return (
     <>
-      <h1>MyOrdersPage</h1>
       <MyOrdersTable />
     </>
   );
