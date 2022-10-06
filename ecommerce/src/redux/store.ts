@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import myOrdersSlice from './reducers/order/myOrdersSlice'
 import allProductsSlice from './reducers/product/allProductsSlice'
 import basketSlice from './reducers/product/basketSlice'
 import counterSlice from './reducers/product/counterSlice'
@@ -21,7 +22,8 @@ export const store = configureStore({
     isAddingNewProduct: isAddingNewProductSlice,
     createUser: createUserSlice,
     userExists: userExistsLoginUiSlice,
-    isNewUser: userExistsRegisterUiSlice
+    isNewUser: userExistsRegisterUiSlice,
+    myOrders: myOrdersSlice
   },
 })
 
