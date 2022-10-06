@@ -1,3 +1,4 @@
+import { StarRateTwoTone } from '@mui/icons-material';
 import { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetBasket } from '../redux/reducers/product/basketSlice';
@@ -11,6 +12,7 @@ const Subtotal: FunctionComponent = () => {
   const subtotal = useSelector((state: RootState) => state.subtotal.value);
   const products = useSelector((state: RootState) => state.basket.value);
   const isAuthUser = useSelector((state: RootState) => state.createUser.value.id);
+  const uid = useSelector((state: RootState) => state.createUser.value.uid)
 
   const dispatch = useDispatch()
   
@@ -18,12 +20,12 @@ const Subtotal: FunctionComponent = () => {
   const completeOrder = async () => {
     try {
       
-      //TODO: get uid from auth
-      //TODO: dispatch products to DB 
-      if (isAuthUser){
-
+      //double authentication check: user needs to be authenticated and authorized
+      if (isAuthUser && uid){
         console.log('products before hitting graphql', products)
-        const order = await setOrder(isAuthUser, products)
+        console.log('isAuthUser', isAuthUser)
+        console.log('uid', uid)
+        const order = await setOrder(uid, products)
         console.log("order inside Subtotal action:",order)
         if (order) {
           
