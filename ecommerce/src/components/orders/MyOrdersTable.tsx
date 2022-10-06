@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMyOrders } from '../../redux/reducers/order/myOrdersSlice';
 import { RootState } from '../../redux/store';
 import { getMyOrders } from '../../services/product/product.service';
-import * as dayjs from 'dayjs';
 
 const MyOrdersTable: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -11,14 +10,11 @@ const MyOrdersTable: FunctionComponent = () => {
   const uid = useSelector((state: RootState) => state.createUser.value.uid);
   const myOrders = useSelector((state: RootState) => state.myOrders.value);
   
-  console.log("myOrders inside myOrdersTable from redux store", myOrders)
-
   const fetchOrders = async () => {
     try {
       if (isAuthUser && uid) {
         const orders = await getMyOrders(uid);
         if (orders) {
-          
           dispatch(setMyOrders(orders));
         }
       }
@@ -29,7 +25,7 @@ const MyOrdersTable: FunctionComponent = () => {
 
   useEffect(() => {
     fetchOrders();
-  }, []);
+  }, [myOrders]);
 
   return (
     <div className="md:ml-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-50">
@@ -43,7 +39,7 @@ const MyOrdersTable: FunctionComponent = () => {
             <th className="overflow-hidden indent-1 whitespace-nowrap border border-slate-600 bg-zinc-200 px-2 py-2 text-left">Date</th>
           </tr>
         </thead>
-        <tbody className=''>
+        <tbody>
           {myOrders.map((order, index) => {
                       
             return (
