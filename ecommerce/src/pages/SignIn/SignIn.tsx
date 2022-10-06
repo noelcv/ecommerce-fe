@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setUser } from '../../redux/reducers/user/createUserSlice';
 import { userExists } from '../../redux/reducers/user/userExistsLoginUiSlice';
 import { RootState } from '../../redux/store';
@@ -10,9 +10,21 @@ import { UserType } from '../../types/UserType';
 
 const SignInPage: FunctionComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userExistsUi = useSelector(
     (state: RootState) => state.userExists.value
   );
+  const isAuthUser = useSelector(
+    (state: RootState) => state.createUser.value.id
+  );
+ 
+  useEffect(() => {
+    if (isAuthUser) {
+      navigate('/');
+    }
+  }, [isAuthUser]);
+  
+  
   console.log('userExists', userExistsUi);
   const signInHandler = async (): Promise<void> => {
     try {

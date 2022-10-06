@@ -4,28 +4,35 @@ import { resetBasket } from '../redux/reducers/product/basketSlice';
 import { resetBasketCounter } from '../redux/reducers/product/counterSlice';
 import { resetSubtotal } from '../redux/reducers/product/subtotalSlice';
 import { RootState } from '../redux/store';
+import { setOrder } from '../services/product/product.service';
 
 const Subtotal: FunctionComponent = () => {
   const items = useSelector((state: RootState) => state.counter.value);
   const subtotal = useSelector((state: RootState) => state.subtotal.value);
   const products = useSelector((state: RootState) => state.basket.value);
+  const isAuthUser = useSelector((state: RootState) => state.createUser.value.id);
 
   const dispatch = useDispatch()
   
   //TODO: make it async and add payment middleware
-  const completeOrder = () => {
+  const completeOrder = async () => {
     try {
       
-      //TODO: dispatch products to DB
-      // const order = await setOrder(products, subtotal)
-      // console.log("Products to order: ", products);
-      // if (order) {
-        
-      //   dispatch(resetBasket())
-      //   dispatch(resetBasketCounter())
-      //   dispatch(resetSubtotal())
-      //   //TODO: dispatch Success Order UI
-      // }
+      //TODO: get uid from auth
+      //TODO: dispatch products to DB 
+      if (isAuthUser){
+
+        console.log('products before hitting graphql', products)
+        const order = await setOrder(isAuthUser, products)
+        console.log("order inside Subtotal action:",order)
+        if (order) {
+          
+          dispatch(resetBasket())
+          dispatch(resetBasketCounter())
+          dispatch(resetSubtotal())
+          //TODO: dispatch Success Order UI
+        }
+      }
     } catch (err) {
       console.log('❌ Error completing order', err)
     }
