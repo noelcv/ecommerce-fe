@@ -39,7 +39,7 @@ export const getMyOrders = async (uid: string) => {
       const orders = parsedResponse.data.findOrdersByUserId.orders;
       orders.forEach((order: PurchaseOrderType) => {
         let temp = Number(order.createdAt)
-        order.createdAt = dayjs(temp).format('DD/MM/YYYY HH:mm')
+        order.createdAt = dayjs(temp).format('DD/MM/YYYY')
       })
     
       return orders;

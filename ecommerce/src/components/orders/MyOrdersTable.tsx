@@ -32,26 +32,26 @@ const MyOrdersTable: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="md:ml-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-10">
+    <div className="md:ml-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl 4xl:max-w-4xl m-2.5 p-6 max-h-auto z-50">
       <h2 className="">My Orders</h2>
-      <table className="-ml-7 border border-black min-w-fit max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl mb-72">
-        <thead>
+      <table className="table-auto md:table-fixed shadow-lg border-collapse border-spacing-y-2">
+        <thead className="">
           <tr>
-            <th className="border border-black px-1 text-left">Id</th>
-            <th className="border border-black px-1 text-left">Product</th>
-            <th className="border border-black px-1 text-left">Price</th>
-            <th className="border border-black px-1 text-left">Date</th>
+            <th className="overflow-hidden indent-1 whitespace-nowrap border border-slate-600 bg-zinc-200 px-2 py-2 text-left">#</th>
+            <th className="overflow-hidden indent-1 whitespace-nowrap border border-slate-600 bg-zinc-200 px-2 py-2 text-left">Product</th>
+            <th className="overflow-hidden indent-1 whitespace-nowrap border border-slate-600 bg-zinc-200 px-2 py-2 text-left">Price</th>
+            <th className="overflow-hidden indent-1 whitespace-nowrap border border-slate-600 bg-zinc-200 px-2 py-2 text-left">Date</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className=''>
           {myOrders.map((order, index) => {
                       
             return (
-              <tr key={order.id}>
-                <td className="border border-black px-1 text-left">{index + 1}</td>
-                <td className="border border-black px-1 text-left">{order.name}</td>
-                <td className="border border-black px-1 text-left">{order.price}{order.currency}</td>
-                <td className="border border-black px-1 inline-table text-left">{order.createdAt}</td>
+              <tr key={order.id} className="hover:bg-zinc-600 hover:text-zinc-200 border-l-0 border-r-0 border-b-2 border-solid border-zinc-300">
+                <td className="z-50 text-sm md:text-md lg:text-lg xl:text-xl align-middle px-3 mt-2 text-left">{index + 1}</td>
+                <td className="z-50 text-sm md:text-md lg:text-lg xl:text-xl align-middle px-3 mt-2 text-left font-medium">{order.name}</td>
+                <td className="z-50 text-sm md:text-md lg:text-lg xl:text-xl align-middle px-3 mt-2 text-left">{order.price}{order.currency}</td>
+                <td className="z-50 text-sm md:text-md lg:text-lg xl:text-xl align-middle px-3 mt-2 text-left">{order.createdAt}</td>
               </tr>
             );
           })}
