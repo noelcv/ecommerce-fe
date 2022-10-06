@@ -47,6 +47,6 @@ export const getMyOrders = async (uid: string) => {
       return `Error: ${parsedResponse.data.findOrdersByUserId.message}`
     } 
   } catch (error) {
-    console.log('Error at editProduct Service: ', error);
+    console.log('Error at GetMyOrders Service: ', error);
   }
 };
