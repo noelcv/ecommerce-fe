@@ -2,7 +2,6 @@ import { UserType } from "../../types/UserType";
 
 export async function findUser(user: UserType): Promise<any> {
   try {
-        
     const userExists = await fetch(import.meta.env.VITE_GRAPHQL_API, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },

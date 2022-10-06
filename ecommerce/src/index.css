@@ -29,7 +29,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: rgba(251, 146, 60, 1);
+  color: rgb(255, 165, 165)
 }
 
 h1 {

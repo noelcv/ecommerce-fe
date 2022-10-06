@@ -20,10 +20,14 @@ export const subtotalSlice = createSlice({
     removeAmountFromSubtotal: (state, action: PayloadAction<number>) => {
       state.value -= Number(action.payload)
     },
+    
+    resetSubtotal: (state) => {
+      state.value = 0
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addAmountToSubtotal, removeAmountFromSubtotal } = subtotalSlice.actions
+export const { addAmountToSubtotal, removeAmountFromSubtotal, resetSubtotal } = subtotalSlice.actions
 
 export default subtotalSlice.reducer

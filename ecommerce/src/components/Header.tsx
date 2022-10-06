@@ -53,14 +53,17 @@ const Header: FunctionComponent = () => {
           <span className="text-slate-200 text-xl">Hello</span>
           { isAuthUser ? <span className='text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl'>{username}</span> :
             
-            <Link to='/signin'>
+          <Link to='/signin'>
           <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">SignIn</span>
           </Link>
           }
         </div>
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-slate-200 text-xl">Your</span>
+          
+          <Link to='/myorders'>
           <span className="text-slate-100 font-bold text-xl mt-0.5 md:text-2xl 3xl:text-3xl">Orders</span>
+          </Link>
         </div>
         <div className="flex flex-col md:place-content-evenly">
           <span className="text-slate-200 text-xl">Your</span>

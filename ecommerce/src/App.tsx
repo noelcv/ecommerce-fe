@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import RegisterPage from './pages/SignIn/Register';
 import SignInPage from './pages/SignIn/SignIn';
 import SelectAccountType from './pages/SignIn/SelectAcount';
+import MyOrdersPage from './pages/MyOrdersPage';
 
 function App() {
   // const [user, loading] = useAuthState();
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register/" element={<SelectAccountType/>}/>
           <Route path="/register/details" element={<RegisterPage/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
+          <Route path="/myorders" element={<MyOrdersPage/>}/>
           <Route path="/admin" element={<AdminPage/>}/>
         </Routes>
       </div>

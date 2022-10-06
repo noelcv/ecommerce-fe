@@ -71,7 +71,7 @@ const ProductComponent: FunctionComponent<ProductType> = ({
 
         <button
           className="bg-red-300 grid col-start-1 ml-16 md:ml-12 hover:bg-zinc-400 min-w-12 max-h-16 md:max-h-14 w-21 text-zinc-800 font-bold py-2 px-4 rounded mt-4"
-          onClick={() => addProductHandler(product)}
+          // onClick={() => addProductHandler(product)}
         >
           View Details
         </button>
