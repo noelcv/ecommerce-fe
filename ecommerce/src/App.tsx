@@ -8,6 +8,7 @@ import RegisterPage from './pages/SignIn/Register';
 import SignInPage from './pages/SignIn/SignIn';
 import SelectAccountType from './pages/SignIn/SelectAcount';
 import MyOrdersPage from './pages/MyOrdersPage';
+import ProfileComponent from './components/profile/profile';
 
 function App() {
   // const [user, loading] = useAuthState();
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signin" element={<SignInPage/>}/>
           <Route path="/register/" element={<SelectAccountType/>}/>
           <Route path="/register/details" element={<RegisterPage/>}/>
+          <Route path="/profile" element={<ProfileComponent/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/myorders" element={<MyOrdersPage/>}/>
           <Route path="/admin" element={<AdminPage/>}/>
