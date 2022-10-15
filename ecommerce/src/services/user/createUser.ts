@@ -20,6 +20,9 @@ export async function createUser(newUser: UserType): Promise<any> {
               uid
               email
               username
+              profile {
+                picture
+              }
               role
             }
           }
