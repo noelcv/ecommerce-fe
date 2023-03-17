@@ -32,7 +32,7 @@ const RegisterComponent: FunctionComponent = () => {
   console.log('isNewUser at Register', isNewUserUi);
   useEffect(() => {
     if (isAuthUser) {
-      navigate('/');
+      navigate('/profile');
     }
   }, [isAuthUser]);
 
@@ -50,18 +50,21 @@ const RegisterComponent: FunctionComponent = () => {
             uid: user.uid,
             email: user.email as string,
             username: user.displayName as string,
-            //TODO: update schema to include profile
-            // profile: {
-            //   picture: user.photoURL as string
-            // },
+            profile: {
+              picture: user.photoURL as string
+            },
             role: selectedRole as RoleEnum,
           };
-
+          console.log('newUser inside handler', newUser);
           //communicate with backend to create user in database
           const responseUser: UserType = await createUser(newUser);
 
           //this action sets authenticated User in redux store
+          console.log(responseUser, 'response User to be dispatched')
           dispatch(setUser(responseUser));
+        
+          navigate('/profile');
+          
         } else {
           dispatch(isNewUser(false));
         }

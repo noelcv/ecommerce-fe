@@ -4,10 +4,11 @@ import AdminPage from './pages/Admin';
 import Checkout from './pages/Checkout';
 import Homepage from './pages/Homepage';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import RegisterPage from './pages/SignIn/Register';
+import RegisterPage from './pages/SignIn/RegisterPage';
 import SignInPage from './pages/SignIn/SignIn';
 import SelectAccountType from './pages/SignIn/SelectAcount';
 import MyOrdersPage from './pages/MyOrdersPage';
+import ProfileComponent from './components/profile/ProfileComponent';
 
 function App() {
   // const [user, loading] = useAuthState();
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signin" element={<SignInPage/>}/>
           <Route path="/register/" element={<SelectAccountType/>}/>
           <Route path="/register/details" element={<RegisterPage/>}/>
+          <Route path="/profile" element={<ProfileComponent/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/myorders" element={<MyOrdersPage/>}/>
           <Route path="/admin" element={<AdminPage/>}/>

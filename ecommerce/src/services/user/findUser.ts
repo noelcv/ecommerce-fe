@@ -18,6 +18,10 @@ export async function findUser(user: UserType): Promise<any> {
               email
               username
               role
+              profile {
+                picture
+                bio
+              }
             }
           }
         }`,
