@@ -30,11 +30,11 @@ const RegisterComponent: FunctionComponent = () => {
   const isNewUserUi = useSelector((state: RootState) => state.isNewUser.value);
 
   console.log('isNewUser at Register', isNewUserUi);
-  // useEffect(() => {
-  //   if (isAuthUser) {
-  //     navigate('/');
-  //   }
-  // }, [isAuthUser]);
+  useEffect(() => {
+    if (isAuthUser) {
+      navigate('/profile');
+    }
+  }, [isAuthUser]);
 
   const signInWithGoogleHandler = async (): Promise<void> => {
     try {
@@ -60,10 +60,11 @@ const RegisterComponent: FunctionComponent = () => {
           const responseUser: UserType = await createUser(newUser);
 
           //this action sets authenticated User in redux store
+          console.log(responseUser, 'response User to be dispatched')
           dispatch(setUser(responseUser));
-          if (isAuthUser) {
-            navigate('/profile');
-          }
+        
+          navigate('/profile');
+          
         } else {
           dispatch(isNewUser(false));
         }
